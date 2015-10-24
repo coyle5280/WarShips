@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WarShips</string>
+    <string name="welcome">Welcome to WarShips</string>
+    <string name="login">Login</string>
+    <string name="user">User Name:</string>
+    <string name="password">Password:</string>
+    <string name="newGame">New Game</string>
+    <string name="searchforPlayers">Search for Players</string>
+    <string name="begin">Begin</string>
+    <string name="availablePlayers">Available Players</string>
+</resources>
