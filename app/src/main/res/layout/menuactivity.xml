@@ -10,40 +10,60 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:background="@mipmap/warship">
-        <TextView
-            android:layout_width="wrap_content"
+        android:background="@mipmap/warship"
+        android:layout_marginTop="5dp">
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/select"
+        android:id="@+id/textView"
+        android:layout_marginTop="50dp"
+        android:textColor="#d02020"
+        android:textStyle="bold|italic" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/searchforPlayers"
-            android:id="@+id/textView"
-            android:layout_marginTop="50dp"
-            android:textColor="#d02020"
-            android:textStyle="bold|italic" />
+            android:text="@string/host"
+            android:id="@+id/hostButton"
+            android:layout_marginTop="5dp"
+            style="@android:style/Widget.Holo.Light.Button"
+            android:layout_marginRight="5dp" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/join"
+            android:id="@+id/joinButton"
+            android:layout_marginTop="5dp"
+            style="@android:style/Widget.Holo.Light.Button"
+            android:layout_marginLeft="5dp" />
+
     </LinearLayout>
 
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/begin"
-            android:id="@+id/button2"
-            android:layout_marginTop="5dp"
-            style="@android:style/Widget.Holo.Light.Button" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/availablePlayers"
-        android:id="@+id/textView2"
+        android:id="@+id/optionText"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
         android:id="@+id/availablePlayersFrame">
 
     </FrameLayout>
