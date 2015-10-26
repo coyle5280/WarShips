@@ -37,12 +37,13 @@
     <Button
         android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:text="\@string/newGame"
+        android:text="@string/newGame"
         android:id="@+id/startMenuActivity"
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="136dp"
         android:layout_alignParentStart="false"
-        style="@android:style/Widget.Holo.Light.Button" />
+        style="@android:style/Widget.Holo.Light.Button"
+        android:onClick="startTheMenuActivity"/>
 
 </RelativeLayout>

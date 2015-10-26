@@ -33,7 +33,7 @@ public class WarShipsMain extends Activity {
     }
 
     public void startTheMenuActivity(View view){
-        Intent startIntent = new Intent(this, WarShipsMain.class);
+        Intent startIntent = new Intent(this, MenuActivity.class);
         startActivity(startIntent);
     }
 }//End Activity
