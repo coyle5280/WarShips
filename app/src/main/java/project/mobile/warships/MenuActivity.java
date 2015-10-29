@@ -343,10 +343,14 @@ public class MenuActivity extends Activity {
         //I'm thinking that we call new activity here and pass socket to continue the "talk"
         //or setup methods that allow communication
         setProgressBarIndeterminateVisibility(false);
+        GameSocket theSocket = GameSocket.getInstance();
+        theSocket.setGameSocket(socket);
+//        theSocket.socket;
+
         Log.e("WarShip: joinGame", "manageConnectionSocket: Devices Socket ");
         Intent startIntent = new Intent(this, WarShipGame.class);
-
         startActivity(startIntent);
+
     }
     /**
      *
