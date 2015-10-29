@@ -25,7 +25,7 @@ public class WarShipsMain extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         setupItems();
-//        setupLocation();
+
     }
 
     private void setupItems() {

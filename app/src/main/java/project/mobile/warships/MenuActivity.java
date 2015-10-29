@@ -214,10 +214,10 @@ public class MenuActivity extends Activity {
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_FOUND);
         filter.addAction(ACTION_SCAN_MODE_CHANGED);
-        Log.e("WarShip: joinGame", "Trying to Find Bluetooth Devices L:215");
+        Log.e("WarShip: joinGame", "Trying to Find Bluetooth Devices ");
         mBluetoothAdapter.startDiscovery();
         registerReceiver(mReceiver, filter); // Don't forget to unregister during onDestroy
-        Log.e("WarShip: joinGame", "Trying to Find Bluetooth Devices L:218");
+        Log.e("WarShip: joinGame", "Trying to Find Bluetooth Devices ");
      }
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -343,7 +343,10 @@ public class MenuActivity extends Activity {
         //I'm thinking that we call new activity here and pass socket to continue the "talk"
         //or setup methods that allow communication
         setProgressBarIndeterminateVisibility(false);
-        Log.e("WarShip: joinGame", "manageConnectionSocket: Devices Socket L:326");
+        Log.e("WarShip: joinGame", "manageConnectionSocket: Devices Socket ");
+        Intent startIntent = new Intent(this, WarShipGame.class);
+
+        startActivity(startIntent);
     }
     /**
      *

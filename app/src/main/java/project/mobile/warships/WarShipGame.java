@@ -1,5 +1,6 @@
 package project.mobile.warships;
 
+import android.bluetooth.BluetoothSocket;
 import android.os.Bundle;
 import android.app.Activity;
 
