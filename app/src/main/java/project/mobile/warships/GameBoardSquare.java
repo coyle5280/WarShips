@@ -4,19 +4,34 @@ package project.mobile.warships;
  * Created by coyle on 10/28/2015.
  */
 public class GameBoardSquare {
-    private boolean shotAt;
+    private boolean enemyFire;
     private boolean occupied;
     private boolean firedAt;
 
     public GameBoardSquare (boolean setShotAt, boolean setOccupied, boolean setFiredAt){
-        shotAt = setShotAt;
+        enemyFire = setShotAt;
         occupied = setOccupied;
         firedAt = setFiredAt;
     }
 
+    public GameBoardSquare(){
+
+    }
+
+    public void setEnemyFire(boolean enemyFire) {
+        this.enemyFire = enemyFire;
+    }
+
+    public void setFiredAt(boolean firedAt) {
+        this.firedAt = firedAt;
+    }
+
+    public void setOccupied(boolean occupied) {
+        this.occupied = occupied;
+    }
 
     public boolean getShotAt(){
-        return shotAt;
+        return enemyFire;
     }
 
     public boolean getOccupied(){
