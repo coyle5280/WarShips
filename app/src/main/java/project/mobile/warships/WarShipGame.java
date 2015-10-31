@@ -42,15 +42,5 @@ public class WarShipGame extends Activity {
         bluetoothConnection  = new ConnectedThread(socket, connectionHandler);
 
         messageView = (TextView) findViewById(R.id.message);
-
-
-
-
-
     }
-
-
-
-
-
 }
