@@ -45,12 +45,14 @@ public class WarShipGame extends Activity implements Serializable{
             public void handleMessage(Message inputMessage){
                 byte [] incoming = (byte[]) inputMessage.obj;
                 try {
-                     GameMessage incomingMessage = convertToGameMessage(incoming);
-                     messageView.setText(incomingMessage.getMessage());
+                    Log.e("WarGame:InGameInMes:", "handler Incoming message");
+                    GameMessage incomingMessage = convertToGameMessage(incoming);
+                    Log.e("WarGame:InGameInMes:", "Actual String: " + incomingMessage.getMessage());
+                    messageView.setText(incomingMessage.getMessage());
                 }catch(ClassNotFoundException e){
-
+                    Log.e("WarGame:InGameInMesERR:", e.toString());
                 }catch (IOException i){
-
+                    Log.e("WarGame:InGameInMesERR:", i.toString());
                 }
 
 
@@ -59,7 +61,7 @@ public class WarShipGame extends Activity implements Serializable{
 
         };
         bluetoothConnection  = new ConnectedThread(socket, connectionHandler);
-
+        bluetoothConnection.run();
     }
 
 
@@ -76,6 +78,7 @@ public class WarShipGame extends Activity implements Serializable{
                 gameMess.setMessage("Testing");
                 try{
                     bluetoothConnection.write(convertGameMessageToByte(gameMess));
+                    Log.e("WarShipGame:OutConnect:", "Message Sent");
                 }catch(IOException e){
                     Log.e("WarShipGame:OutConnect:", e.toString());
                 }
