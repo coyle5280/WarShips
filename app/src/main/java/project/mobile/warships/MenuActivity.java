@@ -344,14 +344,14 @@ public class MenuActivity extends Activity {
          */
         public void run() {
             // Keep listening until exception occurs or a socket is returned
-            while (mmServerSocket == null) {//Could change this while loop to test (mConnectionState == 1) Allow  cancel of loop from outside maybe settings
+            while (true) {//Could change this while loop to test (mConnectionState == 1) Allow  cancel of loop from outside maybe settings
                 try {
                     socket = mmServerSocket.accept();
                 } catch (IOException e) {
-                    Log.e("WarShip: HostGame .accept() failure ",e.toString());
+                    Log.e("WarShip: HostGame acce",e.toString());
                     break;
                 } catch(NullPointerException n){
-                    Log.e("WarShip: HostGame null pointer ",n.toString());
+                    Log.e("WarShip: HostGame nulP",n.toString());
                 }
                 // If a connection was accepted
                 if (socket != null) {
