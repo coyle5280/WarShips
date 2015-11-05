@@ -348,22 +348,25 @@ public class MenuActivity extends Activity {
                 try {
                     socket = mmServerSocket.accept();
                 } catch (IOException e) {
-                    setProgressBarIndeterminateVisibility(false);
+                    Log.e("WarShip: HostGame .accept() failure ",e.toString());
                     break;
+                } catch(NullPointerException n){
+                    Log.e("WarShip: HostGame null pointer ",n.toString());
                 }
                 // If a connection was accepted
                 if (socket != null) {
                     // Do work to manage the connection (in a separate thread)
-                    mBluetoothAdapter.cancelDiscovery();
+//                    mBluetoothAdapter.cancelDiscovery();
                     mConnectionState = STATE_CONNECTED;
                     try {
                         mmServerSocket.close(); //Try to close BluetoothServerSocket no need to listen any more
                     }catch (IOException e){
-                        Log.e("Server Host Error:", e.toString());
-                        setProgressBarIndeterminateVisibility(false);
+                        Log.e("Warship: Host .close:", e.toString());
                     }
                     manageConnectedSocket(socket);
                     break;
+                }else{
+                    Log.e("WarShip: hostGame", "socket == null?? ");
                 }
             }
         }
@@ -386,7 +389,7 @@ public class MenuActivity extends Activity {
 
         GameSocket theSocket = GameSocket.getInstance();
         theSocket.setGameSocket(socket);
-        Log.e("WarShip: joinGame", "manageConnectionSocket: Devices Socket ");
+        Log.e("WarShip: joiningGames", "manageConnectionSocket: Devices Socket ");
         Intent startIntent = new Intent(this, WarShipGame.class);
         startActivity(startIntent);
 
