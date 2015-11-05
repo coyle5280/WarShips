@@ -76,6 +76,7 @@ public class WarShipGame extends Activity implements Serializable{
                 gameMess.setMessage("Testing");
                 try{
                     bluetoothConnection.write(convertGameMessageToByte(gameMess));
+                    Log.e("WarShipGame:OutConnect:", "Message Sent");
                 }catch(IOException e){
                     Log.e("WarShipGame:OutConnect:", e.toString());
                 }

@@ -2,6 +2,7 @@ package project.mobile.warships;
 
 import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,9 +26,12 @@ public class ConnectedThread extends Thread {
         // Get the input and output streams, using temp objects because
         // member streams are final
         try {
+            Log.e("WarShipGame:ConnThread:", "Trying to open inputOutput");
             tmpIn = socket.getInputStream();
             tmpOut = socket.getOutputStream();
-        } catch (IOException e) { }
+        } catch (IOException e) {
+            Log.e("WarShipGame:ConnThread:", e.toString());
+        }
 
         mmInStream = tmpIn;
         mmOutStream = tmpOut;
@@ -48,6 +52,7 @@ public class ConnectedThread extends Thread {
                 mHandler.obtainMessage(0, bytes, -1, buffer)
                         .sendToTarget();
             } catch (IOException e) {
+                Log.e("WarShipGame:ConnThread:", e.toString());
                 break;
             }
         }
@@ -56,14 +61,19 @@ public class ConnectedThread extends Thread {
     /* Call this from the main activity to send data to the remote device */
     public void write(byte[] bytes) {
         try {
+            Log.e("WarShipGame:ConnThread:", "writeCalled");
             mmOutStream.write(bytes);
-        } catch (IOException e) { }
+        } catch (IOException e) {
+            Log.e("WarShipGame:ConnThread:", e.toString());
+        }
     }
 
     /* Call this from the main activity to shutdown the connection */
     public void cancel() {
         try {
             mmSocket.close();
-        } catch (IOException e) { }
+        } catch (IOException e) {
+            Log.e("WarShipGame:ConnThread:", e.toString());
+        }
     }
 }
