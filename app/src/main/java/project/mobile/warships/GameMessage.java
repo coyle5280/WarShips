@@ -1,9 +1,11 @@
 package project.mobile.warships;
 
+import java.io.Serializable;
+
 /**
  * Created by coyle on 10/30/2015.
  */
-public class GameMessage {
+public class GameMessage implements Serializable{
 
     protected String message;
 
