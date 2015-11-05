@@ -28,11 +28,21 @@ public class GameMessage {
         return message;
     }
 
+    public void setMessage(String set_message){
+        message = set_message;
+    }
+
     public int getyAxisMove() {
         return yAxisMove;
     }
 
     public int getxAxisMove() {
         return xAxisMove;
+    }
+
+    public String toString(){
+        return "Game Message: " + message + " y: " + Integer.toString(yAxisMove) + " x: " +
+                Integer.toString(xAxisMove);
+
     }
 }

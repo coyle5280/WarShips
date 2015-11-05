@@ -13,4 +13,6 @@
     <string name="waiting">Waiting for Another Player</string>
     <string name="menuActivity">WarShips Connection Menu</string>
     <string name="title_activity_war_ship_game">WarShipGame</string>
+    <string name="sendMessageString">Send Turn</string>
+    <string name="stopSearch">Stop Connection</string>
 </resources>

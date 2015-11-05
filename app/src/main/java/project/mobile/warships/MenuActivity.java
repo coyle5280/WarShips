@@ -33,6 +33,7 @@ public class MenuActivity extends Activity {
 
     ActionBar actionBar;
     final int REQUEST_ENABLE_BT = 1;
+    final int REQUEST_DISCOVERABLE = 2;
     final UUID uuid = UUID.fromString("37909982-7ad3-11e5-8bcf-feff819cdc9f");
     final String appName = "warShips";
 
@@ -54,6 +55,7 @@ public class MenuActivity extends Activity {
 
     Button hostButton;
     Button joinButton;
+    Button stopButton;
 
     BroadcastReceiver mReceiver;
 
@@ -62,7 +64,7 @@ public class MenuActivity extends Activity {
     ArrayList<String> stringDeviceArrayList;
     BluetoothAdapter mBluetoothAdapter = getDefaultAdapter();
 
-    final AcceptThread server = new AcceptThread();
+    AcceptThread server;
     ConnectThread joinGame;
 
 
@@ -87,9 +89,10 @@ public class MenuActivity extends Activity {
     private void setupItems() {
         actionBar = getActionBar();
         //Bluetooth Adaptor
-
+        server = new AcceptThread();
         hostButton = (Button) findViewById(R.id.hostButton);
         joinButton = (Button) findViewById(R.id.joinButton);
+        stopButton = (Button) findViewById(R.id.stopButton);
 
         devicesFoundListView = (ListView) findViewById(R.id.availableBluetooth);
 
@@ -100,6 +103,14 @@ public class MenuActivity extends Activity {
                 Log.e("WarShip: joinGame", "onItemClick: Devices L:98");
                 joinGame.run();
 
+            }
+        });
+
+
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeConnections();
             }
         });
 
@@ -128,6 +139,19 @@ public class MenuActivity extends Activity {
         mConnectionState = STATE_NONE;
 
         setupReceiver();
+
+    }
+
+    private void closeConnections() {
+        if (joinGame != null) {
+            joinGame.cancel();
+        }
+        if (server != null) {
+            server.cancel();
+        }
+        joinButton.setVisibility(View.VISIBLE);
+        hostButton.setVisibility(View.VISIBLE);
+        stopButton.setVisibility(View.INVISIBLE);
 
     }
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -187,11 +211,15 @@ public class MenuActivity extends Activity {
      *
      */
     public void hostGame(View view){
-        setProgressBarIndeterminateVisibility(true);
-        setTitle(R.string.waiting);
+//        setProgressBarIndeterminateVisibility(true);
+//        setTitle(R.string.waiting);
+        hostButton.setVisibility(View.INVISIBLE);
+        joinButton.setVisibility(View.INVISIBLE);
+        stopButton.setVisibility(View.VISIBLE);
         mIsHost = true;
+        Log.e("WarShip: HostGame", "beforeEnable");
         enableDiscovery();
-        server.run();
+        Log.e("WarShip: HostGame", "afterEnable");
 
 
 
@@ -203,7 +231,9 @@ public class MenuActivity extends Activity {
      */
     public void joinGame(View view){
     //TODO Write the Join game bluetooth methods...
-
+        hostButton.setVisibility(View.INVISIBLE);
+        joinButton.setVisibility(View.INVISIBLE);
+        stopButton.setVisibility(View.VISIBLE);
         mIsHost = false;
         Log.e("WarShip: joinGame", "Trying to Find Bluetooth Devices L:202");
 //        setProgressBarIndeterminateVisibility(true);
@@ -230,7 +260,9 @@ public class MenuActivity extends Activity {
         Intent discoverableIntent = new Intent(ACTION_REQUEST_DISCOVERABLE);
         discoverableIntent.putExtra(EXTRA_DISCOVERABLE_DURATION, 200);
         startActivity(discoverableIntent);
-
+        Log.e("WarShip: HostGame", "afterStartActivity");
+        server.run();
+        Log.e("WarShip: HostGame", "afterServer.run()");
     }
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     /**
@@ -251,24 +283,35 @@ public class MenuActivity extends Activity {
             joinGame.cancel();
         }
         // Unregister broadcast listeners
-        this.unregisterReceiver(mReceiver);
+        try {
+            if (mReceiver != null) {// Unregister broadcast listeners
+                this.unregisterReceiver(mReceiver);
+            }
+        }catch (IllegalArgumentException e){
+
+        }
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
         if (mBluetoothAdapter != null) {
             mBluetoothAdapter.cancelDiscovery();
         }
 
-        if(server != null){
+        if (server != null) {
             server.cancel();
         }
-        if(joinGame != null) {
+        if (joinGame != null) {
             joinGame.cancel();
         }
-        // Unregister broadcast listeners
-        this.unregisterReceiver(mReceiver);
+        try {
+            if (mReceiver != null) {// Unregister broadcast listeners
+                this.unregisterReceiver(mReceiver);
+            }
+        }catch (IllegalArgumentException e){
+
+        }
     }
 
 
@@ -280,7 +323,7 @@ public class MenuActivity extends Activity {
      */
     private class AcceptThread extends Thread {
         private final BluetoothServerSocket mmServerSocket;
-        BluetoothSocket socket = null;
+        BluetoothSocket socket;
 
         /*
         AcceptThread Constructor
@@ -301,7 +344,7 @@ public class MenuActivity extends Activity {
          */
         public void run() {
             // Keep listening until exception occurs or a socket is returned
-            while (true) {//Could change this while loop to test (mConnectionState == 1) Allow  cancel of loop from outside maybe settings
+            while (mmServerSocket == null) {//Could change this while loop to test (mConnectionState == 1) Allow  cancel of loop from outside maybe settings
                 try {
                     socket = mmServerSocket.accept();
                 } catch (IOException e) {
@@ -340,13 +383,9 @@ public class MenuActivity extends Activity {
      * @param socket
      */
     private void manageConnectedSocket(BluetoothSocket socket) {
-        //I'm thinking that we call new activity here and pass socket to continue the "talk"
-        //or setup methods that allow communication
-        setProgressBarIndeterminateVisibility(false);
+
         GameSocket theSocket = GameSocket.getInstance();
         theSocket.setGameSocket(socket);
-//        theSocket.socket;
-
         Log.e("WarShip: joinGame", "manageConnectionSocket: Devices Socket ");
         Intent startIntent = new Intent(this, WarShipGame.class);
         startActivity(startIntent);
