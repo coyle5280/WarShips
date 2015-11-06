@@ -18,7 +18,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class WarShipGame extends Activity implements Serializable{
+public class WarShipGame extends Activity {
 
     private BluetoothSocket socket;
     protected GameBoard board;
