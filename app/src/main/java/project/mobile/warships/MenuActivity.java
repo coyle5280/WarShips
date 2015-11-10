@@ -204,8 +204,6 @@ public class MenuActivity extends Activity {
                 toast.show();
             }
         }
-
-
     }
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     //Button Host Game Click Call
@@ -264,12 +262,13 @@ public class MenuActivity extends Activity {
      */
     private void enableDiscovery(){
         mConnectionState = STATE_LISTEN;
+        Log.e("WarShip: HostGame", "afterStartActivity");
+        server.start();
+        Log.e("WarShip: HostGame", "afterServer.run()");
         Intent discoverableIntent = new Intent(ACTION_REQUEST_DISCOVERABLE);
 //        discoverableIntent.putExtra(EXTRA_DISCOVERABLE_DURATION, 200);
         startActivity(discoverableIntent);
-        Log.e("WarShip: HostGame", "afterStartActivity");
-        server.run();
-        Log.e("WarShip: HostGame", "afterServer.run()");
+
     }
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     /**
@@ -402,16 +401,16 @@ public class MenuActivity extends Activity {
         if(joinGame!=null) {
             joinGame.cancel();
         }
-        try {
-            if (mReceiver != null) {// Unregister broadcast listeners
-                this.unregisterReceiver(mReceiver);
-            }
-        }catch (IllegalArgumentException e){
-            Log.e("WarShip: ManageERR", e.toString());
-        }
-        if(mBluetoothAdapter.isDiscovering()){
-            mBluetoothAdapter.cancelDiscovery();
-        }
+//        try {
+//            if (mReceiver != null) {// Unregister broadcast listeners
+//                this.unregisterReceiver(mReceiver);
+//            }
+//        }catch (IllegalArgumentException e){
+//            Log.e("WarShip: ManageERR", e.toString());
+//        }
+//        if(mBluetoothAdapter.isDiscovering()){
+//            mBluetoothAdapter.cancelDiscovery();
+//        }
 
         GameSocket theSocket = GameSocket.getInstance();
         theSocket.setGameSocket(socket);
