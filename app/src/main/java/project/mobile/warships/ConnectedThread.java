@@ -50,6 +50,7 @@ public class ConnectedThread extends Thread {
                 count++;
                 Log.e("WarGame:ConnThread.run:", "Listening: # " + count);
                 bytes = mmInStream.read(buffer);
+                Log.e("WarGame:ConnThread.run:", "afterReafBUffer");
                 // Send the obtained bytes to the UI activity
                 mHandler.obtainMessage(0, bytes, -1, buffer).sendToTarget();
             } catch (IOException e) {

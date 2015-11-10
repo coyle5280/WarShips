@@ -61,7 +61,7 @@ public class WarShipGame extends Activity {
 
         };
         bluetoothConnection  = new ConnectedThread(socket, connectionHandler);
-        bluetoothConnection.run();
+        bluetoothConnection.start();
     }
 
 

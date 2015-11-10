@@ -395,22 +395,22 @@ public class MenuActivity extends Activity {
      */
     private void manageConnectedSocket(BluetoothSocket socket) {
 
-        if(server!=null) {
-            server.cancel();
-        }
-        if(joinGame!=null) {
-            joinGame.cancel();
-        }
-//        try {
-//            if (mReceiver != null) {// Unregister broadcast listeners
-//                this.unregisterReceiver(mReceiver);
-//            }
-//        }catch (IllegalArgumentException e){
-//            Log.e("WarShip: ManageERR", e.toString());
+//        if(server!=null) {
+//            server.cancel();
 //        }
-//        if(mBluetoothAdapter.isDiscovering()){
-//            mBluetoothAdapter.cancelDiscovery();
+//        if(joinGame!=null) {
+//            joinGame.cancel();
 //        }
+        try {
+            if (mReceiver != null) {// Unregister broadcast listeners
+                this.unregisterReceiver(mReceiver);
+            }
+        }catch (IllegalArgumentException e){
+            Log.e("WarShip: ManageERR", e.toString());
+        }
+        if(mBluetoothAdapter.isDiscovering()){
+            mBluetoothAdapter.cancelDiscovery();
+        }
 
         GameSocket theSocket = GameSocket.getInstance();
         theSocket.setGameSocket(socket);
