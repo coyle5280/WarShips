@@ -1,4 +1,4 @@
-package project.mobile.warships;
+package GameBoardObjects;
 
 /**
  * Created by coyle on 10/28/2015.
@@ -7,14 +7,15 @@ public class GameBoardSquare {
     private boolean enemyFire;
     private boolean occupied;
     private boolean firedAt;
+    private String typeOccupied;
 
-    public GameBoardSquare (boolean setShotAt, boolean setOccupied, boolean setFiredAt){
+    public GameBoardSquare(boolean setShotAt, boolean setOccupied, boolean setFiredAt) {
         enemyFire = setShotAt;
         occupied = setOccupied;
         firedAt = setFiredAt;
     }
 
-    public GameBoardSquare(){
+    public GameBoardSquare() {
 
     }
 
@@ -30,15 +31,23 @@ public class GameBoardSquare {
         this.occupied = occupied;
     }
 
-    public boolean getShotAt(){
+    public void setTypeOccupied(String typeOccupied) {
+        this.typeOccupied = typeOccupied;
+    }
+
+    public boolean getShotAt() {
         return enemyFire;
     }
 
-    public boolean getOccupied(){
+    public boolean getOccupied() {
         return occupied;
     }
 
-    public boolean getFiredAt(){
+    public String getTypeOccupied() {
+        return typeOccupied;
+    }
+
+    public boolean getFiredAt() {
         return firedAt;
     }
 

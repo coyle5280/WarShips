@@ -1,6 +1,4 @@
-package project.mobile.warships;
-
-import java.lang.reflect.Array;
+package GameBoardObjects;
 
 /**
  * Created by coyle on 10/26/2015.

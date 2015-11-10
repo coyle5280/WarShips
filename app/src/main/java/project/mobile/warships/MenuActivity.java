@@ -414,8 +414,12 @@ public class MenuActivity extends Activity {
 
         GameSocket theSocket = GameSocket.getInstance();
         theSocket.setGameSocket(socket);
+
+
         Log.e("WarShip: joiningGames", "manageConnectionSocket: Devices Socket ");
         Intent startIntent = new Intent(this, WarShipGame.class);
+        startIntent.putExtra("isHost",mIsHost);
+
         startActivity(startIntent);
 
     }

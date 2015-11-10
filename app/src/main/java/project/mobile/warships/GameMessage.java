@@ -13,7 +13,7 @@ public class GameMessage implements Serializable{
 
     protected int xAxisMove;
 
-    public GameMessage(int yMove, int xMove){
+    public GameMessage(int xMove, int yMove){
         yAxisMove = yMove;
         xAxisMove = xMove;
         message = "";
