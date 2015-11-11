@@ -33,13 +33,13 @@
         android:layout_alignParentEnd="true" />
 
     <EditText
-        android:layout_width="150dp"
+        android:layout_width="1750dp"
         android:layout_height="45dp"
-        android:text="New Text"
         android:id="@+id/setMessageView"
+        android:layout_marginTop="39dp"
+        android:hint="Type Message Here"
         android:layout_below="@+id/message"
-        android:layout_alignStart="@+id/message"
-        android:layout_marginTop="46dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"

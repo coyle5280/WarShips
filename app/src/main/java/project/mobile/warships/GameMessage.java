@@ -13,15 +13,18 @@ public class GameMessage implements Serializable{
 
     protected int xAxisMove;
 
-    public GameMessage(int xMove, int yMove){
+    protected String messageType;
+
+    public GameMessage(int xMove, int yMove, String type){
         yAxisMove = yMove;
         xAxisMove = xMove;
+        messageType = type;
         message = "";
     }
 
-    public GameMessage(int yMove, int xMove, String setMessage){
-        yAxisMove = yMove;
-        xAxisMove = xMove;
+    public GameMessage(String type, String setMessage){
+
+        messageType = type;
         message = setMessage;
 
     }

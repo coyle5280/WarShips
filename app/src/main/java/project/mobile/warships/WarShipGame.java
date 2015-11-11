@@ -30,7 +30,8 @@ public class WarShipGame extends Activity  {
     protected ConnectedThread bluetoothConnection;
     public TextView messageView;
     private EditText editMessage;
-
+    final String GAMEMOVE = "gameMove";
+    final String TAUNT = "messOnly";
     private boolean isHost;
 
     protected ActionBar actionBar;
@@ -79,7 +80,7 @@ public class WarShipGame extends Activity  {
                     Log.e("WarGame:InGameInMes:", "handler Incoming message");
                     GameMessage incomingMessage = convertToGameMessage(incoming);
                     Log.e("WarGame:InGameInMes:", "Actual String: " + incomingMessage.getMessage());
-                    messageView.setText(incomingMessage.getMessage());
+                    messageView.append(incomingMessage.getMessage() + "X: " + incomingMessage.getxAxisMove());
                 } catch (ClassNotFoundException | IOException e) {
                     Log.e("WarGame:InGameInMesERR:", e.toString());
                 }
@@ -116,16 +117,9 @@ public class WarShipGame extends Activity  {
             @Override
             public void onClick(View v) {
 
-                GameMessage gameMess = new GameMessage(Integer.parseInt(xAxisAttack.getSelectedItem().toString()),
-                        Integer.parseInt(yAxisAttack.getSelectedItem().toString()));
-
-                String userMessage = editMessage.getText().toString();
+                GameMessage gameMess = setupGameMessage(xAxisAttack, yAxisAttack);
 
 
-                if (userMessage.equals("")) {
-                    userMessage = "NO MESSAGE";
-                }
-                gameMess.setMessage(userMessage);
 
                 try {
                     bluetoothConnection.write(convertGameMessageToByte(gameMess));
@@ -143,6 +137,23 @@ public class WarShipGame extends Activity  {
         }
 
 
+    }
+
+    private GameMessage setupGameMessage(Spinner x, Spinner y) {
+
+
+
+        GameMessage gameMess = new GameMessage(Integer.parseInt(x.getSelectedItem().toString()),
+                Integer.parseInt(y.getSelectedItem().toString()), GAMEMOVE);
+
+        String userMessage = editMessage.getText().toString();
+
+
+        if (userMessage.equals("")) {
+            userMessage = "NO MESSAGE";
+        }
+        gameMess.setMessage(userMessage);
+        return gameMess;
     }
 
     private void setupSpinners(Spinner x, Spinner y) {
