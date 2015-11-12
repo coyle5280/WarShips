@@ -17,6 +17,11 @@
     <string name="stopSearch">Stop Connection</string>
     <string name="OppGameBoard">Opponents Game Board</string>
     <string name="myGameBoard">My Game Board</string>
+    <string name="viewOppGameBoard">Opponent GameBoard</string>
+    <string name="viewMyGameBoard">My GameBoard</string>
+    <string name="viewStats">Game Stats</string>
+
+    <string name="shotChoice">Current Choice</string>
 
     <string-array name="xAxis">
         <item>0</item>
@@ -41,6 +46,9 @@
         <item>7</item>
         <item>8</item>
     </string-array>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

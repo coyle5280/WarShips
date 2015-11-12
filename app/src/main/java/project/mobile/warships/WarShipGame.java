@@ -26,13 +26,20 @@ import GameBoardObjects.GameBoard;
 
 public class WarShipGame extends Activity  {
 
-    protected GameBoard board;
+    protected GameBoard myBoard;
+    protected GameBoard oppBoard;
     protected ConnectedThread bluetoothConnection;
     public TextView messageView;
     private EditText editMessage;
     final String GAMEMOVE = "gameMove";
     final String TAUNT = "messOnly";
     private boolean isHost;
+
+
+
+    private static final int WAITING_ON_PLAYER = 1;
+    private static final int MY_TURN = 0;
+    private int STATUS;
 
     protected ActionBar actionBar;
 
@@ -47,7 +54,12 @@ public class WarShipGame extends Activity  {
         setContentView(R.layout.activity_war_ship_game);
         setHost();
         setupConnectionItems();
-        setupItems();
+        setupItems(); 
+        setupFragments();
+    }
+
+    private void setupFragments() {
+
     }
 
     /**
@@ -101,14 +113,13 @@ public class WarShipGame extends Activity  {
         editMessage = (EditText) findViewById(R.id.setMessageView);
         final Button sendTurn = (Button) findViewById(R.id.sendTurnButton);
         messageView = (TextView) findViewById(R.id.message);
-        final Spinner yAxisAttack = (Spinner) findViewById(R.id.yAxisSpinner);
-        final Spinner xAxisAttack = (Spinner) findViewById(R.id.xAxisSpinner);
-
-        setupSpinners(xAxisAttack, yAxisAttack);
+        STATUS = -1;
 
 
 
-        board = new GameBoard();
+
+        oppBoard = new GameBoard();
+        myBoard = new GameBoard();
 
 
 
@@ -117,8 +128,7 @@ public class WarShipGame extends Activity  {
             @Override
             public void onClick(View v) {
 
-                GameMessage gameMess = setupGameMessage(xAxisAttack, yAxisAttack);
-
+                GameMessage gameMess = setupGameMessage();
 
 
                 try {
@@ -139,12 +149,11 @@ public class WarShipGame extends Activity  {
 
     }
 
-    private GameMessage setupGameMessage(Spinner x, Spinner y) {
+    private GameMessage setupGameMessage() {
 
 
 
-        GameMessage gameMess = new GameMessage(Integer.parseInt(x.getSelectedItem().toString()),
-                Integer.parseInt(y.getSelectedItem().toString()), GAMEMOVE);
+        GameMessage gameMess = null;
 
         String userMessage = editMessage.getText().toString();
 
@@ -156,21 +165,6 @@ public class WarShipGame extends Activity  {
         return gameMess;
     }
 
-    private void setupSpinners(Spinner x, Spinner y) {
-        ArrayAdapter<CharSequence> xAdapterDistance = ArrayAdapter.createFromResource(this,
-                R.array.xAxis, android.R.layout.simple_spinner_item);
-
-        xAdapterDistance.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        x.setAdapter(xAdapterDistance);
-
-        ArrayAdapter<CharSequence> yAdapterDistance = ArrayAdapter.createFromResource(this,
-                R.array.yAxis, android.R.layout.simple_spinner_item);
-
-        yAdapterDistance.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        y.setAdapter(yAdapterDistance);
-    }
 
 
     /**

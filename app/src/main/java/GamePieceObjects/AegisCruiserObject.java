@@ -8,7 +8,7 @@ import GamePieceObjects.GamePieceObject;
 public class AegisCruiserObject extends GamePieceObject {
 
     public AegisCruiserObject(){
-        this.setLength(4);
+        this.setLength(3);
     }
 
 }

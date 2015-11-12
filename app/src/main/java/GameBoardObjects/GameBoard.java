@@ -28,8 +28,8 @@ private GameBoardSquare gameBoard [][];
 
     public void GameBoard(){
 
-        sizeX = 10;
-        sizeY = 10;
+        sizeX = 8;
+        sizeY = 8;
 
         gameBoard = new GameBoardSquare[sizeX][sizeY];
 
