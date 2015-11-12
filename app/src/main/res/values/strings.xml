@@ -15,6 +15,8 @@
     <string name="title_activity_war_ship_game">WarShipGame</string>
     <string name="sendMessageString">Send Turn</string>
     <string name="stopSearch">Stop Connection</string>
+    <string name="OppGameBoard">Opponents Game Board</string>
+    <string name="myGameBoard">My Game Board</string>
 
     <string-array name="xAxis">
         <item>0</item>
@@ -26,8 +28,6 @@
         <item>F</item>
         <item>G</item>
         <item>H</item>
-        <item>I</item>
-        <item>J</item>
     </string-array>
 
     <string-array name="yAxis">
@@ -40,8 +40,6 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
-        <item>9</item>
-        <item>10</item>
     </string-array>
 
 
