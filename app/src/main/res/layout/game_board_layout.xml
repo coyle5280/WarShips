@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <HorizontalScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 <RelativeLayout
 
@@ -15,100 +15,96 @@
             android:layout_width="30dp"
             android:layout_height="27dp"
             android:id="@+id/textView3"
-            android:background="@mipmap/outline"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="0dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_alignBottom="@+id/textView1"
+            android:layout_alignBottom="@+id/OA1"
             android:layout_marginTop="60dp"
-            android:text="A1"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="@string/one" />
 
         <TextView
             android:layout_width="30dp"
             android:layout_height="27dp"
-            android:id="@+id/textView1"
+            android:id="@+id/OA1"
             android:background="@mipmap/outline"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/textView3"
             android:layout_marginTop="60dp"
-            android:text="A2"
             android:gravity="center" />
 
         <TextView
             android:layout_width="30dp"
             android:layout_height="27dp"
-            android:id="@+id/textView2"
+            android:id="@+id/OB1"
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/textView1"
-            android:layout_marginTop="60dp"
-            android:text="A3"
-            android:gravity="center" />
-
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="27dp"
-            android:id="@+id/textView4"
-            android:background="@mipmap/outline"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/textView2"
-            android:layout_marginTop="60dp"
-            android:text="A4"
-            android:gravity="center" />
-
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="27dp"
-            android:id="@+id/textView5"
-            android:background="@mipmap/outline"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/textView4"
+            android:layout_toEndOf="@+id/OA1"
             android:layout_marginTop="60dp"
             android:gravity="center" />
 
         <TextView
             android:layout_width="30dp"
             android:layout_height="27dp"
-            android:id="@+id/textView6"
+            android:id="@+id/OC1"
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/textView5"
+            android:layout_toEndOf="@+id/OB1"
             android:layout_marginTop="60dp"
             android:gravity="center" />
 
         <TextView
             android:layout_width="30dp"
             android:layout_height="27dp"
-            android:id="@+id/textView7"
+            android:id="@+id/OD1"
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/textView6"
+            android:layout_toEndOf="@+id/OC1"
+            android:layout_marginTop="60dp"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="27dp"
+            android:id="@+id/OE1"
+            android:background="@mipmap/outline"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/OD1"
+            android:layout_marginTop="60dp"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="27dp"
+            android:id="@+id/OF1"
+            android:background="@mipmap/outline"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/OE1"
             android:layout_marginTop="60dp"
             android:gravity="center" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView8"
+        android:id="@+id/OG1"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="10dp"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/textView7"
+        android:layout_toEndOf="@+id/OF1"
         android:layout_marginTop="60dp"
         android:gravity="center" />
 
@@ -116,19 +112,20 @@
         android:layout_width="30dp"
         android:layout_height="27dp"
         android:id="@+id/textView11"
-        android:background="@mipmap/outline"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="0dp"
         android:layout_below="@+id/textView3"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/two" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView12"
+        android:id="@+id/OA2"
         android:background="@mipmap/outline"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
         android:layout_alignBottom="@+id/textView11"
         android:layout_toEndOf="@+id/textView11" />
@@ -136,80 +133,81 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView13"
+        android:id="@+id/OB2"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView12"
-        android:layout_toEndOf="@+id/textView12" />
+        android:layout_alignBottom="@+id/OA2"
+        android:layout_toEndOf="@+id/OA2" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView14"
+        android:id="@+id/OC2"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView13"
-        android:layout_toEndOf="@+id/textView13" />
+        android:layout_alignBottom="@+id/OB2"
+        android:layout_toEndOf="@+id/OB2" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView15"
+        android:id="@+id/OD2"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView14"
-        android:layout_toEndOf="@+id/textView14" />
+        android:layout_alignBottom="@+id/OC2"
+        android:layout_toEndOf="@+id/OC2" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView16"
+        android:id="@+id/OE2"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView15"
-        android:layout_toEndOf="@+id/textView15" />
+        android:layout_alignBottom="@+id/OD2"
+        android:layout_toEndOf="@+id/OD2" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView17"
+        android:id="@+id/OF2"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignTop="@+id/textView16"
-        android:layout_toEndOf="@+id/textView16" />
+        android:layout_alignTop="@+id/OE2"
+        android:layout_toEndOf="@+id/OE2" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView18"
+        android:id="@+id/OG2"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp"
-        android:layout_alignTop="@+id/textView17"
-        android:layout_toEndOf="@+id/textView17" />
+        android:layout_alignTop="@+id/OF2"
+        android:layout_toEndOf="@+id/OF2" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
         android:id="@+id/textView21"
-        android:background="@mipmap/outline"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="0dp"
         android:layout_below="@+id/textView11"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:text="@string/three"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView22"
+        android:id="@+id/OA3"
         android:background="@mipmap/outline"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
         android:layout_alignBottom="@+id/textView21"
         android:layout_toEndOf="@+id/textView21" />
@@ -217,80 +215,81 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView23"
+        android:id="@+id/OB3"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView22"
-        android:layout_toEndOf="@+id/textView22" />
+        android:layout_alignBottom="@+id/OA3"
+        android:layout_toEndOf="@+id/OA3" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView24"
+        android:id="@+id/OC3"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView23"
-        android:layout_toEndOf="@+id/textView23" />
+        android:layout_alignBottom="@+id/OB3"
+        android:layout_toEndOf="@+id/OB3" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView25"
+        android:id="@+id/OD3"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView24"
-        android:layout_toEndOf="@+id/textView24" />
+        android:layout_alignBottom="@+id/OC3"
+        android:layout_toEndOf="@+id/OC3" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView26"
+        android:id="@+id/OE3"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView25"
-        android:layout_toEndOf="@+id/textView25" />
+        android:layout_alignBottom="@+id/OD3"
+        android:layout_toEndOf="@+id/OD3" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView27"
+        android:id="@+id/OF3"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView26"
-        android:layout_toEndOf="@+id/textView26" />
+        android:layout_alignBottom="@+id/OE3"
+        android:layout_toEndOf="@+id/OE3" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView28"
+        android:id="@+id/OG3"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp"
-        android:layout_alignBottom="@+id/textView27"
-        android:layout_toEndOf="@+id/textView27" />
+        android:layout_alignBottom="@+id/OF3"
+        android:layout_toEndOf="@+id/OF3" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
         android:id="@+id/textView31"
-        android:background="@mipmap/outline"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="0dp"
         android:layout_below="@+id/textView21"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:text="@string/four"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView32"
+        android:id="@+id/OA4"
         android:background="@mipmap/outline"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
         android:layout_alignBottom="@+id/textView31"
         android:layout_toEndOf="@+id/textView31" />
@@ -298,81 +297,82 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView33"
+        android:id="@+id/OB4"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBaseline="@+id/textView32"
-        android:layout_alignBottom="@+id/textView32"
-        android:layout_toEndOf="@+id/textView32" />
+        android:layout_alignBaseline="@+id/OA4"
+        android:layout_alignBottom="@+id/OA4"
+        android:layout_toEndOf="@+id/OA4" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView34"
+        android:id="@+id/OC4"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView33"
-        android:layout_toEndOf="@+id/textView33" />
+        android:layout_alignBottom="@+id/OB4"
+        android:layout_toEndOf="@+id/OB4" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView35"
+        android:id="@+id/OD4"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView34"
-        android:layout_toEndOf="@+id/textView34" />
+        android:layout_alignBottom="@+id/OC4"
+        android:layout_toEndOf="@+id/OC4" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView36"
+        android:id="@+id/OE4"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView35"
-        android:layout_toEndOf="@+id/textView35" />
+        android:layout_alignBottom="@+id/OD4"
+        android:layout_toEndOf="@+id/OD4" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView37"
+        android:id="@+id/OF4"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView36"
-        android:layout_toEndOf="@+id/textView36" />
+        android:layout_alignBottom="@+id/OE4"
+        android:layout_toEndOf="@+id/OE4" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView38"
+        android:id="@+id/OG4"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp"
-        android:layout_alignBottom="@+id/textView37"
-        android:layout_toEndOf="@+id/textView37" />
+        android:layout_alignBottom="@+id/OF4"
+        android:layout_toEndOf="@+id/OF4" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
         android:id="@+id/textView41"
-        android:background="@mipmap/outline"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="0dp"
         android:layout_below="@+id/textView31"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:text="@string/five"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView42"
+        android:id="@+id/OA5"
         android:background="@mipmap/outline"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
         android:layout_alignBottom="@+id/textView41"
         android:layout_toEndOf="@+id/textView41"
@@ -381,80 +381,81 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView43"
+        android:id="@+id/OB5"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignTop="@+id/textView42"
-        android:layout_toEndOf="@+id/textView42" />
+        android:layout_alignTop="@+id/OA5"
+        android:layout_toEndOf="@+id/OA5" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView44"
+        android:id="@+id/OC5"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView43"
-        android:layout_toEndOf="@+id/textView43" />
+        android:layout_alignBottom="@+id/OB5"
+        android:layout_toEndOf="@+id/OB5" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView45"
+        android:id="@+id/OD5"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView44"
-        android:layout_toStartOf="@+id/textView36" />
+        android:layout_alignBottom="@+id/OC5"
+        android:layout_toStartOf="@+id/OE4" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView46"
+        android:id="@+id/OE5"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView45"
-        android:layout_toStartOf="@+id/textView37" />
+        android:layout_alignBottom="@+id/OD5"
+        android:layout_toStartOf="@+id/OF4" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView47"
+        android:id="@+id/OF5"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView46"
-        android:layout_toEndOf="@+id/textView46" />
+        android:layout_alignBottom="@+id/OE5"
+        android:layout_toEndOf="@+id/OE5" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView48"
+        android:id="@+id/OG5"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp"
-        android:layout_alignBottom="@+id/textView47"
-        android:layout_toEndOf="@+id/textView47" />
+        android:layout_alignBottom="@+id/OF5"
+        android:layout_toEndOf="@+id/OF5" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
         android:id="@+id/textView101"
-        android:background="@mipmap/outline"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="0dp"
         android:layout_below="@+id/textView41"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:text="@string/six"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView51"
+        android:id="@+id/OA6"
         android:background="@mipmap/outline"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
         android:layout_alignBottom="@+id/textView101"
         android:layout_toEndOf="@+id/textView101" />
@@ -462,80 +463,81 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView52"
+        android:id="@+id/OB6"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView51"
-        android:layout_toEndOf="@+id/textView51" />
+        android:layout_alignBottom="@+id/OA6"
+        android:layout_toEndOf="@+id/OA6" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView53"
+        android:id="@+id/OC6"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView52"
-        android:layout_toEndOf="@+id/textView52" />
+        android:layout_alignBottom="@+id/OB6"
+        android:layout_toEndOf="@+id/OB6" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView54"
+        android:id="@+id/OD6"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView53"
-        android:layout_toEndOf="@+id/textView53" />
+        android:layout_alignBottom="@+id/OC6"
+        android:layout_toEndOf="@+id/OC6" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView55"
+        android:id="@+id/OE6"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView54"
-        android:layout_toEndOf="@+id/textView54" />
+        android:layout_alignBottom="@+id/OD6"
+        android:layout_toEndOf="@+id/OD6" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView56"
+        android:id="@+id/OF6"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView55"
-        android:layout_toEndOf="@+id/textView55" />
+        android:layout_alignBottom="@+id/OE6"
+        android:layout_toEndOf="@+id/OE6" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView57"
+        android:id="@+id/OG6"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp"
-        android:layout_alignBottom="@+id/textView56"
-        android:layout_toEndOf="@+id/textView56" />
+        android:layout_alignBottom="@+id/OF6"
+        android:layout_toEndOf="@+id/OF6" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
         android:id="@+id/textView60"
-        android:background="@mipmap/outline"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="0dp"
         android:layout_below="@+id/textView101"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="15dp"
+        android:text="@string/seven"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView61"
+        android:id="@+id/OA7"
         android:background="@mipmap/outline"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
         android:layout_alignBottom="@+id/textView60"
         android:layout_toEndOf="@+id/textView60" />
@@ -543,79 +545,80 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView62"
+        android:id="@+id/OB7"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView61"
-        android:layout_toEndOf="@+id/textView61" />
+        android:layout_alignBottom="@+id/OA7"
+        android:layout_toEndOf="@+id/OA7" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView63"
+        android:id="@+id/OC7"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView62"
-        android:layout_toEndOf="@+id/textView62" />
+        android:layout_alignBottom="@+id/OB7"
+        android:layout_toEndOf="@+id/OB7" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView64"
+        android:id="@+id/OD7"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView63"
-        android:layout_toStartOf="@+id/textView55" />
+        android:layout_alignBottom="@+id/OC7"
+        android:layout_toStartOf="@+id/OE6" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView65"
+        android:id="@+id/OE7"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView64"
-        android:layout_toEndOf="@+id/textView64" />
+        android:layout_alignBottom="@+id/OD7"
+        android:layout_toEndOf="@+id/OD7" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView66"
+        android:id="@+id/OF7"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView65"
-        android:layout_toEndOf="@+id/textView65" />
+        android:layout_alignBottom="@+id/OE7"
+        android:layout_toEndOf="@+id/OE7" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView67"
+        android:id="@+id/OG7"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp"
-        android:layout_alignBottom="@+id/textView66"
-        android:layout_toEndOf="@+id/textView66" />
+        android:layout_alignBottom="@+id/OF7"
+        android:layout_toEndOf="@+id/OF7" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
         android:id="@+id/textView70"
-        android:background="@mipmap/outline"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
-        android:layout_alignTop="@+id/textView77"
-        android:layout_alignParentStart="true" />
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="0dp"
+        android:layout_alignTop="@+id/OG8"
+        android:layout_alignParentStart="true"
+        android:text="@string/eight"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView71"
+        android:id="@+id/OA8"
         android:background="@mipmap/outline"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
         android:layout_alignBottom="@+id/textView70"
         android:layout_toEndOf="@+id/textView70" />
@@ -623,62 +626,62 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView72"
+        android:id="@+id/OB8"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView71"
-        android:layout_toEndOf="@+id/textView71" />
+        android:layout_alignBottom="@+id/OA8"
+        android:layout_toEndOf="@+id/OA8" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView73"
+        android:id="@+id/OC8"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignTop="@+id/textView72"
-        android:layout_toEndOf="@+id/textView72" />
+        android:layout_alignTop="@+id/OB8"
+        android:layout_toEndOf="@+id/OB8" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView74"
+        android:id="@+id/OD8"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/textView73"
-        android:layout_toEndOf="@+id/textView73" />
+        android:layout_alignBottom="@+id/OC8"
+        android:layout_toEndOf="@+id/OC8" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView75"
+        android:id="@+id/OE8"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignTop="@+id/textView74"
-        android:layout_toEndOf="@+id/textView74" />
+        android:layout_alignTop="@+id/OD8"
+        android:layout_toEndOf="@+id/OD8" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView76"
+        android:id="@+id/OF8"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignTop="@+id/textView75"
-        android:layout_toEndOf="@+id/textView75" />
+        android:layout_alignTop="@+id/OE8"
+        android:layout_toEndOf="@+id/OE8" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/textView77"
+        android:id="@+id/OG8"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp"
-        android:layout_below="@+id/textView67"
-        android:layout_toEndOf="@+id/textView76"
+        android:layout_below="@+id/OG7"
+        android:layout_toEndOf="@+id/OF8"
         android:layout_marginTop="15dp" />
 
     <TextView
@@ -687,11 +690,164 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/myGameBoard"
         android:id="@+id/textView10"
+        android:gravity="center"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="15dp"
-        android:layout_alignEnd="@+id/textView8"
-        android:layout_alignStart="@+id/textView3"
-        android:gravity="center" />
+        android:layout_alignStart="@+id/textView29" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/textView19"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="@string/a"
+        android:layout_below="@+id/textView10"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/textView20"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="@string/b"
+        android:layout_below="@+id/textView10"
+        android:layout_toEndOf="@+id/OA1" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/textView29"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="@string/c"
+        android:layout_below="@+id/textView10"
+        android:layout_toEndOf="@+id/OB1" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/textView30"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="@string/d"
+        android:layout_below="@+id/textView10"
+        android:layout_toEndOf="@+id/OC1" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/textView39"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="@string/e"
+        android:layout_below="@+id/textView10"
+        android:layout_toEndOf="@+id/OD1" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/textView40"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="@string/f"
+        android:layout_below="@+id/textView10"
+        android:layout_toEndOf="@+id/OE1" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/textView49"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="@string/g"
+        android:layout_alignTop="@+id/textView40"
+        android:layout_toEndOf="@+id/OF1" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/textView50"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:text="@string/h"
+        android:layout_alignTop="@+id/textView49"
+        android:layout_toEndOf="@+id/OG1" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/H1"
+        android:background="@mipmap/outline"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:layout_alignTop="@+id/OG1"
+        android:layout_toEndOf="@+id/OG1" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/H2"
+        android:background="@mipmap/outline"
+        android:layout_alignTop="@+id/OG2"
+        android:layout_toEndOf="@+id/OG2" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/H3"
+        android:background="@mipmap/outline"
+        android:layout_alignTop="@+id/OG3"
+        android:layout_toEndOf="@+id/OG3" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/H4"
+        android:background="@mipmap/outline"
+        android:layout_alignTop="@+id/OG4"
+        android:layout_toEndOf="@+id/OG4" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/H5"
+        android:background="@mipmap/outline"
+        android:layout_alignTop="@+id/OG5"
+        android:layout_toEndOf="@+id/OG5" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/H6"
+        android:background="@mipmap/outline"
+        android:layout_alignTop="@+id/OG6"
+        android:layout_toEndOf="@+id/OG6" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/H7"
+        android:background="@mipmap/outline"
+        android:layout_above="@+id/OG8"
+        android:layout_alignStart="@+id/H6" />
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:id="@+id/H8"
+        android:background="@mipmap/outline"
+        android:layout_alignTop="@+id/OG8"
+        android:layout_alignStart="@+id/H7" />
 
 </RelativeLayout>
 </HorizontalScrollView>

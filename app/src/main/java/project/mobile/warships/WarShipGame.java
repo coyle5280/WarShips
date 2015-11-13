@@ -26,22 +26,29 @@ import java.io.ObjectOutputStream;
 import java.nio.BufferUnderflowException;
 
 import GameBoardFragments.MyGameBoard;
+import GameBoardFragments.OpponentGameBoard;
 import GameBoardObjects.GameBoard;
 
 public class WarShipGame extends Activity  {
 
     protected GameBoard myBoard;
     protected GameBoard oppBoard;
+
     protected ConnectedThread bluetoothConnection;
     public TextView messageView;
     private EditText editMessage;
+
+
+    final String GAMEBOARD = "gameBoard";
     final String GAMEMOVE = "gameMove";
     final String TAUNT = "messOnly";
+
     private boolean isHost;
+
     private FragmentManager fragManager;
     private FragmentTransaction fragmentTransaction;
 
-
+    private static final int SETTING_UP_BOARD = -1;
     private static final int WAITING_ON_PLAYER = 1;
     private static final int MY_TURN = 0;
     private int STATUS;
@@ -51,7 +58,8 @@ public class WarShipGame extends Activity  {
 
     protected ActionBar actionBar;
 
-    private MyGameBoard myGameBoard;
+    private MyGameBoard myGameBoardFrag;
+    private OpponentGameBoard oppGameBoardFrag;
 
     /**
      *
@@ -123,7 +131,7 @@ public class WarShipGame extends Activity  {
         editMessage = (EditText) findViewById(R.id.setMessageView);
         final Button sendTurn = (Button) findViewById(R.id.sendTurnButton);
         messageView = (TextView) findViewById(R.id.message);
-        STATUS = -1;
+        STATUS = SETTING_UP_BOARD;
 
         fragManager = getFragmentManager();
 
@@ -131,7 +139,8 @@ public class WarShipGame extends Activity  {
         oppBoard = new GameBoard();
         myBoard = new GameBoard();
 
-        myGameBoard = new MyGameBoard();
+        myGameBoardFrag = new MyGameBoard();
+        oppGameBoardFrag = new OpponentGameBoard();
 
 
         myGameBoardButton = (Button) findViewById(R.id.myGameBoardButton);
@@ -140,8 +149,17 @@ public class WarShipGame extends Activity  {
         myGameBoardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.add(R.id.mainFrame, myGameBoard);
+                fragmentTransaction = fragManager.beginTransaction();
+                fragmentTransaction.add(R.id.mainFrame, myGameBoardFrag);
+                fragmentTransaction.commit();
+            }
+        });
+
+        myOppBoardButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                fragmentTransaction = fragManager.beginTransaction();
+                fragmentTransaction.add(R.id.mainFrame, oppGameBoardFrag);
                 fragmentTransaction.commit();
             }
         });

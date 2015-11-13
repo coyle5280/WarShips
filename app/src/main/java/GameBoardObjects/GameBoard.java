@@ -15,7 +15,7 @@ private GameBoardSquare gameBoard [][];
 
 
 
-    public void GameBoard(int playerSizeX, int playerSizeY){
+    public GameBoard(int playerSizeX, int playerSizeY){
 
         sizeX = playerSizeX;
         sizeY = playerSizeY;
@@ -26,7 +26,7 @@ private GameBoardSquare gameBoard [][];
     }
 
 
-    public void GameBoard(){
+    public GameBoard(){
 
         sizeX = 8;
         sizeY = 8;

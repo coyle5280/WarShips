@@ -2,6 +2,8 @@ package project.mobile.warships;
 
 import java.io.Serializable;
 
+import GameBoardObjects.GameBoard;
+
 /**
  * Created by coyle on 10/30/2015.
  */
@@ -15,7 +17,9 @@ public class GameMessage implements Serializable{
 
     protected String messageType;
 
-    public GameMessage(int xMove, int yMove, String type){
+    protected GameBoard myBoard;
+
+    public GameMessage(String type, int xMove, int yMove){
         yAxisMove = yMove;
         xAxisMove = xMove;
         messageType = type;
@@ -28,6 +32,16 @@ public class GameMessage implements Serializable{
         message = setMessage;
 
     }
+
+    public GameMessage(String type, GameBoard myGameBoard, String setMessage){
+
+        messageType = type;
+        myBoard = myGameBoard;
+        message = setMessage;
+    }
+
+
+
 
     public String getMessage() {
         return message;
