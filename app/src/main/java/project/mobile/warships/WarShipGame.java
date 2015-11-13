@@ -10,11 +10,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +20,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.nio.BufferUnderflowException;
 
 import GameBoardFragments.MyGameBoard;
 import GameBoardFragments.OpponentGameBoard;
@@ -69,7 +65,7 @@ public class WarShipGame extends Activity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         actionBar = getActionBar();
-        setContentView(R.layout.activity_war_ship_game);
+        setContentView(R.layout.war_ship_game);
         setHost();
         setupConnectionItems();
         setupItems(); 
