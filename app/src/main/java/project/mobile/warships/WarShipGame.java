@@ -2,6 +2,8 @@ package project.mobile.warships;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.bluetooth.BluetoothSocket;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,7 +23,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.BufferUnderflowException;
 
+import GameBoardFragments.MyGameBoard;
 import GameBoardObjects.GameBoard;
 
 public class WarShipGame extends Activity  {
@@ -34,14 +38,20 @@ public class WarShipGame extends Activity  {
     final String GAMEMOVE = "gameMove";
     final String TAUNT = "messOnly";
     private boolean isHost;
-
+    private FragmentManager fragManager;
+    private FragmentTransaction fragmentTransaction;
 
 
     private static final int WAITING_ON_PLAYER = 1;
     private static final int MY_TURN = 0;
     private int STATUS;
 
+    private Button myGameBoardButton;
+    private Button myOppBoardButton;
+
     protected ActionBar actionBar;
+
+    private MyGameBoard myGameBoard;
 
     /**
      *
@@ -115,11 +125,26 @@ public class WarShipGame extends Activity  {
         messageView = (TextView) findViewById(R.id.message);
         STATUS = -1;
 
-
+        fragManager = getFragmentManager();
 
 
         oppBoard = new GameBoard();
         myBoard = new GameBoard();
+
+        myGameBoard = new MyGameBoard();
+
+
+        myGameBoardButton = (Button) findViewById(R.id.myGameBoardButton);
+        myOppBoardButton = (Button) findViewById(R.id.oppGameBoardButton);
+
+        myGameBoardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.add(R.id.mainFrame, myGameBoard);
+                fragmentTransaction.commit();
+            }
+        });
 
 
 

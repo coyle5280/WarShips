@@ -12,16 +12,16 @@ import android.view.ViewGroup;
 import project.mobile.warships.R;
 
 
-public class myGameBoard extends Fragment {
+public class MyGameBoard extends Fragment {
 
 
 
 
-    private OnFragmentInteractionListener mListener;
+//    private OnFragmentInteractionListener mListener;
 
 
 
-    public myGameBoard() {
+    public MyGameBoard() {
         // Required empty public constructor
     }
 
@@ -64,9 +64,9 @@ public class myGameBoard extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+//    public interface OnFragmentInteractionListener {
+//        // TODO: Update argument type and name
+//        void onFragmentInteraction(Uri uri);
+//    }
 
 }
