@@ -16,7 +16,6 @@ public class GameBoardSquare {
     }
 
     public GameBoardSquare() {
-
     }
 
     public void setEnemyFire(boolean enemyFire) {

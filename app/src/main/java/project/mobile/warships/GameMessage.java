@@ -17,7 +17,7 @@ public class GameMessage implements Serializable{
 
     protected String messageType;
 
-    protected GameBoard myBoard;
+    protected GameBoard gameBoard;
 
     public GameMessage(String type, int xMove, int yMove){
         yAxisMove = yMove;
@@ -36,12 +36,17 @@ public class GameMessage implements Serializable{
     public GameMessage(String type, GameBoard myGameBoard, String setMessage){
 
         messageType = type;
-        myBoard = myGameBoard;
+        gameBoard = myGameBoard;
         message = setMessage;
     }
 
+    public String getMessageType() {
+        return messageType;
+    }
 
-
+    public GameBoard getGameBoard() {
+        return gameBoard;
+    }
 
     public String getMessage() {
         return message;
@@ -60,8 +65,7 @@ public class GameMessage implements Serializable{
     }
 
     public String toString(){
-        return "Game Message: " + message + " y: " + Integer.toString(yAxisMove) + " x: " +
-                Integer.toString(xAxisMove);
+        return "Game Message: " + message;
 
     }
 }

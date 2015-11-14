@@ -21,8 +21,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import GameBoardFragments.MyGameBoard;
-import GameBoardFragments.OpponentGameBoard;
+import GameBoardFragments.MyGameBoardFragment;
+import GameBoardFragments.OpponentGameBoardFragment;
 import GameBoardObjects.GameBoard;
 
 public class WarShipGame extends Activity  {
@@ -38,6 +38,7 @@ public class WarShipGame extends Activity  {
     final String GAMEBOARD = "gameBoard";
     final String GAMEMOVE = "gameMove";
     final String TAUNT = "messOnly";
+    final String NO_MESSAGE = "No Message";
 
     private boolean isHost;
 
@@ -45,8 +46,10 @@ public class WarShipGame extends Activity  {
     private FragmentTransaction fragmentTransaction;
 
     private static final int SETTING_UP_BOARD = -1;
-    private static final int WAITING_ON_PLAYER = 1;
-    private static final int MY_TURN = 0;
+    private static final int WAITING_ON_SELF = -2;
+    private static final int WAITING_ON_PLAYER = 0;
+    private static final int MY_TURN = 1;
+    private static final int OPP_TURN = 2;
     private int STATUS;
 
     private Button myGameBoardButton;
@@ -54,8 +57,8 @@ public class WarShipGame extends Activity  {
 
     protected ActionBar actionBar;
 
-    private MyGameBoard myGameBoardFrag;
-    private OpponentGameBoard oppGameBoardFrag;
+    private MyGameBoardFragment myGameBoardFrag;
+    private OpponentGameBoardFragment oppGameBoardFrag;
 
     /**
      *
@@ -106,18 +109,58 @@ public class WarShipGame extends Activity  {
                     Log.e("WarGame:InGameInMes:", "handler Incoming message");
                     GameMessage incomingMessage = convertToGameMessage(incoming);
                     Log.e("WarGame:InGameInMes:", "Actual String: " + incomingMessage.getMessage());
-                    messageView.append(incomingMessage.getMessage() + "X: " + incomingMessage.getxAxisMove());
-                } catch (ClassNotFoundException | IOException e) {
+
+                    processGameMessage(incomingMessage);
+
+                 } catch (ClassNotFoundException | IOException e) {
                     Log.e("WarGame:InGameInMesERR:", e.toString());
                 }
-
-
             }
-
-
         };
         bluetoothConnection  = new ConnectedThread(socket, connectionHandler);
         bluetoothConnection.start();
+    }
+
+    private void processGameMessage(GameMessage incomingMessage) {
+        GameMessage newMessage = incomingMessage;
+
+
+        switch(newMessage.getMessage()){
+            case GAMEBOARD:
+                setupOppGameBoard(newMessage.getGameBoard());
+                setOppMessage(newMessage.getMessage());
+                updateStatus();
+                break;
+            case GAMEMOVE:
+                break;
+            case TAUNT:
+
+
+
+        }
+    }
+
+    private void updateStatus() {
+        if(STATUS == SETTING_UP_BOARD){
+           STATUS = WAITING_ON_SELF;
+        }
+        if(STATUS == WAITING_ON_PLAYER){
+            if(isHost){
+                STATUS = MY_TURN;
+                myOppBoardButton.setEnabled(true);
+            }
+        }
+
+    }
+
+    private void setOppMessage(String message) {
+        if(!message.equals(NO_MESSAGE)) {
+            messageView.append(message);
+        }
+    }
+
+    private void setupOppGameBoard(GameBoard gameBoard) {
+        oppBoard = gameBoard;
     }
 
     /**
@@ -132,11 +175,11 @@ public class WarShipGame extends Activity  {
         fragManager = getFragmentManager();
 
 
-        oppBoard = new GameBoard();
+
         myBoard = new GameBoard();
 
-        myGameBoardFrag = new MyGameBoard();
-        oppGameBoardFrag = new OpponentGameBoard();
+        myGameBoardFrag = new MyGameBoardFragment();
+        oppGameBoardFrag = new OpponentGameBoardFragment();
 
 
         myGameBoardButton = (Button) findViewById(R.id.myGameBoardButton);
@@ -145,8 +188,8 @@ public class WarShipGame extends Activity  {
         myGameBoardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentTransaction = fragManager.beginTransaction();
-                fragmentTransaction.add(R.id.mainFrame, myGameBoardFrag);
+                fragmentTransaction = fragManager.beginTransaction()
+                                    .add(R.id.mainFrame, myGameBoardFrag);
                 fragmentTransaction.commit();
             }
         });
@@ -154,8 +197,8 @@ public class WarShipGame extends Activity  {
         myOppBoardButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                fragmentTransaction = fragManager.beginTransaction();
-                fragmentTransaction.add(R.id.mainFrame, oppGameBoardFrag);
+                fragmentTransaction = fragManager.beginTransaction()
+                        .add(R.id.mainFrame, oppGameBoardFrag);
                 fragmentTransaction.commit();
             }
         });
@@ -198,7 +241,7 @@ public class WarShipGame extends Activity  {
 
 
         if (userMessage.equals("")) {
-            userMessage = "NO MESSAGE";
+            userMessage = NO_MESSAGE;
         }
         gameMess.setMessage(userMessage);
         return gameMess;
