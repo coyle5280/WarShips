@@ -71,12 +71,15 @@ public class WarShipGame extends Activity  {
         setContentView(R.layout.war_ship_game);
         setHost();
         setupConnectionItems();
-        setupItems(); 
         setupFragments();
+        setupItems(); 
+
     }
 
     private void setupFragments() {
 
+        myGameBoardFrag = new MyGameBoardFragment();
+        oppGameBoardFrag = new OpponentGameBoardFragment();
     }
 
     /**
@@ -178,8 +181,7 @@ public class WarShipGame extends Activity  {
 
         myBoard = new GameBoard();
 
-        myGameBoardFrag = new MyGameBoardFragment();
-        oppGameBoardFrag = new OpponentGameBoardFragment();
+
 
 
         myGameBoardButton = (Button) findViewById(R.id.myGameBoardButton);
