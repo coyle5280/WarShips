@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import project.mobile.warships.R.id;
 import org.w3c.dom.Text;
 
 import project.mobile.warships.R;
@@ -49,7 +49,7 @@ public class MyGameBoardFragment extends Fragment {
     }
 
 
-    public void setAttacked(String id){
+    public void setAttacked(int id){
 
 
 

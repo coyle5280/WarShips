@@ -19,7 +19,7 @@
             android:layout_height="45dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/message"
-            android:hint="message"
+            android:hint="Message"
             android:gravity="center"
             android:layout_above="@+id/setMessageView"
             android:layout_alignParentStart="true"
