@@ -15,7 +15,7 @@ import org.w3c.dom.Text;
 import project.mobile.warships.R;
 
 
-public class MyGameBoardFragment extends Fragment {
+public class GameBoardFragment extends Fragment {
 
     private int STATUS;
 
@@ -27,7 +27,7 @@ public class MyGameBoardFragment extends Fragment {
 
 
 
-    public MyGameBoardFragment() {
+    public GameBoardFragment() {
         // Required empty public constructor
     }
 
