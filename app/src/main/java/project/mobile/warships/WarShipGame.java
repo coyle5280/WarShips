@@ -183,6 +183,7 @@ public class WarShipGame extends Activity  {
     }
 
     private void setupOppGameBoard(GameBoard gameBoard) {
+
         oppBoard = gameBoard;
     }
 
