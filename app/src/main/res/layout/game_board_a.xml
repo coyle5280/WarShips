@@ -688,8 +688,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/myGameBoard"
-        android:id="@+id/textView10"
+        android:id="@+id/headerA"
         android:gravity="center"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/textView29" />
@@ -702,7 +701,7 @@
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:text="@string/a"
-        android:layout_below="@+id/textView10"
+        android:layout_below="@+id/headerA"
         android:layout_toEndOf="@+id/textView3" />
 
     <TextView
@@ -713,7 +712,7 @@
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:text="@string/b"
-        android:layout_below="@+id/textView10"
+        android:layout_below="@+id/headerA"
         android:layout_toEndOf="@+id/OA1" />
 
     <TextView
@@ -724,7 +723,7 @@
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:text="@string/c"
-        android:layout_below="@+id/textView10"
+        android:layout_below="@+id/headerA"
         android:layout_toEndOf="@+id/OB1" />
 
     <TextView
@@ -735,7 +734,7 @@
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:text="@string/d"
-        android:layout_below="@+id/textView10"
+        android:layout_below="@+id/headerA"
         android:layout_toEndOf="@+id/OC1" />
 
     <TextView
@@ -746,7 +745,7 @@
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:text="@string/e"
-        android:layout_below="@+id/textView10"
+        android:layout_below="@+id/headerA"
         android:layout_toEndOf="@+id/OD1" />
 
     <TextView
@@ -757,7 +756,7 @@
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:text="@string/f"
-        android:layout_below="@+id/textView10"
+        android:layout_below="@+id/headerA"
         android:layout_toEndOf="@+id/OE1" />
 
     <TextView

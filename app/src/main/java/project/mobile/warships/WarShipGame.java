@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.bluetooth.BluetoothSocket;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,7 +22,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import GameBoardFragments.MyGameBoardFragment;
+import GameBoardFragments.GameBoardFragment;
 import GameBoardFragments.OpponentGameBoardFragment;
 import GameBoardObjects.GameBoard;
 
@@ -57,8 +58,8 @@ public class WarShipGame extends Activity  {
 
     protected ActionBar actionBar;
 
-    private MyGameBoardFragment myGameBoardFrag;
-    private OpponentGameBoardFragment oppGameBoardFrag;
+    private GameBoardFragment myGameBoardFrag;
+    private GameBoardFragment oppGameBoardFrag;
 
     /**
      *
@@ -77,9 +78,28 @@ public class WarShipGame extends Activity  {
     }
 
     private void setupFragments() {
+        if(isHost) {
+            Bundle newFragBundle = new Bundle();
+            newFragBundle.putInt("boardType", 0);
+            myGameBoardFrag = new GameBoardFragment();
+            myGameBoardFrag.setArguments(newFragBundle);
 
-        myGameBoardFrag = new MyGameBoardFragment();
-        oppGameBoardFrag = new OpponentGameBoardFragment();
+            Bundle newFragBundle2 = new Bundle();
+            newFragBundle2.putInt("boardType", 1);
+            oppGameBoardFrag = new GameBoardFragment();
+            oppGameBoardFrag.setArguments(newFragBundle2);
+
+        }else{
+            Bundle newFragBundle = new Bundle();
+            newFragBundle.putInt("boardType", 1);
+            myGameBoardFrag = new GameBoardFragment();
+            myGameBoardFrag.setArguments(newFragBundle);
+
+            Bundle newFragBundle2 = new Bundle();
+            newFragBundle2.putInt("boardType", 0);
+            oppGameBoardFrag = new GameBoardFragment();
+            oppGameBoardFrag.setArguments(newFragBundle2);
+        }
     }
 
     /**

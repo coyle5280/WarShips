@@ -36,7 +36,7 @@ public class OpponentGameBoardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.opp_game_board_layout, container, false);
+        return inflater.inflate(R.layout.game_board_b, container, false);
     }
 
 

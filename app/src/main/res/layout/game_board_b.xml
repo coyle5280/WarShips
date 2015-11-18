@@ -26,13 +26,12 @@
         <TextView
             android:layout_width="30dp"
             android:layout_height="27dp"
-            android:id="@+id/OA1"
+            android:id="@+id/A1"
             android:background="@mipmap/outline"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/textView3"
-            android:layout_marginTop="60dp" />
+            android:layout_alignTop="@+id/OE1"
+            android:layout_alignStart="@+id/OB2" />
 
         <TextView
             android:layout_width="30dp"
@@ -41,9 +40,8 @@
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/OA1"
-            android:layout_marginTop="60dp" />
+            android:layout_alignTop="@+id/A1"
+            android:layout_toEndOf="@+id/textView3" />
 
         <TextView
             android:layout_width="30dp"
@@ -52,20 +50,18 @@
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/OB1"
-            android:layout_marginTop="60dp" />
+            android:layout_alignTop="@+id/A1"
+            android:layout_toEndOf="@+id/OB2" />
 
         <TextView
             android:layout_width="30dp"
             android:layout_height="27dp"
-            android:id="@+id/OD1"
+            android:id="@+id/D1"
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/OC1"
-            android:layout_marginTop="60dp" />
+            android:layout_alignTop="@+id/OC1"
+            android:layout_toEndOf="@+id/OC2" />
 
         <TextView
             android:layout_width="30dp"
@@ -74,9 +70,8 @@
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/OD1"
-            android:layout_marginTop="60dp" />
+            android:layout_alignTop="@+id/OF1"
+            android:layout_toEndOf="@+id/OD2" />
 
         <TextView
             android:layout_width="30dp"
@@ -85,9 +80,8 @@
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/OE1"
-            android:layout_marginTop="60dp" />
+            android:layout_alignTop="@+id/OG1"
+            android:layout_toEndOf="@+id/OE2" />
 
         <TextView
             android:layout_width="30dp"
@@ -96,9 +90,8 @@
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/OF1"
-            android:layout_marginTop="60dp" />
+            android:layout_alignTop="@+id/OH1"
+            android:layout_toEndOf="@+id/OF2" />
 
         <TextView
             android:layout_width="30dp"
@@ -674,8 +667,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/OppGameBoard"
-            android:id="@+id/textView9"
+            android:id="@+id/headerB"
             android:gravity="center"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
@@ -689,7 +681,7 @@
             android:text="@string/a"
             android:gravity="center"
             android:layout_toEndOf="@+id/textView3"
-            android:layout_below="@+id/textView9" />
+            android:layout_below="@+id/headerB" />
 
         <TextView
             android:layout_width="30dp"
@@ -699,8 +691,8 @@
             android:layout_marginRight="10dp"
             android:text="@string/b"
             android:gravity="center"
-            android:layout_below="@+id/textView9"
-            android:layout_toEndOf="@+id/OA1" />
+            android:layout_alignTop="@+id/textView7"
+            android:layout_alignStart="@+id/A1" />
 
         <TextView
             android:layout_width="30dp"
@@ -710,8 +702,8 @@
             android:layout_marginRight="10dp"
             android:text="@string/c"
             android:gravity="center"
-            android:layout_below="@+id/textView9"
-            android:layout_toEndOf="@+id/OB1" />
+            android:layout_alignTop="@+id/textView8"
+            android:layout_toEndOf="@+id/A1" />
 
         <TextView
             android:layout_width="30dp"
@@ -721,7 +713,7 @@
             android:layout_marginRight="10dp"
             android:text="@string/d"
             android:gravity="center"
-            android:layout_below="@+id/textView9"
+            android:layout_below="@+id/headerB"
             android:layout_toEndOf="@+id/OC1" />
 
         <TextView
@@ -732,7 +724,7 @@
             android:layout_marginRight="10dp"
             android:text="@string/e"
             android:gravity="center"
-            android:layout_below="@+id/textView9"
+            android:layout_below="@+id/headerB"
             android:layout_toEndOf="@+id/OD1" />
 
         <TextView
@@ -743,7 +735,7 @@
             android:layout_marginRight="10dp"
             android:text="@string/f"
             android:gravity="center"
-            android:layout_below="@+id/textView9"
+            android:layout_below="@+id/headerB"
             android:layout_toEndOf="@+id/OE1" />
 
         <TextView
@@ -754,7 +746,7 @@
             android:layout_marginRight="10dp"
             android:text="@string/g"
             android:gravity="center"
-            android:layout_below="@+id/textView9"
+            android:layout_below="@+id/headerB"
             android:layout_toEndOf="@+id/OF1" />
 
         <TextView
@@ -765,7 +757,7 @@
             android:layout_marginRight="10dp"
             android:text="@string/h"
             android:gravity="center"
-            android:layout_below="@+id/textView9"
+            android:layout_below="@+id/headerB"
             android:layout_toEndOf="@+id/OG1" />
 
         <TextView
@@ -775,8 +767,9 @@
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
-            android:layout_toEndOf="@+id/OG1"
-            android:layout_alignBottom="@+id/OG1" />
+            android:layout_alignBaseline="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_toEndOf="@+id/OG2" />
 
         <TextView
             android:layout_width="30dp"
