@@ -31,10 +31,9 @@
             android:background="@mipmap/outline"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/textView3"
-            android:layout_marginTop="60dp"
-            android:gravity="center" />
+            android:gravity="center"
+            android:layout_below="@+id/textView19"
+            android:layout_toEndOf="@+id/textView3" />
 
         <TextView
             android:layout_width="30dp"
@@ -43,10 +42,9 @@
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/OA1"
-            android:layout_marginTop="60dp"
-            android:gravity="center" />
+            android:gravity="center"
+            android:layout_alignTop="@+id/OA1"
+            android:layout_toEndOf="@+id/OA1" />
 
         <TextView
             android:layout_width="30dp"
@@ -55,10 +53,9 @@
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/OB1"
-            android:layout_marginTop="60dp"
-            android:gravity="center" />
+            android:gravity="center"
+            android:layout_alignTop="@+id/OB1"
+            android:layout_toEndOf="@+id/OB1" />
 
         <TextView
             android:layout_width="30dp"
@@ -67,10 +64,9 @@
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/OC1"
-            android:layout_marginTop="60dp"
-            android:gravity="center" />
+            android:gravity="center"
+            android:layout_below="@+id/textView30"
+            android:layout_toEndOf="@+id/OC1" />
 
         <TextView
             android:layout_width="30dp"
@@ -79,10 +75,9 @@
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/OD1"
-            android:layout_marginTop="60dp"
-            android:gravity="center" />
+            android:gravity="center"
+            android:layout_alignTop="@+id/OD1"
+            android:layout_toEndOf="@+id/OD1" />
 
         <TextView
             android:layout_width="30dp"
@@ -91,10 +86,9 @@
             android:background="@mipmap/outline"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/OE1"
-            android:layout_marginTop="60dp"
-            android:gravity="center" />
+            android:gravity="center"
+            android:layout_alignTop="@+id/OE1"
+            android:layout_toEndOf="@+id/OE1" />
 
     <TextView
         android:layout_width="30dp"
@@ -103,10 +97,9 @@
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/OF1"
-        android:layout_marginTop="60dp"
-        android:gravity="center" />
+        android:gravity="center"
+        android:layout_alignTop="@+id/OF1"
+        android:layout_toEndOf="@+id/OF1" />
 
     <TextView
         android:layout_width="30dp"
@@ -785,7 +778,7 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/H1"
+        android:id="@+id/OH1"
         android:background="@mipmap/outline"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -796,7 +789,7 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/H2"
+        android:id="@+id/OH2"
         android:background="@mipmap/outline"
         android:layout_alignTop="@+id/OG2"
         android:layout_toEndOf="@+id/OG2" />
@@ -804,7 +797,7 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/H3"
+        android:id="@+id/OH3"
         android:background="@mipmap/outline"
         android:layout_alignTop="@+id/OG3"
         android:layout_toEndOf="@+id/OG3" />
@@ -812,7 +805,7 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/H4"
+        android:id="@+id/OH4"
         android:background="@mipmap/outline"
         android:layout_alignTop="@+id/OG4"
         android:layout_toEndOf="@+id/OG4" />
@@ -820,7 +813,7 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/H5"
+        android:id="@+id/OH5"
         android:background="@mipmap/outline"
         android:layout_alignTop="@+id/OG5"
         android:layout_toEndOf="@+id/OG5" />
@@ -828,7 +821,7 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/H6"
+        android:id="@+id/OH6"
         android:background="@mipmap/outline"
         android:layout_alignTop="@+id/OG6"
         android:layout_toEndOf="@+id/OG6" />
@@ -836,18 +829,18 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/H7"
+        android:id="@+id/OH7"
         android:background="@mipmap/outline"
         android:layout_above="@+id/OG8"
-        android:layout_alignStart="@+id/H6" />
+        android:layout_alignStart="@+id/OH6" />
 
     <TextView
         android:layout_width="30dp"
         android:layout_height="27dp"
-        android:id="@+id/H8"
+        android:id="@+id/OH8"
         android:background="@mipmap/outline"
         android:layout_alignTop="@+id/OG8"
-        android:layout_alignStart="@+id/H7" />
+        android:layout_toEndOf="@+id/OG8" />
 
 </RelativeLayout>
 </HorizontalScrollView>

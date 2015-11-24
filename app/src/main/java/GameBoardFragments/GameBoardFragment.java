@@ -21,6 +21,9 @@ public class GameBoardFragment extends Fragment {
 
     private final int SETUPBOARD = 0;
     private final int VIEW = 1;
+    private final int GAMEBOARD_A = 0;
+    private final int GAMEBOARD_B = 1;
+    private int thisBoard;
 
 
 //    private OnFragmentInteractionListener mListener;
@@ -35,17 +38,26 @@ public class GameBoardFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        STATUS = 0;
 
-        if (getArguments() != null) {
-
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.game_board_layout, container, false);
+        STATUS = 0;
+
+        if (getArguments() != null) {
+            Bundle bundle = getArguments();
+            thisBoard = bundle.getInt("board");
+        }
+
+        if(thisBoard == 0){
+            return inflater.inflate(R.layout.game_board_a, container, false);
+        }else{
+            return inflater.inflate(R.layout.game_board_b, container, false);
+        }
+
+
     }
 
 

@@ -5,7 +5,12 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,12 +26,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Random;
 
 import GameBoardFragments.GameBoardFragment;
 import GameBoardFragments.OpponentGameBoardFragment;
 import GameBoardObjects.GameBoard;
 
-public class WarShipGame extends Activity  {
+public class WarShipGame extends Activity  implements SensorEventListener{
 
     protected GameBoard myBoard;
     protected GameBoard oppBoard;
@@ -61,6 +67,16 @@ public class WarShipGame extends Activity  {
     private GameBoardFragment myGameBoardFrag;
     private GameBoardFragment oppGameBoardFrag;
 
+    private SensorManager sensorManager;
+    private Sensor shakeSensor;
+
+    private TextView currentMoveTextView;
+
+    private Random random = new Random();
+
+    float gravity[];
+    final private float MIN_ACCELERATION = 1.5f;
+
     /**
      *
      * @param savedInstanceState
@@ -80,23 +96,23 @@ public class WarShipGame extends Activity  {
     private void setupFragments() {
         if(isHost) {
             Bundle newFragBundle = new Bundle();
-            newFragBundle.putInt("boardType", 0);
+            newFragBundle.putInt("board", 0);
             myGameBoardFrag = new GameBoardFragment();
             myGameBoardFrag.setArguments(newFragBundle);
 
             Bundle newFragBundle2 = new Bundle();
-            newFragBundle2.putInt("boardType", 1);
+            newFragBundle2.putInt("board", 1);
             oppGameBoardFrag = new GameBoardFragment();
             oppGameBoardFrag.setArguments(newFragBundle2);
 
         }else{
             Bundle newFragBundle = new Bundle();
-            newFragBundle.putInt("boardType", 1);
+            newFragBundle.putInt("board", 1);
             myGameBoardFrag = new GameBoardFragment();
             myGameBoardFrag.setArguments(newFragBundle);
 
             Bundle newFragBundle2 = new Bundle();
-            newFragBundle2.putInt("boardType", 0);
+            newFragBundle2.putInt("board", 0);
             oppGameBoardFrag = new GameBoardFragment();
             oppGameBoardFrag.setArguments(newFragBundle2);
         }
@@ -194,7 +210,16 @@ public class WarShipGame extends Activity  {
         editMessage = (EditText) findViewById(R.id.setMessageView);
         final Button sendTurn = (Button) findViewById(R.id.sendTurnButton);
         messageView = (TextView) findViewById(R.id.message);
+
+        currentMoveTextView = (TextView) findViewById(R.id.currentMoveTextView);
+
         STATUS = SETTING_UP_BOARD;
+
+        //Setup Shake Sensor
+        sensorManager = (SensorManager) getApplicationContext().getSystemService(Context.SENSOR_SERVICE);
+        shakeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensorManager.registerListener(this, shakeSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        //--------
 
         fragManager = getFragmentManager();
 
@@ -203,7 +228,7 @@ public class WarShipGame extends Activity  {
         myBoard = new GameBoard();
 
 
-
+        gravity = new float[3];
 
         myGameBoardButton = (Button) findViewById(R.id.myGameBoardButton);
         myOppBoardButton = (Button) findViewById(R.id.oppGameBoardButton);
@@ -310,6 +335,44 @@ public class WarShipGame extends Activity  {
     }
 
 
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+
+        float maxAxisAccel = calculateAcceleration(event);
+        if(maxAxisAccel > MIN_ACCELERATION){
+           //Call to Method
+            Log.e("WarShipGame:Sensor:",  String.valueOf(maxAxisAccel));
+        }
+
+
+
+
+    }
+
+    private float calculateAcceleration(SensorEvent event) {
+
+        gravity[0] = calcGravityForce(event.values[0], 0);
+        gravity[1] = calcGravityForce(event.values[1], 1);
+        gravity[2] = calcGravityForce(event.values[2], 2);
+
+
+        float xAcceleration = event.values[0] - gravity[0];
+        float yAcceleration = event.values[1] - gravity[1];
+        float zAcceleration = event.values[2] - gravity[2];
+
+        float maxFirst = Math.max(xAcceleration,yAcceleration);
+        return Math.max(maxFirst, zAcceleration);
+
+    }
+
+    float calcGravityForce(float value, int i) {
+        return 0.8f * gravity[i] + 0.2f * value;
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
 
 
 }

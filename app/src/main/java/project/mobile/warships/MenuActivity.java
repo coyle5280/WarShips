@@ -413,7 +413,7 @@ public class MenuActivity extends Activity {
         }
 
         GameSocket theSocket = GameSocket.getInstance();
-        theSocket.setGameSocket(socket);
+        GameSocket.setGameSocket(socket);
 
 
         Log.e("WarShip: joiningGames", "manageConnectionSocket: Devices Socket ");
