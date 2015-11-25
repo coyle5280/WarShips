@@ -27,8 +27,10 @@ public class WarShipsMain extends Activity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        if(sharedPreferences.contains("User")){
-            startTheMenuActivity();
+        sharedPreferences =  getSharedPreferences("User", 0);
+        String userName = sharedPreferences.getString("UserName", null);
+        if(userName != null){
+            startTheMenuActivityShort();
         }else {
             setupItems();
         }
@@ -46,16 +48,24 @@ public class WarShipsMain extends Activity {
             }
         });
 
-        sharedPreferences = getSharedPreferences("User", 0);
+        //sharedPreferences = getSharedPreferences("User", 0);
 
 
 
     }
 
+    public void startTheMenuActivityShort(){
+        Intent startIntent = new Intent(this, MenuActivity.class);
+        startActivity(startIntent);
+    }
+
+
+
     public void startTheMenuActivity(){
         Intent startIntent = new Intent(this, MenuActivity.class);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("UserName", userNameInput.getText().toString());
+        editor.commit();
         startActivity(startIntent);
     }
 }//End Activity
