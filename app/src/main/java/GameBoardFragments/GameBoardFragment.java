@@ -2,6 +2,7 @@ package GameBoardFragments;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import GameBoardObjects.GameBoard;
 import project.mobile.warships.R;
 
 
@@ -24,6 +26,30 @@ public class GameBoardFragment extends Fragment {
     private final int GAMEBOARD_A = 0;
     private final int GAMEBOARD_B = 1;
     private int thisBoard;
+
+    private String oppAttackMissColor =  "#ffff00";
+    private String myAttackMissColor = "#f8f8ff";
+    private String shipLocation = "#7c7c7f";
+    private String attackHit = "cd2626";
+
+    private GameBoard oppGameBoard;
+    private GameBoard myGameBoard;
+
+    public void setAttackHit(String attackHit) {
+        this.attackHit = attackHit;
+    }
+
+    public void setMyAttackMissColor(String myAttackMissColor) {
+        this.myAttackMissColor = myAttackMissColor;
+    }
+
+    public void setShipLocation(String shipLocation) {
+        this.shipLocation = shipLocation;
+    }
+
+    public void setOppAttackMissColor(String oppAttackMissColor) {
+        this.oppAttackMissColor = oppAttackMissColor;
+    }
 
 
 //    private OnFragmentInteractionListener mListener;
@@ -60,10 +86,42 @@ public class GameBoardFragment extends Fragment {
 
     }
 
+    public void setOppGameBoard(GameBoard gameBoard){
+        this.oppGameBoard = gameBoard;
+    }
 
-    public void setAttacked(String id){
 
-      TextView attackedTextView = (TextView) getView().findViewWithTag(id);
+    public void setMyShot(String location){
+
+    }
+
+
+    public void setOppAttacked(String arrayShotId, int textViewId){
+      TextView attackedTextView = (TextView) getView().findViewWithTag(textViewId);
+
+        switch(myGameBoard.getShotResult(arrayShotId)){
+            case "BattleShip":
+                attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                break;
+            case "AttackSubmarine":
+                attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                break;
+            case "PtBoat":
+                attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                break;
+            case "AircraftCarrier":
+                attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                break;
+            case "AegisCruiser":
+                attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                break;
+            case "Empty":
+                attackedTextView.setBackgroundColor(Color.parseColor(oppAttackMissColor));
+                break;
+            case "ERROR":
+                //TODO call end game and log error
+                break;
+        }
     }
 
 

@@ -18,24 +18,18 @@ public class GameBoardSquare {
     public GameBoardSquare() {
     }
 
-    public void setEnemyFire(boolean enemyFire) {
-        this.enemyFire = enemyFire;
+    public void setEnemyFire() {
+        this.enemyFire = true;
     }
 
-    public void setFiredAt(boolean firedAt) {
-        this.firedAt = firedAt;
-    }
-
-    public void setOccupied(boolean occupied) {
-        this.occupied = occupied;
-    }
 
     public void setTypeOccupied(String typeOccupied) {
         this.typeOccupied = typeOccupied;
+        this.occupied = true;
     }
 
     public boolean getShotAt() {
-        return enemyFire;
+        return firedAt;
     }
 
     public boolean getOccupied() {
@@ -46,8 +40,7 @@ public class GameBoardSquare {
         return typeOccupied;
     }
 
-    public boolean getFiredAt() {
-        return firedAt;
+    public void setShotAt() {
+        firedAt = true;
     }
-
 }

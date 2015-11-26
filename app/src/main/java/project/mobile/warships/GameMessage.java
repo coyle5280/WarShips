@@ -11,25 +11,21 @@ public class GameMessage implements Serializable{
 
     protected String message;
 
-    protected int yAxisMove;
-
-    protected int xAxisMove;
+    protected String shotArrayId;
 
     protected String messageType;
 
     protected GameBoard gameBoard;
 
-    public GameMessage(String type, int xMove, int yMove){
-        yAxisMove = yMove;
-        xAxisMove = xMove;
-        messageType = type;
-        message = "";
-    }
+    protected int textViewId;
 
-    public GameMessage(String type, String setMessage){
+
+    public GameMessage(String type, String shot, int textId, String setMessage){
 
         messageType = type;
         message = setMessage;
+        shotArrayId = shot;
+        textViewId = textId;
 
     }
 
@@ -56,12 +52,12 @@ public class GameMessage implements Serializable{
         message = set_message;
     }
 
-    public int getyAxisMove() {
-        return yAxisMove;
+    public String getShotArrayId() {
+        return shotArrayId;
     }
 
-    public int getxAxisMove() {
-        return xAxisMove;
+    public int getTextViewId() {
+        return textViewId;
     }
 
     public String toString(){

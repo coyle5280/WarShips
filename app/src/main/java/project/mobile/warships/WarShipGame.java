@@ -29,7 +29,6 @@ import java.io.ObjectOutputStream;
 import java.util.Random;
 
 import GameBoardFragments.GameBoardFragment;
-import GameBoardFragments.OpponentGameBoardFragment;
 import GameBoardObjects.GameBoard;
 
 public class WarShipGame extends Activity  implements SensorEventListener{
@@ -166,7 +165,7 @@ public class WarShipGame extends Activity  implements SensorEventListener{
 
         switch(newMessage.getMessage()){
             case GAMEBOARD:
-                setupOppGameBoard(newMessage.getGameBoard());
+                oppGameBoardFrag.setOppGameBoard(newMessage.getGameBoard());
                 setOppMessage(newMessage.getMessage());
                 updateStatus();
                 break;
@@ -196,11 +195,6 @@ public class WarShipGame extends Activity  implements SensorEventListener{
         if(!message.equals(NO_MESSAGE)) {
             messageView.append(message);
         }
-    }
-
-    private void setupOppGameBoard(GameBoard gameBoard) {
-
-        oppBoard = gameBoard;
     }
 
     /**
