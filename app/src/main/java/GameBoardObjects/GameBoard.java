@@ -47,14 +47,20 @@ public class GameBoard {
         gameBoardArray[xShot][yShot].setTypeOccupied(ship);
     }
 
-    public void setMyShot(String location){
-        int xShot = convertCharToInt(location.charAt(0));
-        int yShot = convertCharToInt(location.charAt(1));
-        if (xShot == -1 || yShot == -1) {
-            Log.e("WarShip", "setMyShot: xShot: " + xShot + "yShot: " + yShot);
-        }
-        gameBoardArray[xShot][yShot].setShotAt();
-    }
+//    public String setMyShot(String location){
+//        int xShot = convertCharToInt(location.charAt(0));
+//        int yShot = convertCharToInt(location.charAt(1));
+//        if (xShot == -1 || yShot == -1) {
+//            Log.e("WarShip", "setMyShot: xShot: " + xShot + "yShot: " + yShot);
+//        }
+//        if (gameBoardArray[xShot][yShot].getOccupied()) {
+//            gameBoardArray[xShot][yShot].setShotAt();
+//            return gameBoardArray[xShot][yShot].getTypeOccupied();
+//        } else {
+//            gameBoardArray[xShot][yShot].setShotAt();
+//            return "Empty";
+//        }
+//    }
 
 
     public String getShotResult(String location) {
@@ -65,10 +71,10 @@ public class GameBoard {
             return "ERROR";
         }
         if (gameBoardArray[xShot][yShot].getOccupied()) {
-            gameBoardArray[xShot][yShot].setEnemyFire();
+            gameBoardArray[xShot][yShot].setShotAt();
             return gameBoardArray[xShot][yShot].getTypeOccupied();
         } else {
-            gameBoardArray[xShot][yShot].setEnemyFire();
+            gameBoardArray[xShot][yShot].setShotAt();
             return "Empty";
         }
     }

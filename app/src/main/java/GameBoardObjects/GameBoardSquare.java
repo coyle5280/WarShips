@@ -4,23 +4,13 @@ package GameBoardObjects;
  * Created by coyle on 10/28/2015.
  */
 public class GameBoardSquare {
-    private boolean enemyFire;
-    private boolean occupied;
-    private boolean firedAt;
-    private String typeOccupied;
-
-    public GameBoardSquare(boolean setShotAt, boolean setOccupied, boolean setFiredAt) {
-        enemyFire = setShotAt;
-        occupied = setOccupied;
-        firedAt = setFiredAt;
-    }
+    private boolean shotAt = false;
+    private boolean occupied = false;
+    private String typeOccupied = "";
 
     public GameBoardSquare() {
     }
 
-    public void setEnemyFire() {
-        this.enemyFire = true;
-    }
 
 
     public void setTypeOccupied(String typeOccupied) {
@@ -29,7 +19,7 @@ public class GameBoardSquare {
     }
 
     public boolean getShotAt() {
-        return firedAt;
+        return shotAt;
     }
 
     public boolean getOccupied() {
@@ -41,6 +31,6 @@ public class GameBoardSquare {
     }
 
     public void setShotAt() {
-        firedAt = true;
+        shotAt = true;
     }
 }

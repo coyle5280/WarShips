@@ -31,10 +31,10 @@ import java.util.Random;
 import GameBoardFragments.GameBoardFragment;
 import GameBoardObjects.GameBoard;
 
-public class WarShipGame extends Activity  implements SensorEventListener{
+public class WarShipGame extends Activity  implements SensorEventListener, GameBoardFragment.sendInfoToActivity{
 
     protected GameBoard myBoard;
-    protected GameBoard oppBoard;
+
 
     protected ConnectedThread bluetoothConnection;
     public TextView messageView;
@@ -45,6 +45,9 @@ public class WarShipGame extends Activity  implements SensorEventListener{
     final String GAMEMOVE = "gameMove";
     final String TAUNT = "messOnly";
     final String NO_MESSAGE = "No Message";
+
+    private int myShotTextViewId;
+    private String myShotArrayString;
 
     private boolean isHost;
 
@@ -69,6 +72,7 @@ public class WarShipGame extends Activity  implements SensorEventListener{
     private SensorManager sensorManager;
     private Sensor shakeSensor;
 
+    private Button sendTurn;
     private TextView currentMoveTextView;
 
     private Random random = new Random();
@@ -96,22 +100,26 @@ public class WarShipGame extends Activity  implements SensorEventListener{
         if(isHost) {
             Bundle newFragBundle = new Bundle();
             newFragBundle.putInt("board", 0);
+            newFragBundle.putBoolean("isHost", isHost);
             myGameBoardFrag = new GameBoardFragment();
             myGameBoardFrag.setArguments(newFragBundle);
 
             Bundle newFragBundle2 = new Bundle();
             newFragBundle2.putInt("board", 1);
+            newFragBundle2.putBoolean("isHost", isHost);
             oppGameBoardFrag = new GameBoardFragment();
             oppGameBoardFrag.setArguments(newFragBundle2);
 
         }else{
             Bundle newFragBundle = new Bundle();
             newFragBundle.putInt("board", 1);
+            newFragBundle.putBoolean("isHost", isHost);
             myGameBoardFrag = new GameBoardFragment();
             myGameBoardFrag.setArguments(newFragBundle);
 
             Bundle newFragBundle2 = new Bundle();
             newFragBundle2.putInt("board", 0);
+            newFragBundle2.putBoolean("isHost", isHost);
             oppGameBoardFrag = new GameBoardFragment();
             oppGameBoardFrag.setArguments(newFragBundle2);
         }
@@ -170,6 +178,9 @@ public class WarShipGame extends Activity  implements SensorEventListener{
                 updateStatus();
                 break;
             case GAMEMOVE:
+                myGameBoardFrag.setOppAttacked(newMessage.getShotArrayId(),newMessage.getTextViewId());
+                updateStatus();
+                //TODO add counter for sharded preferences and call stats fragment to update
                 break;
             case TAUNT:
 
@@ -188,6 +199,13 @@ public class WarShipGame extends Activity  implements SensorEventListener{
                 myOppBoardButton.setEnabled(true);
             }
         }
+        if(STATUS == OPP_TURN){
+            STATUS = MY_TURN;
+
+        }
+        if(STATUS == MY_TURN){
+            STATUS = OPP_TURN;
+        }
 
     }
 
@@ -202,12 +220,12 @@ public class WarShipGame extends Activity  implements SensorEventListener{
      */
     private void setupItems(){
         editMessage = (EditText) findViewById(R.id.setMessageView);
-        final Button sendTurn = (Button) findViewById(R.id.sendTurnButton);
+        sendTurn = (Button) findViewById(R.id.sendTurnButton);
         messageView = (TextView) findViewById(R.id.message);
-
         currentMoveTextView = (TextView) findViewById(R.id.currentMoveTextView);
+        myGameBoardButton = (Button) findViewById(R.id.myGameBoardButton);
+        myOppBoardButton = (Button) findViewById(R.id.oppGameBoardButton);
 
-        STATUS = SETTING_UP_BOARD;
 
         //Setup Shake Sensor
         sensorManager = (SensorManager) getApplicationContext().getSystemService(Context.SENSOR_SERVICE);
@@ -216,16 +234,11 @@ public class WarShipGame extends Activity  implements SensorEventListener{
         //--------
 
         fragManager = getFragmentManager();
-
-
-
+        STATUS = SETTING_UP_BOARD;
         myBoard = new GameBoard();
-
-
         gravity = new float[3];
 
-        myGameBoardButton = (Button) findViewById(R.id.myGameBoardButton);
-        myOppBoardButton = (Button) findViewById(R.id.oppGameBoardButton);
+
 
         myGameBoardButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -253,15 +266,16 @@ public class WarShipGame extends Activity  implements SensorEventListener{
             public void onClick(View v) {
 
                 GameMessage gameMess = setupGameMessage();
-
-
                 try {
                     bluetoothConnection.write(convertGameMessageToByte(gameMess));
                     Log.e("WarShipGame:OutConnect:", "Message Sent");
                 } catch (IOException e) {
                     Log.e("WarShipGame:OutConnect:", e.toString());
                 }
-
+                //After send move clear current shot view
+                currentMoveTextView.setText("");
+                sendTurn.setEnabled(false);
+                updateStatus();
 
             }
         });
@@ -277,10 +291,8 @@ public class WarShipGame extends Activity  implements SensorEventListener{
 
 
 
-        GameMessage gameMess = null;
-
+        GameMessage gameMess = new GameMessage(GAMEMOVE, myShotArrayString, myShotTextViewId, "");
         String userMessage = editMessage.getText().toString();
-
 
         if (userMessage.equals("")) {
             userMessage = NO_MESSAGE;
@@ -334,8 +346,8 @@ public class WarShipGame extends Activity  implements SensorEventListener{
 
         float maxAxisAccel = calculateAcceleration(event);
         if(maxAxisAccel > MIN_ACCELERATION){
-           //Call to Method
-            Log.e("WarShipGame:Sensor:",  String.valueOf(maxAxisAccel));
+           //TODO Call to Method
+            Log.e("WarShipGame:Sensor: ",  String.valueOf(maxAxisAccel));
         }
 
 
@@ -369,4 +381,11 @@ public class WarShipGame extends Activity  implements SensorEventListener{
     }
 
 
+    @Override
+    public void sendMyShotToActivity(String stringId, int textId) {
+        myShotArrayString = stringId;
+        myShotTextViewId = textId;
+        currentMoveTextView.setText(stringId);
+        sendTurn.setEnabled(true);
+    }
 }

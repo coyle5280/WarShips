@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,16 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.io.Console;
+import java.util.ArrayList;
+
 import GameBoardObjects.GameBoard;
+import GamePieceObjects.AegisCruiserObject;
+import GamePieceObjects.AircraftCarrier;
+import GamePieceObjects.AttackSubmarineObject;
+import GamePieceObjects.BattleShipObject;
+import GamePieceObjects.GamePieceObject;
+import GamePieceObjects.PtBoat;
 import project.mobile.warships.R;
 
 
@@ -26,16 +36,30 @@ public class GameBoardFragment extends Fragment {
     private final int GAMEBOARD_A = 0;
     private final int GAMEBOARD_B = 1;
     private int thisBoard;
+    private boolean isHost;
+
+    //private ArrayList<GamePieceObject> arrayShipsNeedPlacing[] = new ArrayList();
+    private ArrayList<GamePieceObject> arrayMyShipsActive[];
+    private ArrayList<GamePieceObject> arrayMyShipsDead[];
+
+    private ArrayList<GamePieceObject> arrayOppShipsActive[];
+    private ArrayList<GamePieceObject> arrayOppShipsDead[];
+
+
 
     private String oppAttackMissColor =  "#ffff00";
     private String myAttackMissColor = "#f8f8ff";
     private String shipLocation = "#7c7c7f";
-    private String attackHit = "cd2626";
+    private String attackHit = "#cd2626";
 
     private GameBoard oppGameBoard;
     private GameBoard myGameBoard;
 
-    public void setAttackHit(String attackHit) {
+    private sendInfoToActivity mCallback;
+
+
+    //Set Color Methods
+    public void setAttackHitColor(String attackHit) {
         this.attackHit = attackHit;
     }
 
@@ -43,7 +67,7 @@ public class GameBoardFragment extends Fragment {
         this.myAttackMissColor = myAttackMissColor;
     }
 
-    public void setShipLocation(String shipLocation) {
+    public void setShipLocationColor(String shipLocation) {
         this.shipLocation = shipLocation;
     }
 
@@ -51,8 +75,38 @@ public class GameBoardFragment extends Fragment {
         this.oppAttackMissColor = oppAttackMissColor;
     }
 
+    public void myBoardOnClick(View v){
+        if(isHost){
+            if(thisBoard == 0){
+                //No click event Visual Only
+                Log.e("WarShip", "myBoardOnClick: Host Board A MyBoard");
+            }else{
+                //this should be Host board B
+                Log.e("WarShip", "myBoardOnClick: Host Board B OppBoard");
+                TextView clickedView = (TextView) v;
+                int currentShotIntId = clickedView.getId();
+                String currentShotStringId = getResources().getResourceEntryName(currentShotIntId);
+                Log.e("WarShip", "myBoardOnClick: " + currentShotStringId.toString());
+                mCallback.sendMyShotToActivity(currentShotStringId, currentShotIntId);
+                setMyShot(currentShotStringId, currentShotIntId);
+            }
+        }else{
+            if(thisBoard == 1){
+                //No click event Visual Only
+                Log.e("WarShip", "myBoardOnClick: Client Board B MyBoard");
+            }else{
+                //This should be client board A
+                Log.e("WarShip", "myBoardOnClick: Client Board A OppBoard");
+                TextView clickedView = (TextView) v;
+                int currentShotIntId = clickedView.getId();
+                String currentShotStringId = getResources().getResourceEntryName(currentShotIntId);
+                Log.e("WarShip", "myBoardOnClick: " + currentShotStringId.toString());
+                mCallback.sendMyShotToActivity(currentShotStringId, currentShotIntId);
+                setMyShot(currentShotStringId, currentShotIntId);
+            }
+        }
+    }
 
-//    private OnFragmentInteractionListener mListener;
 
 
 
@@ -70,18 +124,36 @@ public class GameBoardFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        STATUS = 0;
+        STATUS = SETUPBOARD;
+
+        setupInitalShipArray();
 
         if (getArguments() != null) {
             Bundle bundle = getArguments();
             thisBoard = bundle.getInt("board");
+            isHost = bundle.getBoolean("isHost");
         }
 
         if(thisBoard == 0){
+
             return inflater.inflate(R.layout.game_board_a, container, false);
         }else{
             return inflater.inflate(R.layout.game_board_b, container, false);
         }
+
+
+    }
+
+    private void setupInitalShipArray() {
+
+
+        AegisCruiserObject aegisCruiser = new AegisCruiserObject();
+        AircraftCarrier aircraftCarrier = new AircraftCarrier();
+        AttackSubmarineObject attackSubmarine = new AttackSubmarineObject();
+        BattleShipObject battleShip = new BattleShipObject();
+        PtBoat ptBoat = new PtBoat();
+
+        //arrayShipsNeedPlacing.add(aegisCruiser);
 
 
     }
@@ -91,37 +163,79 @@ public class GameBoardFragment extends Fragment {
     }
 
 
-    public void setMyShot(String location){
-
+    public void setMyShot(String location, int textViewId){
+        try{
+            TextView attackedTextView = (TextView) getView().findViewWithTag(textViewId);
+            switch(oppGameBoard.getShotResult(location)){
+                case "BattleShip":
+                    attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                    break;
+                case "AttackSubmarine":
+                    attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                    break;
+                case "PtBoat":
+                    attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                    break;
+                case "AircraftCarrier":
+                    attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                    break;
+                case "AegisCruiser":
+                    attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                    break;
+                case "Empty":
+                    attackedTextView.setBackgroundColor(Color.parseColor(myAttackMissColor));
+                    break;
+                case "ERROR":
+                    Log.e("Warship", "setMyShot: ERROR FINDING SPOT IN oppGameBoard");
+                    //TODO call end game
+                    break;
+            }
+        }catch(NullPointerException e){
+            Log.e("Warship", "setMyShot: NullPointer", e);
+        }
+        //TODO go back to activity??
     }
 
 
     public void setOppAttacked(String arrayShotId, int textViewId){
-      TextView attackedTextView = (TextView) getView().findViewWithTag(textViewId);
 
-        switch(myGameBoard.getShotResult(arrayShotId)){
-            case "BattleShip":
-                attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
-                break;
-            case "AttackSubmarine":
-                attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
-                break;
-            case "PtBoat":
-                attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
-                break;
-            case "AircraftCarrier":
-                attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
-                break;
-            case "AegisCruiser":
-                attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
-                break;
-            case "Empty":
-                attackedTextView.setBackgroundColor(Color.parseColor(oppAttackMissColor));
-                break;
-            case "ERROR":
-                //TODO call end game and log error
-                break;
+        try{
+            TextView attackedTextView = (TextView) getView().findViewWithTag(textViewId);
+            switch(myGameBoard.getShotResult(arrayShotId)){
+                case "BattleShip":
+                    attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                    break;
+                case "AttackSubmarine":
+                    attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                    break;
+                case "PtBoat":
+                    attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                    break;
+                case "AircraftCarrier":
+                    attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                    break;
+                case "AegisCruiser":
+                    attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                    break;
+                case "Empty":
+                    attackedTextView.setBackgroundColor(Color.parseColor(oppAttackMissColor));
+                    break;
+                case "ERROR":
+                    Log.e("Warship", "setOppAttacked: ERROR FINDING SPOT IN myGameBoard");
+                    //TODO call end game Out of sync
+                    break;
+            }
+        }catch(NullPointerException e){
+            Log.e("Warship", "setOppAttacked: NullPointer", e);
         }
+
+
+
+    }
+
+    public interface sendInfoToActivity{
+        void sendMyShotToActivity(String stringId, int textId);
+
     }
 
 
@@ -130,6 +244,12 @@ public class GameBoardFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        try{
+            mCallback = (sendInfoToActivity) context;
+        }catch(ClassCastException e){
+            throw new ClassCastException(getActivity().toString() + "not implementing Interface");
+        }
+
 
     }
 

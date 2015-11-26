@@ -31,7 +31,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:layout_below="@+id/textView5"
-            android:layout_toEndOf="@+id/textView3" />
+            android:layout_toEndOf="@+id/textView3"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -41,7 +42,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignTop="@+id/A1"
-            android:layout_toEndOf="@+id/A1" />
+            android:layout_toEndOf="@+id/A1"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -51,7 +53,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignTop="@+id/A1"
-            android:layout_toEndOf="@+id/B2" />
+            android:layout_toEndOf="@+id/B2"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -61,7 +64,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignTop="@+id/C1"
-            android:layout_toEndOf="@+id/C2" />
+            android:layout_toEndOf="@+id/C2"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -71,7 +75,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_below="@+id/textView12"
-            android:layout_toEndOf="@+id/D1" />
+            android:layout_toEndOf="@+id/D1"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -81,7 +86,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_below="@+id/textView13"
-            android:layout_toEndOf="@+id/E1" />
+            android:layout_toEndOf="@+id/E1"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -91,7 +97,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignTop="@+id/F1"
-            android:layout_toEndOf="@+id/F1" />
+            android:layout_toEndOf="@+id/F1"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -112,7 +119,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/textView11"
-            android:layout_toEndOf="@+id/textView11" />
+            android:layout_toEndOf="@+id/textView11"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -122,7 +130,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/A2"
-            android:layout_toEndOf="@+id/A2" />
+            android:layout_toEndOf="@+id/A2"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -132,7 +141,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/B2"
-            android:layout_toEndOf="@+id/B2" />
+            android:layout_toEndOf="@+id/B2"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -142,7 +152,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/C2"
-            android:layout_toEndOf="@+id/C2" />
+            android:layout_toEndOf="@+id/C2"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -152,7 +163,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/D2"
-            android:layout_toEndOf="@+id/D2" />
+            android:layout_toEndOf="@+id/D2"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -162,7 +174,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignTop="@+id/E2"
-            android:layout_toEndOf="@+id/E2" />
+            android:layout_toEndOf="@+id/E2"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -172,7 +185,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignTop="@+id/F2"
-            android:layout_toEndOf="@+id/F2" />
+            android:layout_toEndOf="@+id/F2"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -193,7 +207,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/textView21"
-            android:layout_toEndOf="@+id/textView21" />
+            android:layout_toEndOf="@+id/textView21"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -203,7 +218,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/A3"
-            android:layout_toEndOf="@+id/A3" />
+            android:layout_toEndOf="@+id/A3"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -213,7 +229,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/B3"
-            android:layout_toEndOf="@+id/B3" />
+            android:layout_toEndOf="@+id/B3"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -223,7 +240,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/C3"
-            android:layout_toEndOf="@+id/C3" />
+            android:layout_toEndOf="@+id/C3"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -233,7 +251,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/D3"
-            android:layout_toEndOf="@+id/D3" />
+            android:layout_toEndOf="@+id/D3"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -243,7 +262,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/E3"
-            android:layout_toEndOf="@+id/E3" />
+            android:layout_toEndOf="@+id/E3"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -253,7 +273,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/F3"
-            android:layout_toEndOf="@+id/F3" />
+            android:layout_toEndOf="@+id/F3"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -274,7 +295,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/textView31"
-            android:layout_toEndOf="@+id/textView31" />
+            android:layout_toEndOf="@+id/textView31"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -285,7 +307,8 @@
             android:layout_marginRight="10dp"
             android:layout_alignBaseline="@+id/A4"
             android:layout_alignBottom="@+id/A4"
-            android:layout_toEndOf="@+id/A4" />
+            android:layout_toEndOf="@+id/A4"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -295,7 +318,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/B4"
-            android:layout_toEndOf="@+id/B4" />
+            android:layout_toEndOf="@+id/B4"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -306,7 +330,8 @@
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/C4"
             android:layout_toEndOf="@+id/C4"
-            android:gravity="center" />
+            android:gravity="center"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -316,7 +341,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/D4"
-            android:layout_toEndOf="@+id/D4" />
+            android:layout_toEndOf="@+id/D4"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -326,7 +352,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/E4"
-            android:layout_toEndOf="@+id/E4" />
+            android:layout_toEndOf="@+id/E4"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -336,7 +363,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/F4"
-            android:layout_toEndOf="@+id/F4" />
+            android:layout_toEndOf="@+id/F4"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -358,7 +386,8 @@
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/textView41"
             android:layout_toEndOf="@+id/textView41"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -368,7 +397,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignTop="@+id/A5"
-            android:layout_toEndOf="@+id/A5" />
+            android:layout_toEndOf="@+id/A5"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -378,7 +408,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/B5"
-            android:layout_toEndOf="@+id/B5" />
+            android:layout_toEndOf="@+id/B5"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -388,7 +419,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/C5"
-            android:layout_toStartOf="@+id/E4" />
+            android:layout_toStartOf="@+id/E4"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -398,7 +430,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/D5"
-            android:layout_toStartOf="@+id/F4" />
+            android:layout_toStartOf="@+id/F4"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -408,7 +441,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/E5"
-            android:layout_toEndOf="@+id/E5" />
+            android:layout_toEndOf="@+id/E5"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -418,7 +452,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/F5"
-            android:layout_toEndOf="@+id/F5" />
+            android:layout_toEndOf="@+id/F5"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -439,7 +474,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/textView101"
-            android:layout_toEndOf="@+id/textView101" />
+            android:layout_toEndOf="@+id/textView101"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -449,7 +485,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/A6"
-            android:layout_toEndOf="@+id/A6" />
+            android:layout_toEndOf="@+id/A6"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -459,7 +496,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/B6"
-            android:layout_toEndOf="@+id/B6" />
+            android:layout_toEndOf="@+id/B6"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -469,7 +507,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/C6"
-            android:layout_toEndOf="@+id/C6" />
+            android:layout_toEndOf="@+id/C6"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -479,7 +518,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/D6"
-            android:layout_toEndOf="@+id/D6" />
+            android:layout_toEndOf="@+id/D6"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -489,7 +529,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/E6"
-            android:layout_toEndOf="@+id/E6" />
+            android:layout_toEndOf="@+id/E6"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -499,7 +540,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/F6"
-            android:layout_toEndOf="@+id/F6" />
+            android:layout_toEndOf="@+id/F6"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -520,7 +562,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/textView60"
-            android:layout_toEndOf="@+id/textView60" />
+            android:layout_toEndOf="@+id/textView60"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -530,7 +573,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/A7"
-            android:layout_toEndOf="@+id/A7" />
+            android:layout_toEndOf="@+id/A7"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -540,7 +584,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/B7"
-            android:layout_toEndOf="@+id/B7" />
+            android:layout_toEndOf="@+id/B7"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -550,7 +595,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/C7"
-            android:layout_toStartOf="@+id/E6" />
+            android:layout_toStartOf="@+id/E6"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -560,7 +606,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/D7"
-            android:layout_toEndOf="@+id/D7" />
+            android:layout_toEndOf="@+id/D7"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -570,7 +617,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/E7"
-            android:layout_toEndOf="@+id/E7" />
+            android:layout_toEndOf="@+id/E7"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -580,7 +628,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/F7"
-            android:layout_toEndOf="@+id/F7" />
+            android:layout_toEndOf="@+id/F7"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -600,7 +649,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/textView70"
-            android:layout_toEndOf="@+id/textView70" />
+            android:layout_toEndOf="@+id/textView70"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -610,7 +660,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/A8"
-            android:layout_toEndOf="@+id/A8" />
+            android:layout_toEndOf="@+id/A8"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -620,7 +671,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignTop="@+id/B8"
-            android:layout_toEndOf="@+id/B8" />
+            android:layout_toEndOf="@+id/B8"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -630,7 +682,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/C8"
-            android:layout_toEndOf="@+id/C8" />
+            android:layout_toEndOf="@+id/C8"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -640,7 +693,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignTop="@+id/D8"
-            android:layout_toEndOf="@+id/D8" />
+            android:layout_toEndOf="@+id/D8"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -650,7 +704,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignTop="@+id/E8"
-            android:layout_toEndOf="@+id/E8" />
+            android:layout_toEndOf="@+id/E8"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -661,7 +716,8 @@
             android:layout_marginRight="10dp"
             android:layout_below="@+id/G7"
             android:layout_toEndOf="@+id/F8"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="150dp"
@@ -768,7 +824,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignTop="@+id/G1"
-            android:layout_toEndOf="@+id/G1" />
+            android:layout_toEndOf="@+id/G1"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -778,7 +835,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/G2"
-            android:layout_toEndOf="@+id/G2" />
+            android:layout_toEndOf="@+id/G2"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -788,7 +846,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/G3"
-            android:layout_toEndOf="@+id/G3" />
+            android:layout_toEndOf="@+id/G3"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -798,7 +857,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignTop="@+id/G4"
-            android:layout_toEndOf="@+id/G4" />
+            android:layout_toEndOf="@+id/G4"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -808,7 +868,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignTop="@+id/G5"
-            android:layout_toEndOf="@+id/G5" />
+            android:layout_toEndOf="@+id/G5"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -818,7 +879,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/G6"
-            android:layout_toEndOf="@+id/G6" />
+            android:layout_toEndOf="@+id/G6"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -828,7 +890,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/G7"
-            android:layout_toEndOf="@+id/G7" />
+            android:layout_toEndOf="@+id/G7"
+            android:onClick="myBoardOnClick" />
 
         <TextView
             android:layout_width="30dp"
@@ -838,7 +901,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_alignBottom="@+id/G8"
-            android:layout_toEndOf="@+id/G8" />
+            android:layout_toEndOf="@+id/G8"
+            android:onClick="myBoardOnClick" />
 
     </RelativeLayout>
 </HorizontalScrollView>
