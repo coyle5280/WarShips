@@ -60,6 +60,8 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
     private static final int MY_TURN = 1;
     private static final int OPP_TURN = 2;
     private int STATUS;
+    private boolean oppBoardReady = false;
+    private boolean myBoardReady = false;
 
     private Button myGameBoardButton;
     private Button myOppBoardButton;
@@ -175,6 +177,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
             case GAMEBOARD:
                 oppGameBoardFrag.setOppGameBoard(newMessage.getGameBoard());
                 setOppMessage(newMessage.getMessage());
+                oppBoardReady = true;
                 updateStatus();
                 break;
             case GAMEMOVE:
@@ -190,11 +193,18 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
     }
 
     private void updateStatus() {
-        if(STATUS == SETTING_UP_BOARD){
+        if(STATUS == SETTING_UP_BOARD && oppBoardReady){
            STATUS = WAITING_ON_SELF;
         }
-        if(STATUS == WAITING_ON_PLAYER){
+        if(STATUS == SETTING_UP_BOARD && !oppBoardReady && myBoardReady){
+            STATUS = WAITING_ON_PLAYER;
+        }
+
+        if(STATUS == WAITING_ON_PLAYER && oppBoardReady && myBoardReady){
             if(isHost){
+                STATUS = OPP_TURN;
+
+            }else{
                 STATUS = MY_TURN;
                 myOppBoardButton.setEnabled(true);
             }
@@ -366,7 +376,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         float yAcceleration = event.values[1] - gravity[1];
         float zAcceleration = event.values[2] - gravity[2];
 
-        float maxFirst = Math.max(xAcceleration,yAcceleration);
+        float maxFirst = Math.max(xAcceleration, yAcceleration);
         return Math.max(maxFirst, zAcceleration);
 
     }
@@ -379,6 +389,12 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
+    @Override
+    public void sendMyBoardToOpp(GameBoard board){
+        myBoard = board;
+    }
+
 
 
     @Override

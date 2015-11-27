@@ -65,7 +65,8 @@ public class WarShipsMain extends Activity {
         Intent startIntent = new Intent(this, MenuActivity.class);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("UserName", userNameInput.getText().toString());
-        editor.commit();
+        editor.apply();
+        //editor.commit();
         startActivity(startIntent);
     }
 }//End Activity

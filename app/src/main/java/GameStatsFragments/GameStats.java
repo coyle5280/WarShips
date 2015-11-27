@@ -1,26 +1,21 @@
-package GameBoardFragments;
+package GameStatsFragments;
 
-import android.app.Fragment;
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import project.mobile.warships.R;
 
-/**
- * Created by Godzilla_Mobile on 11/11/2015.
- */
-public class OpponentGameBoardFragment extends Fragment {
+
+public class GameStats extends Fragment {
 
 
-    private OnFragmentInteractionListener mListener;
-
-
-
-    public OpponentGameBoardFragment() {
+    public GameStats() {
         // Required empty public constructor
     }
 
@@ -35,28 +30,16 @@ public class OpponentGameBoardFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.game_board_b, container, false);
+        return inflater.inflate(R.layout.game_stats_fragment, container, false);
     }
-
-
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-
-    }
-
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
-
+   }
 }

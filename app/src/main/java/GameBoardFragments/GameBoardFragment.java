@@ -235,6 +235,7 @@ public class GameBoardFragment extends Fragment {
 
     public interface sendInfoToActivity{
         void sendMyShotToActivity(String stringId, int textId);
+        void sendMyBoardToOpp(GameBoard board);
 
     }
 

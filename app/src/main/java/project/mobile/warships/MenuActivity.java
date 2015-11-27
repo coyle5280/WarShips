@@ -10,6 +10,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -37,8 +39,7 @@ public class MenuActivity extends Activity {
     final UUID uuid = UUID.fromString("37909982-7ad3-11e5-8bcf-feff819cdc9f");
     final String appName = "warShips";
 
-    //Send to next Activity: WHO plays first
-    private boolean hostStart = true;
+
 
     // Constants that indicate the current connection state
     public static final int STATE_NONE = 0;       // we're doing nothing
@@ -51,6 +52,8 @@ public class MenuActivity extends Activity {
     //HOST OR JOIN
     boolean mIsHost;
 
+    private SharedPreferences sharedPreferences;
+    private TextView userNameTextView;
     private ListView devicesFoundListView;
 
     Button hostButton;
@@ -67,6 +70,8 @@ public class MenuActivity extends Activity {
     AcceptThread server = null;
     ConnectThread joinGame = null;
 
+    private String userName;
+
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -78,8 +83,36 @@ public class MenuActivity extends Activity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menuactivity);
+
+
+
+
         server = new AcceptThread();
         setupItems();
+        sharedPreferences =  getSharedPreferences("User", 0);
+        String userName = sharedPreferences.getString("UserName", null);
+        int gameCount = sharedPreferences.getInt("gameCount", 0);
+
+
+
+        if(userName != null){
+            if(gameCount  < 6){
+                userName = "Welcome Ensign " + userName;
+            }else if(gameCount < 11){
+                userName = "Welcome Captain " + userName;
+            }else{
+                userName = "Welcome Admiral " + userName;
+            }
+            userNameTextView.setText(userName);
+        }else {
+            userNameTextView.setText(R.string.welcomeUser);
+        }
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("gameCount", ++gameCount);
+//        editor.commit();
+
+        editor.apply();
+
 
     }
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -94,6 +127,8 @@ public class MenuActivity extends Activity {
         hostButton = (Button) findViewById(R.id.hostButton);
         joinButton = (Button) findViewById(R.id.joinButton);
         stopButton = (Button) findViewById(R.id.stopButton);
+
+        userNameTextView = (TextView) findViewById(R.id.UserName);
 
         devicesFoundListView = (ListView) findViewById(R.id.availableBluetooth);
 
