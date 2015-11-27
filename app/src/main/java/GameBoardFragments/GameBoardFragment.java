@@ -18,12 +18,9 @@ import java.io.Console;
 import java.util.ArrayList;
 
 import GameBoardObjects.GameBoard;
-import GamePieceObjects.AegisCruiserObject;
-import GamePieceObjects.AircraftCarrier;
-import GamePieceObjects.AttackSubmarineObject;
-import GamePieceObjects.BattleShipObject;
+
 import GamePieceObjects.GamePieceObject;
-import GamePieceObjects.PtBoat;
+
 import project.mobile.warships.R;
 
 
@@ -38,12 +35,12 @@ public class GameBoardFragment extends Fragment {
     private int thisBoard;
     private boolean isHost;
 
-    //private ArrayList<GamePieceObject> arrayShipsNeedPlacing[] = new ArrayList();
-    private ArrayList<GamePieceObject> arrayMyShipsActive[];
-    private ArrayList<GamePieceObject> arrayMyShipsDead[];
+    private ArrayList<GamePieceObject> arrayShipsNeedPlacing = new ArrayList<GamePieceObject>();
+    private ArrayList<GamePieceObject> arrayMyShipsActive = new ArrayList<GamePieceObject>();
+    private ArrayList<GamePieceObject> arrayMyShipsDead = new ArrayList<GamePieceObject>();
 
-    private ArrayList<GamePieceObject> arrayOppShipsActive[];
-    private ArrayList<GamePieceObject> arrayOppShipsDead[];
+    private ArrayList<GamePieceObject> arrayOppShipsActive = new ArrayList<GamePieceObject>();
+    private ArrayList<GamePieceObject> arrayOppShipsDead = new ArrayList<GamePieceObject>();
 
 
 
@@ -79,6 +76,10 @@ public class GameBoardFragment extends Fragment {
         if(isHost){
             if(thisBoard == 0){
                 //No click event Visual Only
+
+
+
+
                 Log.e("WarShip", "myBoardOnClick: Host Board A MyBoard");
             }else{
                 //this should be Host board B
@@ -145,30 +146,32 @@ public class GameBoardFragment extends Fragment {
     }
 
     private void setupInitalShipArray() {
-
-
-        AegisCruiserObject aegisCruiser = new AegisCruiserObject();
-        AircraftCarrier aircraftCarrier = new AircraftCarrier();
-        AttackSubmarineObject attackSubmarine = new AttackSubmarineObject();
-        BattleShipObject battleShip = new BattleShipObject();
-        PtBoat ptBoat = new PtBoat();
-
-        //arrayShipsNeedPlacing.add(aegisCruiser);
-
+        arrayShipsNeedPlacing.add(new GamePieceObject(5, "AircraftCarrier"));
+        arrayShipsNeedPlacing.add(new GamePieceObject(4, "BattleShip"));
+        arrayShipsNeedPlacing.add(new GamePieceObject(3, "AegisCruiser"));
+        arrayShipsNeedPlacing.add(new GamePieceObject(3, "AttackSubmarine"));
+        arrayShipsNeedPlacing.add(new GamePieceObject(2, "PtBoat"));
 
     }
 
     public void setOppGameBoard(GameBoard gameBoard){
+        arrayOppShipsActive.add(new GamePieceObject(5, "AircraftCarrier"));
+        arrayOppShipsActive.add(new GamePieceObject(4, "BattleShip"));
+        arrayOppShipsActive.add(new GamePieceObject(3, "AegisCruiser"));
+        arrayOppShipsActive.add(new GamePieceObject(3, "AttackSubmarine"));
+        arrayOppShipsActive.add(new GamePieceObject(2, "PtBoat"));
+
         this.oppGameBoard = gameBoard;
     }
 
 
     public void setMyShot(String location, int textViewId){
         try{
-            TextView attackedTextView = (TextView) getView().findViewWithTag(textViewId);
+            TextView attackedTextView = (TextView) getView().findViewById(textViewId);
             switch(oppGameBoard.getShotResult(location)){
                 case "BattleShip":
                     attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+
                     break;
                 case "AttackSubmarine":
                     attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
@@ -200,7 +203,7 @@ public class GameBoardFragment extends Fragment {
     public void setOppAttacked(String arrayShotId, int textViewId){
 
         try{
-            TextView attackedTextView = (TextView) getView().findViewWithTag(textViewId);
+            TextView attackedTextView = (TextView) getView().findViewById(textViewId);
             switch(myGameBoard.getShotResult(arrayShotId)){
                 case "BattleShip":
                     attackedTextView.setBackgroundColor(Color.parseColor(attackHit));

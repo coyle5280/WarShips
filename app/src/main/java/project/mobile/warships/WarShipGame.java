@@ -149,6 +149,8 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
     private void setupConnectionItems() {
         GameSocket gameSocket = GameSocket.getInstance();
         BluetoothSocket socket = gameSocket.getGameSocket();
+
+
         Handler connectionHandler = new Handler() {
             @Override
             public void handleMessage(Message inputMessage) {
@@ -173,7 +175,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         GameMessage newMessage = incomingMessage;
 
 
-        switch(newMessage.getMessage()){
+        switch(newMessage.getMessageType()){
             case GAMEBOARD:
                 oppGameBoardFrag.setOppGameBoard(newMessage.getGameBoard());
                 setOppMessage(newMessage.getMessage());
@@ -183,24 +185,23 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
             case GAMEMOVE:
                 myGameBoardFrag.setOppAttacked(newMessage.getShotArrayId(),newMessage.getTextViewId());
                 updateStatus();
-                //TODO add counter for sharded preferences and call stats fragment to update
+                setOppMessage(newMessage.getMessage());
+                //TODO add counter for shared preferences and call stats fragment to update
                 break;
             case TAUNT:
-
-
-
         }
     }
 
     private void updateStatus() {
-        if(STATUS == SETTING_UP_BOARD && oppBoardReady){
+        if(STATUS == OPP_TURN){
+            STATUS = MY_TURN;
+        }else if(STATUS == MY_TURN){
+            STATUS = OPP_TURN;
+        }else if(STATUS == SETTING_UP_BOARD && oppBoardReady){
            STATUS = WAITING_ON_SELF;
-        }
-        if(STATUS == SETTING_UP_BOARD && !oppBoardReady && myBoardReady){
+        }else if(STATUS == SETTING_UP_BOARD && !oppBoardReady && myBoardReady){
             STATUS = WAITING_ON_PLAYER;
-        }
-
-        if(STATUS == WAITING_ON_PLAYER && oppBoardReady && myBoardReady){
+        }else if (STATUS == WAITING_ON_PLAYER && oppBoardReady && myBoardReady || STATUS == WAITING_ON_SELF && oppBoardReady && myBoardReady ){
             if(isHost){
                 STATUS = OPP_TURN;
 
@@ -209,14 +210,6 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
                 myOppBoardButton.setEnabled(true);
             }
         }
-        if(STATUS == OPP_TURN){
-            STATUS = MY_TURN;
-
-        }
-        if(STATUS == MY_TURN){
-            STATUS = OPP_TURN;
-        }
-
     }
 
     private void setOppMessage(String message) {

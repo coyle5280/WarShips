@@ -6,45 +6,31 @@ package GamePieceObjects;
 public class GamePieceObject {
 
 
-    private int xPosition;
-    private int yPosition;
-    private boolean isAlive;
-    private boolean isPlaced;
     private int length;
+    private String type;
 
 
-    public void GamePiece(){
-        xPosition = -1;
-        yPosition = -1;
-        isAlive = true;
-        isPlaced = false;
+    public GamePieceObject(int length, String type){
+        this.length = length;
+        this.type = type;
     }
 
-    public void setxPosition(int xPosition) {
-        this.xPosition = xPosition;
+    public String getType() {
+        return this.type;
     }
 
-    public void setyPosition(int yPosition) {
-        this.yPosition = yPosition;
-    }
-
-    public int getxPosition() {
-        return xPosition;
-    }
-
-    public int getyPosition() {
-        return yPosition;
-    }
-
-    public boolean isPlaced() {
-        return isPlaced;
-    }
-
-    public boolean isAlive() {
-        return isAlive;
-    }
 
     public void setLength(int length) {
         this.length = length;
     }
+
+    public int getLength(){
+        return this.length;
+    }
+
+    public boolean hit(){
+        length = length -1;
+        return length == 0;
+    }
+
 }
