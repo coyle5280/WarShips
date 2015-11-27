@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -36,7 +37,7 @@ import static android.bluetooth.BluetoothDevice.*;
 /**
  *
  */
-public class MenuActivity extends Activity {
+public class MenuActivity extends Activity implements SettingsFragment.settingsListener{
 
     ActionBar actionBar;
     final int REQUEST_ENABLE_BT = 1;
@@ -46,7 +47,7 @@ public class MenuActivity extends Activity {
 
 
     boolean settingsBoolean = false;
-    SettingsFragment settings;
+    SettingsFragment settings = new SettingsFragment();
 
 
     // Constants that indicate the current connection state
@@ -414,6 +415,10 @@ public class MenuActivity extends Activity {
         }
     }
 
+    @Override
+    public void updateInterface(boolean setBackground, boolean setTextColor, int Color) {
+
+    }
 
 
 //************************************************************************************************//
