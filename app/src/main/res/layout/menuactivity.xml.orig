@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/menuActivity">
+
+
+
+
+
+<LinearLayout
+=======
+>>>>>>> b501a6f414bf39148072cee38048a9d22ecb524e
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/menuActivity">
+
+
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="217dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="@mipmap/warship"
+            android:layout_marginTop="5dp">
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/UserName"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/select"
+            android:id="@+id/textView"
+            android:layout_marginTop="50dp"
+            android:textColor="#d02020"
+            android:textStyle="bold|italic" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/host"
+                android:id="@+id/hostButton"
+                android:layout_marginTop="5dp"
+                style="@android:style/Widget.Holo.Light.Button"
+                android:layout_marginRight="5dp"
+                android:onClick="hostGame"/>
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/join"
+                android:id="@+id/joinButton"
+                android:layout_marginTop="5dp"
+                style="@android:style/Widget.Holo.Light.Button"
+                android:layout_marginLeft="5dp"
+                android:onClick="joinGame"/>
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/optionText"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp" />
+
+<<<<<<< HEAD
+    </FrameLayout>
+</LinearLayout>
+=======
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stopSearch"
+            android:id="@+id/stopButton"
+            android:layout_gravity="center_horizontal"
+            style="@android:style/Widget.Holo.Light.Button"
+            android:visibility="invisible"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/availablePlayersFrame">
+
+            <ListView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/availableBluetooth"
+                android:visibility="invisible">
+            </ListView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/hostTestView"
+                android:visibility="invisible"
+                />
+
+        </FrameLayout>
+    </LinearLayout>
+>>>>>>> b501a6f414bf39148072cee38048a9d22ecb524e
+</FrameLayout>
