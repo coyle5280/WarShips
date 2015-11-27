@@ -2,6 +2,8 @@ package project.mobile.warships;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
@@ -13,6 +15,9 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,6 +44,9 @@ public class MenuActivity extends Activity {
     final UUID uuid = UUID.fromString("37909982-7ad3-11e5-8bcf-feff819cdc9f");
     final String appName = "warShips";
 
+
+    boolean settingsBoolean = false;
+    SettingsFragment settings;
 
 
     // Constants that indicate the current connection state
@@ -83,7 +91,7 @@ public class MenuActivity extends Activity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menuactivity);
-
+        actionBar = getActionBar();
 
 
 
@@ -114,6 +122,57 @@ public class MenuActivity extends Activity {
         editor.apply();
 
 
+    }
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    /**
+     * Creates the menu bar at the top of the application
+     * @param menu- the menu bar
+     * @return the inflated menu
+     */
+    //Menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    //Menu
+
+    /**
+     * Used for the settings feature of the color blender application
+     * @param item- the menu bar item that was selected
+     * @return - return true if item exists or false if not available
+     */
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case R.id.settings:
+                callSettings();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+
+        }
+
+    }
+
+    /**
+     * if the settings is clicked, create fragment and open or close if open
+     */
+    private void callSettings() {
+        if(!settingsBoolean) {
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.menuActivity, settings);
+            fragmentTransaction.commit();
+            settingsBoolean = true;
+        }else{
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.remove(settings);
+            fragmentTransaction.commit();
+            settingsBoolean = false;
+        }
     }
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
