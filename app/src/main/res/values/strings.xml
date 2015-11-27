@@ -21,6 +21,11 @@
     <string name="viewMyGameBoard">My GameBoard</string>
     <string name="viewStats">Game Stats</string>
     <string name="welcomeUser">Welcome</string>
+    <string name="gameStats">Game Stats</string>
+    <string name="playerStats">Player Stats</string>
+
+    <string name="numberShots">Shots: </string>
+    <string name="numberHits">Hits: </string>
 
     <string name="shotChoice">Current Choice</string>
 
