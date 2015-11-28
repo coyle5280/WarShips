@@ -30,6 +30,8 @@ import java.util.Random;
 
 import GameBoardFragments.GameBoardFragment;
 import GameBoardObjects.GameBoard;
+import GameStatsFragments.GameStats;
+import GameStatsFragments.PlayerStats;
 
 public class WarShipGame extends Activity  implements SensorEventListener, GameBoardFragment.sendInfoToActivity{
 
@@ -80,7 +82,13 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
     private Random random = new Random();
 
     float gravity[];
-    final private float MIN_ACCELERATION = 1.5f;
+    final private float MIN_ACCELERATION = 9.0f;
+
+    private int activeStatsFragment = 0;
+
+    private GameStats gameStats;
+    private PlayerStats playerStats;
+
 
     /**
      *
@@ -126,6 +134,8 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
             oppGameBoardFrag = new GameBoardFragment();
             oppGameBoardFrag.setArguments(newFragBundle2);
         }
+        gameStats = new GameStats();
+        playerStats = new PlayerStats();
     }
 
     /**
@@ -307,6 +317,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
                 currentMoveTextView.setText("");
                 sendTurn.setEnabled(false);
                 updateStatus();
+                gameStats.addShot();
 
             }
         });
@@ -378,6 +389,17 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         float maxAxisAccel = calculateAcceleration(event);
         if(maxAxisAccel > MIN_ACCELERATION){
            //TODO Call to Method
+            if(activeStatsFragment == 0) {
+                fragmentTransaction = fragManager.beginTransaction()
+                        .add(R.id.statsFrame, playerStats);
+                fragmentTransaction.commit();
+                activeStatsFragment = 1;
+            }else{
+                fragmentTransaction = fragManager.beginTransaction()
+                        .add(R.id.statsFrame, gameStats);
+                fragmentTransaction.commit();
+                activeStatsFragment = 0;
+            }
             Log.e("WarShipGame:Sensor: ",  String.valueOf(maxAxisAccel));
         }
 
@@ -416,6 +438,10 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         myBoard = board;
     }
 
+    @Override
+    public void myShotHitToStats() {
+        gameStats.addHit();
+    }
 
 
     @Override

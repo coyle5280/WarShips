@@ -42,8 +42,7 @@ public class GameBoardFragment extends Fragment {
     private ArrayList<GamePieceObject> arrayOppShipsActive = new ArrayList<GamePieceObject>();
     private ArrayList<GamePieceObject> arrayOppShipsDead = new ArrayList<GamePieceObject>();
 
-    private TextView testingColors;
-    private TextView testingColors2;
+
 
     private String oppAttackMissColor =  "#ffff00";
     private String myAttackMissColor = "#f8f8ff";
@@ -60,8 +59,6 @@ public class GameBoardFragment extends Fragment {
     public void setAttackHitColor(String attackHit) {
         Log.e("WarShip", "ColorLog: " + attackHit);
         this.attackHit = attackHit;
-        testingColors.setBackgroundColor(Color.parseColor(attackHit));
-        testingColors2.setBackgroundColor(Color.parseColor(attackHit));
     }
 
     public void setMyAttackMissColor(String myAttackMissColor) {
@@ -81,10 +78,6 @@ public class GameBoardFragment extends Fragment {
         if(isHost){
             if(thisBoard == 0){
                 //No click event Visual Only
-
-
-
-
                 Log.e("WarShip", "myBoardOnClick: Host Board A MyBoard");
             }else{
                 //this should be Host board B
@@ -176,19 +169,23 @@ public class GameBoardFragment extends Fragment {
             switch(oppGameBoard.getShotResult(location)){
                 case "BattleShip":
                     attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
-
+                    mCallback.myShotHitToStats();
                     break;
                 case "AttackSubmarine":
                     attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                    mCallback.myShotHitToStats();
                     break;
                 case "PtBoat":
                     attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                    mCallback.myShotHitToStats();
                     break;
                 case "AircraftCarrier":
                     attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                    mCallback.myShotHitToStats();
                     break;
                 case "AegisCruiser":
                     attackedTextView.setBackgroundColor(Color.parseColor(attackHit));
+                    mCallback.myShotHitToStats();
                     break;
                 case "Empty":
                     attackedTextView.setBackgroundColor(Color.parseColor(myAttackMissColor));
@@ -244,6 +241,7 @@ public class GameBoardFragment extends Fragment {
     public interface sendInfoToActivity{
         void sendMyShotToActivity(String stringId, int textId);
         void sendMyBoardToOpp(GameBoard board);
+        void myShotHitToStats();
 
     }
 
@@ -251,8 +249,7 @@ public class GameBoardFragment extends Fragment {
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        testingColors = (TextView) view.findViewById(R.id.A1);
-        testingColors2 = (TextView) view.findViewById(R.id.OA1);
+
     }
 
 

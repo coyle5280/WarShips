@@ -89,7 +89,7 @@
             android:foregroundGravity="center_horizontal"
             android:layout_alignParentEnd="true"
             android:layout_toEndOf="@+id/sendTurnButton"
-            android:id="@+id/frameLayout"></FrameLayout>
+            android:id="@+id/statsFrame"></FrameLayout>
 
     </RelativeLayout>
 </FrameLayout>
