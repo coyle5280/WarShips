@@ -150,23 +150,23 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         if(extras != null) {
             if (extras.getInt("attackHit") != 0) {
                 int a = extras.getInt("attackHit");
-                myGameBoardFrag.setAttackHitColor(Integer.toString(a, 16));
-                oppGameBoardFrag.setAttackHitColor(Integer.toString(a, 16));
+                myGameBoardFrag.setAttackHitColor(Integer.toHexString(a));
+                oppGameBoardFrag.setAttackHitColor(Integer.toHexString(a));
             }
             if (extras.getInt("attackMiss") != 0) {
                 int b = extras.getInt("attackMiss");
-                myGameBoardFrag.setMyAttackMissColor(Integer.toString(b, 16));
-                oppGameBoardFrag.setMyAttackMissColor(Integer.toString(b, 16));
+                myGameBoardFrag.setMyAttackMissColor(Integer.toHexString(b));
+                oppGameBoardFrag.setMyAttackMissColor(Integer.toHexString(b));
             }
             if (extras.getInt("opAttackMiss") != 0) {
                 int c = extras.getInt("opAttackMiss");
-                myGameBoardFrag.setOppAttackMissColor(Integer.toString(c, 16));
-                oppGameBoardFrag.setOppAttackMissColor(Integer.toString(c, 16));
+                myGameBoardFrag.setOppAttackMissColor(Integer.toHexString(c));
+                oppGameBoardFrag.setOppAttackMissColor(Integer.toHexString(c));
             }
             if (extras.getInt("ship") != 0) {
                 int d = extras.getInt("ship");
-                myGameBoardFrag.setShipLocationColor(Integer.toString(d, 16));
-                oppGameBoardFrag.setShipLocationColor(Integer.toString(d, 16));
+                myGameBoardFrag.setShipLocationColor(Integer.toHexString(d));
+                oppGameBoardFrag.setShipLocationColor(Integer.toHexString(d));
             }
         }
     }
