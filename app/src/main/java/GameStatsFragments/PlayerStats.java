@@ -11,24 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import project.mobile.warships.R;
 
 
-public class GameStats extends Fragment {
-
-    int numberOfShots = 0;
-    int numberOfHits = 0;
-
-    TextView shotsTextView;
-    TextView hitsTextView;
-
-
+public class PlayerStats extends Fragment {
 
     SharedPreferences sharedPreferences;
 
-    public GameStats() {
+    TextView numberWins;
+    TextView numberGames;
+
+    public PlayerStats() {
         // Required empty public constructor
     }
 
@@ -38,31 +31,26 @@ public class GameStats extends Fragment {
         if (getArguments() != null) {
 
         }
-    }
 
+
+    }
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        shotsTextView = (TextView) view.findViewById(R.id.shotsTextView);
-        hitsTextView = (TextView) view.findViewById(R.id.hitTextView);
+        sharedPreferences = getActivity().getSharedPreferences("PlayerStats", 0);
+        int wins = sharedPreferences.getInt("Wins", -1);
+        int games = sharedPreferences.getInt("Games", -1);
 
-        shotsTextView.setText(String.valueOf(numberOfShots));
-        hitsTextView.setText(String.valueOf(numberOfHits));
+        numberWins = (TextView) view.findViewById(R.id.winsTextView);
+        numberGames = (TextView) view.findViewById(R.id.gamesTextView);
+
+        numberWins.setText(String.valueOf(wins));
+        numberGames.setText(String.valueOf(games));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.game_stats_fragment, container, false);
-    }
-
-    public void addHit(){
-        numberOfHits++;
-        hitsTextView.setText(String.valueOf(numberOfHits));
-    }
-
-    public void addShot(){
-        numberOfShots++;
-        shotsTextView.setText(String.valueOf(numberOfShots));
+        return inflater.inflate(R.layout.player_stats_fragment, container, false);
     }
 
     @Override
@@ -73,5 +61,5 @@ public class GameStats extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-   }
+    }
 }

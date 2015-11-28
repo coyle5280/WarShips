@@ -134,6 +134,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         Bundle theExtras = getIntent().getExtras();
         if (theExtras != null) {
             isHost = theExtras.getBoolean("isHost");
+
         }else {
             isHost = false;
             CharSequence mess = ">>>>>>ERROR GETTING HOST PLAYER SETTING<<<<<<<";

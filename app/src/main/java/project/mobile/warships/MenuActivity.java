@@ -519,6 +519,8 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
         Intent startIntent = new Intent(this, WarShipGame.class);
         startIntent.putExtra("isHost",mIsHost);
 
+
+
         startActivity(startIntent);
 
     }

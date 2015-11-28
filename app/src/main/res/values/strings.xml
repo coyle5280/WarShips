@@ -27,6 +27,10 @@
     <string name="numberShots">Shots: </string>
     <string name="numberHits">Hits: </string>
 
+    <string name="numberGames">Games: </string>
+    <string name="numberWins">Wins: </string>
+
+
     <string name="shotChoice">Current Choice</string>
 
     <string-array name="xAxis">
