@@ -58,6 +58,7 @@ public class GameBoardFragment extends Fragment {
 
     //Set Color Methods
     public void setAttackHitColor(String attackHit) {
+        Log.e("WarShip", "ColorLog: " + attackHit);
         this.attackHit = attackHit;
         testingColors.setBackgroundColor(Color.parseColor(attackHit));
         testingColors2.setBackgroundColor(Color.parseColor(attackHit));
