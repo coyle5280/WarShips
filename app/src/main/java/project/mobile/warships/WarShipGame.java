@@ -155,18 +155,18 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
             }
             if (extras.getInt("attackMiss") != 0) {
                 int b = extras.getInt("attackMiss");
-                myGameBoardFrag.setAttackHitColor(Integer.toString(b, 16));
-                oppGameBoardFrag.setAttackHitColor(Integer.toString(b, 16));
+                myGameBoardFrag.setMyAttackMissColor(Integer.toString(b, 16));
+                oppGameBoardFrag.setMyAttackMissColor(Integer.toString(b, 16));
             }
             if (extras.getInt("opAttackMiss") != 0) {
                 int c = extras.getInt("opAttackMiss");
-                myGameBoardFrag.setAttackHitColor(Integer.toString(c, 16));
-                oppGameBoardFrag.setAttackHitColor(Integer.toString(c, 16));
+                myGameBoardFrag.setOppAttackMissColor(Integer.toString(c, 16));
+                oppGameBoardFrag.setOppAttackMissColor(Integer.toString(c, 16));
             }
             if (extras.getInt("ship") != 0) {
                 int d = extras.getInt("ship");
-                myGameBoardFrag.setAttackHitColor(Integer.toString(d, 16));
-                oppGameBoardFrag.setAttackHitColor(Integer.toString(d, 16));
+                myGameBoardFrag.setShipLocationColor(Integer.toString(d, 16));
+                oppGameBoardFrag.setShipLocationColor(Integer.toString(d, 16));
             }
         }
     }
