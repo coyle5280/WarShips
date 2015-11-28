@@ -475,8 +475,16 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
     }
 
     public void myBoardOnClick(View v) {
-        myGameBoardFrag.myBoardOnClick(v);
-        oppGameBoardFrag.myBoardOnClick(v);
+        //myGameBoardFrag.myBoardOnClick(v);
+        //oppGameBoardFrag.myBoardOnClick(v);
+
+
+                TextView clickedView = (TextView) v;
+                int currentShotIntId = clickedView.getId();
+                String currentShotStringId = getResources().getResourceEntryName(currentShotIntId);
+                Log.e("WarShip", "myBoardOnClick: " + currentShotStringId.toString());
     }
+
+
 
 }
