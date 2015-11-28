@@ -325,6 +325,9 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         if(isHost){
             sendTurn.setVisibility(View.INVISIBLE);
         }
+        fragmentTransaction = fragManager.beginTransaction()
+                .add(R.id.statsFrame, gameStats);
+        fragmentTransaction.commit();
 
 
     }
@@ -391,10 +394,16 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
            //TODO Call to Method
             if(activeStatsFragment == 0) {
                 fragmentTransaction = fragManager.beginTransaction()
+                        .remove(gameStats);
+                fragmentTransaction.commit();
+                fragmentTransaction = fragManager.beginTransaction()
                         .add(R.id.statsFrame, playerStats);
                 fragmentTransaction.commit();
                 activeStatsFragment = 1;
             }else{
+                fragmentTransaction = fragManager.beginTransaction()
+                        .remove(playerStats);
+                fragmentTransaction.commit();
                 fragmentTransaction = fragManager.beginTransaction()
                         .add(R.id.statsFrame, gameStats);
                 fragmentTransaction.commit();
