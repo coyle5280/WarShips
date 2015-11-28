@@ -101,7 +101,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
         setupItems();
         sharedPreferences =  getSharedPreferences("User", 0);
         String userName = sharedPreferences.getString("UserName", null);
-        int gameCount = sharedPreferences.getInt("gameCount", 0);
+        int gameCount = sharedPreferences.getInt("Games", 0);
 
 
 
@@ -118,7 +118,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
             userNameTextView.setText(R.string.welcomeUser);
         }
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("gameCount", ++gameCount);
+
 //        editor.commit();
 
         editor.apply();
@@ -530,15 +530,12 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
         Log.e("WarShip: joiningGames", "manageConnectionSocket: Devices Socket ");
 
         startIntent.putExtra("isHost", mIsHost);
-        SharedPreferences sharedPreferences = getSharedPreferences("PlayerStats", -1);
         int count = sharedPreferences.getInt("Games", -1);
-        if(count != -1){
-            count++;
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt("Games", count);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("gameCount", ++count);
             editor.apply();
 
-        }
+
 
 
 

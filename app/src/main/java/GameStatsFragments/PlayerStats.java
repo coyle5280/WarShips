@@ -36,7 +36,7 @@ public class PlayerStats extends Fragment {
     }
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        sharedPreferences = getActivity().getSharedPreferences("PlayerStats", 0);
+        sharedPreferences = getActivity().getSharedPreferences("User", 0);
         int wins = sharedPreferences.getInt("Wins", -1);
         int games = sharedPreferences.getInt("Games", -1);
 
