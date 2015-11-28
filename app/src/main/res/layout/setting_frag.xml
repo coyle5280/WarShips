@@ -12,14 +12,58 @@ Menu Fragment XML Layout File
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="setbackground"
+        android:text="Attack Hit Color"
         android:layout_marginTop="50dp"
         android:layout_gravity="center" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/checkboxBackground"
+        android:id="@+id/setAttackHitColor"
+        android:layout_gravity="center_horizontal"
+        android:checked="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attack Miss Color"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/textView" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/attackMissColor"
+        android:layout_gravity="center_horizontal"
+        android:checked="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ship Location"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/shipLocation"
+        android:layout_gravity="center_horizontal"
+        android:checked="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Opp. Attack Miss"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/textView10" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/opAttackMissColor"
         android:layout_gravity="center_horizontal"
         android:checked="false" />
 
@@ -40,27 +84,11 @@ Menu Fragment XML Layout File
         android:layout_weight="0.10"
         android:layout_marginTop="10dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="setText"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:id="@+id/textView" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/checkboxText"
-        android:layout_gravity="center_horizontal"
-        android:checked="false" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="save"
         android:id="@+id/saveButton"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="75dp" />
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

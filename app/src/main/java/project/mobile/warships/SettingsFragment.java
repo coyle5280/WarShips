@@ -22,8 +22,10 @@ import android.widget.TextView;
  */
 public class SettingsFragment extends Fragment {
     //variables
-    CheckBox checkboxBackground;
-    CheckBox checkboxText;
+    CheckBox attackHit;
+    CheckBox attackMiss;
+    CheckBox opAttackMiss;
+    CheckBox shipLocation;
     TextView fragColorText;
     Button fragBackGroundButton;
     Button saveButton;
@@ -52,8 +54,10 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        checkboxBackground = (CheckBox) view.findViewById(R.id.checkboxBackground);
-        checkboxText = (CheckBox) view.findViewById(R.id.checkboxText);
+        attackHit = (CheckBox) view.findViewById(R.id.setAttackHitColor);
+        attackMiss = (CheckBox) view.findViewById(R.id.attackMissColor);
+        opAttackMiss = (CheckBox) view.findViewById(R.id.opAttackMissColor);
+        shipLocation = (CheckBox) view.findViewById(R.id.shipLocation);
         fragColorText = (TextView) view.findViewById(R.id.fragColorText);
         fragBackGroundButton = (Button) view.findViewById(R.id.fragBackGroundButton);
         saveButton = (Button) view.findViewById(R.id.saveButton);
@@ -92,7 +96,8 @@ public class SettingsFragment extends Fragment {
              * @param v the view
              */
             public void onClick(View v) {
-                callBack.updateInterface(checkboxBackground.isChecked(), checkboxText.isChecked(), colorText);
+               //update
+                callBack.updateInterface(attackHit.isChecked(), attackMiss.isChecked(), opAttackMiss.isChecked(), shipLocation.isChecked(), colorText);
                 //reset the text color for next use
                 colorText = -1;
             }
@@ -121,12 +126,14 @@ public class SettingsFragment extends Fragment {
      */
     public interface settingsListener{
         /**
-         * update the color blender applications
-         * @param setBackground- true change, false don't change
-         * @param setTextColor-true change, false don't change
-         * @param Color- the text color
+         * change colors used in game
+         * @param attackHit
+         * @param attackMiss
+         * @param opAttackMiss
+         * @param ship
+         * @param Color
          */
-        void updateInterface(boolean setBackground, boolean setTextColor, int Color);
+        void updateInterface(boolean attackHit, boolean attackMiss, boolean opAttackMiss, boolean ship, int Color);
     }
 
     /**
