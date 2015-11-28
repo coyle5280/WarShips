@@ -81,6 +81,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
 
     private String userName;
 
+    Intent startIntent;
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -93,7 +94,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menuactivity);
         actionBar = getActionBar();
-
+        startIntent = new Intent(this, WarShipGame.class);
 
 
         server = new AcceptThread();
@@ -415,9 +416,18 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
         }
     }
 
-    @Override
-    public void updateInterface(boolean setBackground, boolean setTextColor, int Color) {
 
+    @Override
+    public void updateInterface(boolean attackHit, boolean attackMiss, boolean opAttackMiss, boolean ship, int Color) {
+        if(attackHit){
+            startIntent.putExtra("attackHit", Color);
+        } else if (attackMiss){
+            startIntent.putExtra("attackMiss", Color);
+        } else if(opAttackMiss){
+            startIntent.putExtra("opAttackMiss", Color);
+        } else if(ship) {
+            startIntent.putExtra("ship", Color);
+        }
     }
 
 
@@ -516,7 +526,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
 
 
         Log.e("WarShip: joiningGames", "manageConnectionSocket: Devices Socket ");
-        Intent startIntent = new Intent(this, WarShipGame.class);
+
         startIntent.putExtra("isHost",mIsHost);
 
         startActivity(startIntent);

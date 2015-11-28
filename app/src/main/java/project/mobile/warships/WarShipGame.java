@@ -94,6 +94,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         setHost();
         setupConnectionItems();
         setupFragments();
+        setupColors();
         setupItems(); 
 
     }
@@ -140,6 +141,32 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
             int duration = Toast.LENGTH_LONG;
             Toast toast = Toast.makeText(getApplicationContext(),mess, duration);
             toast.show();
+        }
+    }
+
+    private void setupColors(){
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            if (extras.getInt("attackHit") != 0) {
+                int a = extras.getInt("attackHit");
+                myGameBoardFrag.setAttackHitColor(Integer.toString(a, 16));
+                oppGameBoardFrag.setAttackHitColor(Integer.toString(a, 16));
+            }
+            if (extras.getInt("attackMiss") != 0) {
+                int b = extras.getInt("attackMiss");
+                myGameBoardFrag.setAttackHitColor(Integer.toString(b, 16));
+                oppGameBoardFrag.setAttackHitColor(Integer.toString(b, 16));
+            }
+            if (extras.getInt("opAttackMiss") != 0) {
+                int c = extras.getInt("opAttackMiss");
+                myGameBoardFrag.setAttackHitColor(Integer.toString(c, 16));
+                oppGameBoardFrag.setAttackHitColor(Integer.toString(c, 16));
+            }
+            if (extras.getInt("ship") != 0) {
+                int d = extras.getInt("ship");
+                myGameBoardFrag.setAttackHitColor(Integer.toString(d, 16));
+                oppGameBoardFrag.setAttackHitColor(Integer.toString(d, 16));
+            }
         }
     }
 
