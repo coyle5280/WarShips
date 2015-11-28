@@ -428,6 +428,9 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
         } else if(ship) {
             startIntent.putExtra("ship", Color);
         }
+        settingsBoolean = false;
+        callSettings();
+
     }
 
 
