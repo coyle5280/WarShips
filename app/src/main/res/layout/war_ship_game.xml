@@ -70,8 +70,7 @@
             android:layout_height="wrap_content"
             android:text="@string/viewMyGameBoard"
             android:id="@+id/myGameBoardButton"
-            android:layout_above="@+id/oppGameBoardButton"
-            android:layout_toStartOf="@+id/textView103" />
+            android:layout_above="@+id/oppGameBoardButton" />
 
         <Button
             android:layout_width="wrap_content"
@@ -91,18 +90,6 @@
             android:layout_alignParentEnd="true"
             android:layout_toEndOf="@+id/sendTurnButton"
             android:id="@+id/frameLayout"></FrameLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/viewStats"
-            android:id="@+id/textView103"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:layout_alignBaseline="@+id/textView100"
-            android:layout_alignBottom="@+id/textView100"
-            android:layout_toEndOf="@+id/textView100"
-            android:layout_marginStart="63dp" />
 
     </RelativeLayout>
 </FrameLayout>

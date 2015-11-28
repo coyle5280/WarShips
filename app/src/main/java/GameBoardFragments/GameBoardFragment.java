@@ -42,7 +42,8 @@ public class GameBoardFragment extends Fragment {
     private ArrayList<GamePieceObject> arrayOppShipsActive = new ArrayList<GamePieceObject>();
     private ArrayList<GamePieceObject> arrayOppShipsDead = new ArrayList<GamePieceObject>();
 
-
+    private TextView testingColors;
+    private TextView testingColors2;
 
     private String oppAttackMissColor =  "#ffff00";
     private String myAttackMissColor = "#f8f8ff";
@@ -58,10 +59,13 @@ public class GameBoardFragment extends Fragment {
     //Set Color Methods
     public void setAttackHitColor(String attackHit) {
         this.attackHit = attackHit;
+        testingColors.setBackgroundColor(Color.parseColor(attackHit));
+        testingColors2.setBackgroundColor(Color.parseColor(attackHit));
     }
 
     public void setMyAttackMissColor(String myAttackMissColor) {
         this.myAttackMissColor = myAttackMissColor;
+
     }
 
     public void setShipLocationColor(String shipLocation) {
@@ -242,6 +246,13 @@ public class GameBoardFragment extends Fragment {
 
     }
 
+
+
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        testingColors = (TextView) view.findViewById(R.id.A1);
+        testingColors2 = (TextView) view.findViewById(R.id.OA1);
+    }
 
 
 
