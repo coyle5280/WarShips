@@ -80,7 +80,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
     private Button sendTurn;
     private TextView currentMoveTextView;
 
-    private Random random = new Random();
+
 
     float gravity[];
     final private float MIN_ACCELERATION = 9.0f;

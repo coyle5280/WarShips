@@ -57,6 +57,7 @@ public class WarShipsMain extends Activity {
     public void startTheMenuActivityShort(){
         Intent startIntent = new Intent(this, MenuActivity.class);
         startActivity(startIntent);
+        this.finish();
     }
 
 
@@ -68,5 +69,6 @@ public class WarShipsMain extends Activity {
         editor.apply();
         //editor.commit();
         startActivity(startIntent);
+        this.finish();
     }
 }//End Activity

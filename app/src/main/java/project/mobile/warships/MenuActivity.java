@@ -109,9 +109,9 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
 
         if(userName != null){
             if(gameCount  < 6){
-                userName = "Welcome Ensign " + userName;
+                userName = "Welcome Ensign " + userName + " :" + gameCount;
             }else if(gameCount < 11){
-                userName = "Welcome Captain " + userName;
+                userName = "Welcome Captain " + userName + " :" + gameCount;
             }else{
                 userName = "Welcome Admiral " + userName;
             }
@@ -322,7 +322,6 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
      *
      */
     public void joinGame(View view){
-    //TODO Write the Join game bluetooth methods...
         setupReceiver();
         hostButton.setVisibility(View.INVISIBLE);
 
