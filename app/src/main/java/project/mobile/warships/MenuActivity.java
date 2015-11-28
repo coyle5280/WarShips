@@ -529,7 +529,16 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
 
         Log.e("WarShip: joiningGames", "manageConnectionSocket: Devices Socket ");
 
-        startIntent.putExtra("isHost",mIsHost);
+        startIntent.putExtra("isHost", mIsHost);
+        SharedPreferences sharedPreferences = getSharedPreferences("PlayerStats", -1);
+        int count = sharedPreferences.getInt("Games", -1);
+        if(count != -1){
+            count++;
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("Games", count);
+            editor.apply();
+
+        }
 
 
 

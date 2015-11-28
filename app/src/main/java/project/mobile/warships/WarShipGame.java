@@ -460,4 +460,10 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         currentMoveTextView.setText(stringId);
         sendTurn.setEnabled(true);
     }
+
+    public void myBoardOnClick(View v) {
+        myGameBoardFrag.myBoardOnClick(v);
+        oppGameBoardFrag.myBoardOnClick(v);
+    }
+
 }
