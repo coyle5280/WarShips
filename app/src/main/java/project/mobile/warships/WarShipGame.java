@@ -7,6 +7,7 @@ import android.app.FragmentTransaction;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -103,8 +104,20 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         setupConnectionItems();
         setupFragments();
         setupColors();
-        setupItems(); 
+        setupItems();
+        setupSharedPrefs();
 
+    }
+
+    private void setupSharedPrefs() {
+        Bundle theExtras = getIntent().getExtras();
+        if (theExtras != null) {
+            SharedPreferences sharedPreferences = getSharedPreferences("User", 0);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("Games", theExtras.getInt("Games"));
+
+
+        }
     }
 
     private void setupFragments() {
