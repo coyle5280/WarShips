@@ -27,11 +27,12 @@ public class GameBoard {
 
 
     public GameBoard() {
-
-
         gameBoardArray = new GameBoardSquare[8][8];
-
-
+        for(int row = 0; row < 8; row++){
+            for(int col = 0; col < 8; col++){
+                gameBoardArray[row][col] = new GameBoardSquare();
+            }
+        }
     }
 
 
