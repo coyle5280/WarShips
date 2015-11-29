@@ -346,10 +346,11 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
     }
 
     private GameMessage setupGameMessage() {
+        GameMessage gameMess;
+        gameMess = new GameMessage(GAMEMOVE, myShotArrayString, myShotTextViewId, "");
 
 
 
-        GameMessage gameMess = new GameMessage(GAMEMOVE, myShotArrayString, myShotTextViewId, "");
         String userMessage = editMessage.getText().toString();
 
         if (userMessage.equals("")) {
@@ -459,6 +460,15 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
     public void sendMyBoardToOpp(GameBoard board){
         myBoard = board;
         updateStatus();
+        GameMessage gameMess;
+        gameMess = new GameMessage(GAMEMOVE, myShotArrayString, myShotTextViewId, "");
+        try {
+            bluetoothConnection.write(convertGameMessageToByte(gameMess));
+            Log.e("WarShip: OutConnBoard:", "GameBoard Sent");
+        } catch (IOException e) {
+            Log.e("WarShip: OutConnBoard:", e.toString());
+        }
+
     }
 
     @Override

@@ -58,7 +58,7 @@ public class GameBoardFragment extends Fragment {
     private String attackHit = "#cd2626";
 
     private GameBoard oppGameBoard;
-    private GameBoard myGameBoard;
+    private GameBoard myGameBoard = new GameBoard();
 
     private sendInfoToActivity mCallback;
 
@@ -89,10 +89,13 @@ public class GameBoardFragment extends Fragment {
                 shipList = (TextView) fragView.findViewById(R.id.shipTextViewA);
                 placeShipHeader = (TextView) fragView.findViewById(R.id.placeShipHeaderA);
                 shipPlaceCount = (TextView) fragView.findViewById(R.id.shipCountA);
+
                 shipList.setText(arrayShipsNeedPlacing.get(0).getType());
+
                 placeShipHeader.setVisibility(View.VISIBLE);
                 shipList.setVisibility(View.VISIBLE);
                 shipPlaceCount.setVisibility(View.VISIBLE);
+
                 shipPlaceCounter = arrayShipsNeedPlacing.get(0).getLength();
                 shipPlaceCount.setText("Spots: " + shipPlaceCounter);
                 header.setText("My Board");
@@ -108,10 +111,13 @@ public class GameBoardFragment extends Fragment {
                 placeShipHeader = (TextView) fragView.findViewById(R.id.placeShipHeaderB);
                 shipList = (TextView) fragView.findViewById(R.id.shipTextViewB);
                 shipPlaceCount = (TextView) fragView.findViewById(R.id.shipCountB);
+
                 shipList.setText(arrayShipsNeedPlacing.get(0).getType());
+
                 placeShipHeader.setVisibility(View.VISIBLE);
                 shipList.setVisibility(View.VISIBLE);
                 shipPlaceCount.setVisibility(View.VISIBLE);
+
                 shipPlaceCounter = arrayShipsNeedPlacing.get(0).getLength();
                 shipPlaceCount.setText("Spots: " + shipPlaceCounter);
                 header.setText("My Board");
