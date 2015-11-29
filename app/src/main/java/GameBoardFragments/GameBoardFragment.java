@@ -106,8 +106,8 @@ public class GameBoardFragment extends Fragment {
             if(thisBoard == 1){
                 header = (TextView) fragView.findViewById(R.id.headerB);
                 placeShipHeader = (TextView) fragView.findViewById(R.id.placeShipHeaderB);
-                shipList = (TextView) fragView.findViewById(R.id.shipTextViewA);
-                shipPlaceCount = (TextView) fragView.findViewById(R.id.shipCountA);
+                shipList = (TextView) fragView.findViewById(R.id.shipTextViewB);
+                shipPlaceCount = (TextView) fragView.findViewById(R.id.shipCountB);
                 shipList.setText(arrayShipsNeedPlacing.get(0).getType());
                 placeShipHeader.setVisibility(View.VISIBLE);
                 shipList.setVisibility(View.VISIBLE);

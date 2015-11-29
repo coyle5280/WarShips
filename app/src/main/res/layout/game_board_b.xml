@@ -917,7 +917,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/shipTextViewA"
+            android:id="@+id/shipTextViewB"
             android:layout_below="@+id/placeShipHeaderB"
             android:layout_alignParentStart="true"
             android:visibility="invisible" />
@@ -926,10 +926,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/shipCOuntB"
-            android:layout_below="@+id/shipTextViewA"
-            android:layout_alignStart="@+id/textView70"
-            android:visibility="invisible" />
+            android:id="@+id/shipCountB"
+            android:visibility="invisible"
+            android:layout_below="@+id/shipTextViewB"
+            android:layout_alignEnd="@+id/placeShipHeaderB"
+            android:layout_toEndOf="@+id/shipTextViewB" />
 
     </RelativeLayout>
 </HorizontalScrollView>
