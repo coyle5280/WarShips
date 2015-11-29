@@ -22,6 +22,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -41,6 +43,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
 
     protected ConnectedThread bluetoothConnection;
     public TextView messageView;
+    public TextView statusView;
     private EditText editMessage;
 
 
@@ -245,18 +248,24 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
 
     private void updateStatus() {
         if(STATUS == OPP_TURN){
+            statusView.setText("My Turn");
             STATUS = MY_TURN;
         }else if(STATUS == MY_TURN){
+            statusView.setText("Opp Turn");
             STATUS = OPP_TURN;
         }else if(STATUS == SETTING_UP_BOARD && oppBoardReady){
+            statusView.setText("Waiting On Self");
            STATUS = WAITING_ON_SELF;
         }else if(STATUS == SETTING_UP_BOARD && !oppBoardReady && myBoardReady){
+            statusView.setText("Waiting on PLayer");
             STATUS = WAITING_ON_PLAYER;
         }else if (STATUS == WAITING_ON_PLAYER && oppBoardReady && myBoardReady || STATUS == WAITING_ON_SELF && oppBoardReady && myBoardReady ){
             if(isHost){
+                statusView.setText("Opp Turn");
                 STATUS = OPP_TURN;
 
             }else{
+                statusView.setText("My Turn");
                 STATUS = MY_TURN;
                 myOppBoardButton.setEnabled(true);
             }
@@ -279,6 +288,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         currentMoveTextView = (TextView) findViewById(R.id.currentMoveTextView);
         myGameBoardButton = (Button) findViewById(R.id.myGameBoardButton);
         myOppBoardButton = (Button) findViewById(R.id.oppGameBoardButton);
+        statusView = (TextView) findViewById(R.id.statusTextView);
 
 
         //Setup Shake Sensor
@@ -289,6 +299,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
 
         fragManager = getFragmentManager();
         STATUS = SETTING_UP_BOARD;
+        statusView.setText("Setting up Board");
         myBoard = new GameBoard();
         gravity = new float[3];
 
@@ -461,6 +472,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         myBoard = board;
         updateStatus();
         GameMessage gameMess;
+        fragmentTransaction.remove(myGameBoardFrag);
         gameMess = new GameMessage(GAMEMOVE, myShotArrayString, myShotTextViewId, "");
         try {
             bluetoothConnection.write(convertGameMessageToByte(gameMess));

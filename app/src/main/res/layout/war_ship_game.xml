@@ -91,5 +91,12 @@
             android:layout_toEndOf="@+id/sendTurnButton"
             android:id="@+id/statsFrame"></FrameLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/statusTextView"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
     </RelativeLayout>
 </FrameLayout>

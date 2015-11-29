@@ -233,7 +233,7 @@ public class GameBoardFragment extends Fragment {
         setColor.setBackgroundColor(Color.parseColor(shipLocation));
 
         shipPlaceCounter--;
-        //shipPlaceCount.setText(shipPlaceCounter);
+        shipPlaceCount.setText(String.valueOf(shipPlaceCounter));
         myGameBoard.setOccupied(arrayShipsNeedPlacing.get(0).getType(), currentShotStringId);
         if(shipPlaceCounter == 0){
             arrayMyShipsActive.add(arrayShipsNeedPlacing.get(0));
@@ -241,7 +241,7 @@ public class GameBoardFragment extends Fragment {
             if(arrayShipsNeedPlacing.size() != 0) {
                 shipPlaceCounter = arrayShipsNeedPlacing.get(0).getLength();
                 Log.e("Warship", "GameBoard: " + shipPlaceCount.getId());
-                //shipPlaceCount.setText(shipPlaceCounter);
+                shipPlaceCount.setText(String.valueOf(shipPlaceCounter));
                 shipList.setText(arrayShipsNeedPlacing.get(0).getType());
             }else{
                 Log.e("Warship", "GameBoardDone: " + mCallback);
@@ -306,6 +306,12 @@ public class GameBoardFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setUpBoardView();
+        try{
+            mCallback = (sendInfoToActivity) getActivity();
+            Log.e("WarShip:", "FragOnAttach:" + mCallback);
+        }catch(ClassCastException e){
+            throw new ClassCastException(getActivity().toString() + "not implementing Interface");
+        }
     }
 
 
@@ -313,11 +319,7 @@ public class GameBoardFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        try{
-            mCallback = (sendInfoToActivity) context;
-        }catch(ClassCastException e){
-            throw new ClassCastException(getActivity().toString() + "not implementing Interface");
-        }
+
 
 
     }
