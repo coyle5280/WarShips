@@ -458,6 +458,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
     @Override
     public void sendMyBoardToOpp(GameBoard board){
         myBoard = board;
+        updateStatus();
     }
 
     @Override
@@ -465,24 +466,70 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         gameStats.addHit();
     }
 
-
-    @Override
-    public void sendMyShotToActivity(String stringId, int textId) {
+    public void setMyShot(String stringId, int textId) {
         myShotArrayString = stringId;
         myShotTextViewId = textId;
         currentMoveTextView.setText(stringId);
         sendTurn.setEnabled(true);
     }
+    @Override
+    public String getArrayId(int currentShotIntId) {
+        String currentShotStringId = getResources().getResourceEntryName(currentShotIntId);
+        Log.e("WarShip", "getArrayId: " + currentShotStringId.toString());
+        return currentShotStringId;
+    }
 
-    public void myBoardOnClick(View v) {
-        //myGameBoardFrag.myBoardOnClick(v);
-        //oppGameBoardFrag.myBoardOnClick(v);
-
-
-                TextView clickedView = (TextView) v;
-                int currentShotIntId = clickedView.getId();
-                String currentShotStringId = getResources().getResourceEntryName(currentShotIntId);
-                Log.e("WarShip", "myBoardOnClick: " + currentShotStringId.toString());
+    public void myBoardOnClick(View v){
+        int currentShotIntId = v.getId();
+        String currentShotStringId = getResources().getResourceEntryName(currentShotIntId);
+        if(isHost){
+            if(getCorrespondingLocation(currentShotStringId.charAt(0)) == 0){
+                if(STATUS == SETTING_UP_BOARD || STATUS == WAITING_ON_SELF){
+                    myGameBoardFrag.setMyShip(currentShotStringId, currentShotIntId);
+                }
+                Log.e("WarShip", "myBoardOnClick: Host Board A MyBoard");
+            }else{
+                //this should be Host board B
+                Log.e("WarShip", "myBoardOnClick: Host Board B MyBoard");
+                setMyShot(currentShotStringId, currentShotIntId);
+                oppGameBoardFrag.setMyShot(currentShotStringId, currentShotIntId);
+            }
+        }else{
+            if(getCorrespondingLocation(currentShotStringId.charAt(0)) == 1){
+                if(STATUS == SETTING_UP_BOARD || STATUS == WAITING_ON_SELF){
+                    myGameBoardFrag.setMyShip(currentShotStringId, currentShotIntId);
+                }
+                Log.e("WarShip", "myBoardOnClick: Client Board B MyBoard");
+            }else{
+                Log.e("WarShip", "myBoardOnClick: Client Board A MyBoard");
+                setMyShot(currentShotStringId, currentShotIntId);
+                oppGameBoardFrag.setMyShot(currentShotStringId, currentShotIntId);
+            }
+        }
+    }
+    private int getCorrespondingLocation(char shotChar) {
+        switch (shotChar) {
+            case 'a':
+            case 'b':
+            case 'c':
+            case 'd':
+            case 'e':
+            case 'f':
+            case 'g':
+            case 'h':
+                return 0;
+            case 'A':
+            case 'B':
+            case 'C':
+            case 'D':
+            case 'E':
+            case 'F':
+            case 'G':
+            case 'H':
+                return 1;
+            default:
+                return -1;
+        }
     }
 
 

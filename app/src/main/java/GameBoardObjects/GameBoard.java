@@ -84,27 +84,35 @@ public class GameBoard {
         switch (shotChar) {
             case '1':
             case 'A':
+            case 'a':
                 return 0;
             case '2':
             case 'B':
+            case 'b':
                 return 1;
             case '3':
             case 'C':
+            case 'c':
                 return 2;
             case '4':
             case 'D':
+            case 'd':
                 return 3;
             case '5':
             case 'E':
+            case 'e':
                 return 4;
             case '6':
             case 'F':
+            case 'f':
                 return 5;
             case '7':
             case 'G':
+            case 'g':
                 return 6;
             case '8':
             case 'H':
+            case 'h':
                 return 7;
             default:
                 return -1;

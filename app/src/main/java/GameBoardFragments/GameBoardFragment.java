@@ -32,6 +32,9 @@ public class GameBoardFragment extends Fragment {
     private final int VIEW = 1;
     private final int GAMEBOARD_A = 0;
     private final int GAMEBOARD_B = 1;
+    private int shipPlaceCounter;
+
+
     private int thisBoard;
     private boolean isHost;
 
@@ -42,7 +45,12 @@ public class GameBoardFragment extends Fragment {
     private ArrayList<GamePieceObject> arrayOppShipsActive = new ArrayList<GamePieceObject>();
     private ArrayList<GamePieceObject> arrayOppShipsDead = new ArrayList<GamePieceObject>();
 
+    private View fragView;
 
+    private TextView shipList;
+    private TextView placeShipHeader;
+    private TextView header;
+    private TextView shipPlaceCount;
 
     private String oppAttackMissColor =  "#ffff00";
     private String myAttackMissColor = "#f8f8ff";
@@ -74,34 +82,44 @@ public class GameBoardFragment extends Fragment {
         this.oppAttackMissColor = oppAttackMissColor;
     }
 
-    public void myBoardOnClick(View v){
+    public void setUpBoardView(){
         if(isHost){
             if(thisBoard == 0){
-                //No click event Visual Only
-                Log.e("WarShip", "myBoardOnClick: Host Board A MyBoard");
+                header = (TextView) fragView.findViewById(R.id.headerA);
+                shipList = (TextView) fragView.findViewById(R.id.shipTextViewA);
+                placeShipHeader = (TextView) fragView.findViewById(R.id.placeShipHeaderA);
+                shipPlaceCount = (TextView) fragView.findViewById(R.id.shipCountA);
+                shipList.setText(arrayShipsNeedPlacing.get(0).getType());
+                placeShipHeader.setVisibility(View.VISIBLE);
+                shipList.setVisibility(View.VISIBLE);
+                shipPlaceCount.setVisibility(View.VISIBLE);
+                shipPlaceCounter = arrayShipsNeedPlacing.get(0).getLength();
+                shipPlaceCount.setText("Spots: " + shipPlaceCounter);
+                header.setText("My Board");
+
+
             }else{
-                //this should be Host board B
-                Log.e("WarShip", "myBoardOnClick: Host Board B OppBoard");
-                TextView clickedView = (TextView) v;
-                int currentShotIntId = clickedView.getId();
-                String currentShotStringId = getResources().getResourceEntryName(currentShotIntId);
-                Log.e("WarShip", "myBoardOnClick: " + currentShotStringId.toString());
-                mCallback.sendMyShotToActivity(currentShotStringId, currentShotIntId);
-                setMyShot(currentShotStringId, currentShotIntId);
+                header = (TextView) fragView.findViewById(R.id.headerB);
+                header.setText("Opponent Board");
             }
         }else{
             if(thisBoard == 1){
-                //No click event Visual Only
-                Log.e("WarShip", "myBoardOnClick: Client Board B MyBoard");
+                header = (TextView) fragView.findViewById(R.id.headerB);
+                placeShipHeader = (TextView) fragView.findViewById(R.id.placeShipHeaderB);
+                shipList = (TextView) fragView.findViewById(R.id.shipTextViewA);
+                shipPlaceCount = (TextView) fragView.findViewById(R.id.shipCountA);
+                shipList.setText(arrayShipsNeedPlacing.get(0).getType());
+                placeShipHeader.setVisibility(View.VISIBLE);
+                shipList.setVisibility(View.VISIBLE);
+                shipPlaceCount.setVisibility(View.VISIBLE);
+                shipPlaceCounter = arrayShipsNeedPlacing.get(0).getLength();
+                shipPlaceCount.setText("Spots: " + shipPlaceCounter);
+                header.setText("My Board");
+
             }else{
-                //This should be client board A
-                Log.e("WarShip", "myBoardOnClick: Client Board A OppBoard");
-                TextView clickedView = (TextView) v;
-                int currentShotIntId = clickedView.getId();
-                String currentShotStringId = getResources().getResourceEntryName(currentShotIntId);
-                Log.e("WarShip", "myBoardOnClick: " + currentShotStringId.toString());
-                mCallback.sendMyShotToActivity(currentShotStringId, currentShotIntId);
-                setMyShot(currentShotStringId, currentShotIntId);
+                header = (TextView) fragView.findViewById(R.id.headerA);
+                header.setText("Opponent Board");
+
             }
         }
     }
@@ -135,11 +153,14 @@ public class GameBoardFragment extends Fragment {
 
         if(thisBoard == 0){
 
-            return inflater.inflate(R.layout.game_board_a, container, false);
-        }else{
-            return inflater.inflate(R.layout.game_board_b, container, false);
-        }
+            fragView = inflater.inflate(R.layout.game_board_a, container, false);
 
+        }else{
+            fragView = inflater.inflate(R.layout.game_board_b, container, false);
+
+        }
+        setUpBoardView();
+        return fragView;
 
     }
 
@@ -201,6 +222,29 @@ public class GameBoardFragment extends Fragment {
         //TODO go back to activity??
     }
 
+    public void setMyShip(String currentShotStringId, int currentShotIntId){
+        TextView setColor = (TextView) fragView.findViewById(currentShotIntId);
+        setColor.setBackgroundColor(Color.parseColor(shipLocation));
+        shipPlaceCounter--;
+        myGameBoard.setOccupied(arrayShipsNeedPlacing.get(0).getType(), currentShotStringId);
+        if(shipPlaceCounter == 0){
+            arrayMyShipsActive.add(arrayShipsNeedPlacing.get(0));
+            arrayShipsNeedPlacing.remove(0);
+            if(arrayShipsNeedPlacing.size() != 0) {
+                shipPlaceCounter = arrayShipsNeedPlacing.get(0).getLength();
+            }else{
+                mCallback.sendMyBoardToOpp(myGameBoard);
+                placeShipHeader.setVisibility(View.INVISIBLE);
+                shipList.setVisibility(View.INVISIBLE);
+                shipPlaceCount.setVisibility(View.INVISIBLE);
+
+            }
+        }
+
+
+    }
+
+
 
     public void setOppAttacked(String arrayShotId, int textViewId){
 
@@ -239,9 +283,9 @@ public class GameBoardFragment extends Fragment {
     }
 
     public interface sendInfoToActivity{
-        void sendMyShotToActivity(String stringId, int textId);
         void sendMyBoardToOpp(GameBoard board);
         void myShotHitToStats();
+        String getArrayId(int id);
 
     }
 
