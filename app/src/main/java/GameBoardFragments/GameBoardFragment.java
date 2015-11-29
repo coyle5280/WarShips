@@ -91,7 +91,7 @@ public class GameBoardFragment extends Fragment {
                 shipPlaceCount = (TextView) fragView.findViewById(R.id.shipCountA);
 
                 shipList.setText(arrayShipsNeedPlacing.get(0).getType());
-
+                //shipList.setText("Host: Layout A MyGameBoard");
                 placeShipHeader.setVisibility(View.VISIBLE);
                 shipList.setVisibility(View.VISIBLE);
                 shipPlaceCount.setVisibility(View.VISIBLE);
@@ -113,7 +113,7 @@ public class GameBoardFragment extends Fragment {
                 shipPlaceCount = (TextView) fragView.findViewById(R.id.shipCountB);
 
                 shipList.setText(arrayShipsNeedPlacing.get(0).getType());
-
+                //shipList.setText("Host: Layout B MyGameBoard");
                 placeShipHeader.setVisibility(View.VISIBLE);
                 shipList.setVisibility(View.VISIBLE);
                 shipPlaceCount.setVisibility(View.VISIBLE);
@@ -165,7 +165,7 @@ public class GameBoardFragment extends Fragment {
             fragView = inflater.inflate(R.layout.game_board_b, container, false);
 
         }
-        setUpBoardView();
+
         return fragView;
 
     }
@@ -231,14 +231,20 @@ public class GameBoardFragment extends Fragment {
     public void setMyShip(String currentShotStringId, int currentShotIntId){
         TextView setColor = (TextView) fragView.findViewById(currentShotIntId);
         setColor.setBackgroundColor(Color.parseColor(shipLocation));
+
         shipPlaceCounter--;
+        //shipPlaceCount.setText(shipPlaceCounter);
         myGameBoard.setOccupied(arrayShipsNeedPlacing.get(0).getType(), currentShotStringId);
         if(shipPlaceCounter == 0){
             arrayMyShipsActive.add(arrayShipsNeedPlacing.get(0));
             arrayShipsNeedPlacing.remove(0);
             if(arrayShipsNeedPlacing.size() != 0) {
                 shipPlaceCounter = arrayShipsNeedPlacing.get(0).getLength();
+                Log.e("Warship", "GameBoard: " + shipPlaceCount.getId());
+                //shipPlaceCount.setText(shipPlaceCounter);
+                shipList.setText(arrayShipsNeedPlacing.get(0).getType());
             }else{
+                Log.e("Warship", "GameBoardDone: " + mCallback);
                 mCallback.sendMyBoardToOpp(myGameBoard);
                 placeShipHeader.setVisibility(View.INVISIBLE);
                 shipList.setVisibility(View.INVISIBLE);
@@ -299,7 +305,7 @@ public class GameBoardFragment extends Fragment {
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        setUpBoardView();
     }
 
 
@@ -308,7 +314,7 @@ public class GameBoardFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         try{
-            mCallback = (sendInfoToActivity) context;
+            mCallback = (sendInfoToActivity) getActivity();
         }catch(ClassCastException e){
             throw new ClassCastException(getActivity().toString() + "not implementing Interface");
         }

@@ -925,11 +925,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/shipCountB"
             android:visibility="invisible"
-            android:layout_alignTop="@+id/shipTextViewB"
-            android:layout_alignStart="@+id/B8" />
+            android:layout_below="@+id/shipTextViewB"
+            android:layout_alignEnd="@+id/placeShipHeaderB"
+            android:layout_marginTop="25dp" />
 
     </RelativeLayout>
 </HorizontalScrollView>
