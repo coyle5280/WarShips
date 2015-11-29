@@ -9,7 +9,6 @@ public class GameBoard {
 
 
     private int sizeX;
-
     private int sizeY;
 
 
@@ -29,10 +28,8 @@ public class GameBoard {
 
     public GameBoard() {
 
-        sizeX = 8;
-        sizeY = 8;
 
-        gameBoardArray = new GameBoardSquare[sizeX][sizeY];
+        gameBoardArray = new GameBoardSquare[8][8];
 
 
     }
@@ -42,10 +39,12 @@ public class GameBoard {
         int xShot = convertCharToInt(location.charAt(0));
         int yShot = convertCharToInt(location.charAt(1));
         if (xShot == -1 || yShot == -1) {
-            Log.e("WarShip", "setOccupied: xShot: " + xShot + "yShot: " + yShot);
+            Log.e("WarShip", "setOccupied: xShot: " + xShot + " yShot: " + yShot);
         }
-        Log.e("WarShip", "setOccupied: xShot: " + xShot + "yShot: " + yShot);
-        gameBoardArray[xShot][yShot].setTypeOccupied(ship);
+        Log.e("WarShip", "setOccupied: xShot: " + xShot + " yShot: " + yShot);
+        GameBoardSquare current = gameBoardArray[xShot][yShot];
+        Log.e("WarShip", "setOccupied: " + current);
+        current.setTypeOccupied(ship);
     }
 
 //    public String setMyShot(String location){

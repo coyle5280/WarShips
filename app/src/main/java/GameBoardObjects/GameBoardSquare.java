@@ -33,4 +33,7 @@ public class GameBoardSquare {
     public void setShotAt() {
         shotAt = true;
     }
+    public String toString(){
+        return ("Occupied: " + occupied + "shot at: " + shotAt + "Type: " + typeOccupied);
+    }
 }
