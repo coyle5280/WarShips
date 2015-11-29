@@ -44,6 +44,7 @@ public class GameBoard {
         if (xShot == -1 || yShot == -1) {
             Log.e("WarShip", "setOccupied: xShot: " + xShot + "yShot: " + yShot);
         }
+        Log.e("WarShip", "setOccupied: xShot: " + xShot + "yShot: " + yShot);
         gameBoardArray[xShot][yShot].setTypeOccupied(ship);
     }
 
