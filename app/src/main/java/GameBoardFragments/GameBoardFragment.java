@@ -314,7 +314,7 @@ public class GameBoardFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         try{
-            mCallback = (sendInfoToActivity) getActivity();
+            mCallback = (sendInfoToActivity) context;
         }catch(ClassCastException e){
             throw new ClassCastException(getActivity().toString() + "not implementing Interface");
         }
