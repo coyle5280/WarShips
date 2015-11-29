@@ -98,5 +98,15 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send Message"
+            android:id="@+id/sendMessageButton"
+            android:layout_above="@+id/myGameBoardButton"
+            android:layout_alignParentStart="true"
+            android:layout_alignEnd="@+id/myGameBoardButton"
+            android:onClick="sendTaunt" />
+
     </RelativeLayout>
 </FrameLayout>

@@ -6,7 +6,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
-import android.content.Intent;
+
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -22,14 +22,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Random;
+
 
 import GameBoardFragments.GameBoardFragment;
 import GameBoardObjects.GameBoard;
@@ -211,7 +211,8 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
                 byte[] incoming = (byte[]) inputMessage.obj;
                 try {
                     Log.e("WarGame:InGameInMes:", "handler Incoming message");
-                    GameMessage incomingMessage = convertToGameMessage(incoming);
+                    GameMessage incomingMessage = (GameMessage) convertToGameMessage(incoming);
+                    //convertToGameMessage(incoming);
                     Log.e("WarGame:InGameInMes:", "Actual String: " + incomingMessage.getMessage());
 
                     processGameMessage(incomingMessage);
@@ -243,6 +244,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
                 //TODO add counter for shared preferences and call stats fragment to update
                 break;
             case TAUNT:
+                messageView.setText(incomingMessage.getMessage());
         }
     }
 
@@ -375,14 +377,18 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
 
     /**
      *
-     * @param gameMess
+     * @param obj
      * @return
      * @throws IOException
      */
-    private static byte[] convertGameMessageToByte(GameMessage gameMess) throws IOException{
+    private static byte[] convertGameMessageToByte(Object obj) throws IOException{
+        Log.e("WarShipGame:messToByte:", "converting to byte");
+
         ByteArrayOutputStream outGoing = new ByteArrayOutputStream();
         ObjectOutputStream outStream = new ObjectOutputStream(outGoing);
-        outStream.writeObject(gameMess);
+
+        outStream.writeObject(obj);
+
         return outGoing.toByteArray();
 
 
@@ -395,10 +401,13 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    private static GameMessage convertToGameMessage(byte[] data) throws IOException, ClassNotFoundException{
+    private static Object convertToGameMessage(byte[] data) throws IOException, ClassNotFoundException{
+        Log.e("WarShipGame:byteToMess:", "byte to gameMessage");
         ByteArrayInputStream inComing = new ByteArrayInputStream(data);
         ObjectInputStream inStream = new ObjectInputStream(inComing);
-        return (GameMessage) inStream.readObject();
+       // Log.e("WarShipGame:byteToMess:", "readObject: " + inStream.readObject().toString());
+        //messageView.setText(inStream.readObject().toString());
+        return inStream.readObject();
     }
 
     /**
@@ -408,6 +417,19 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
     protected void onDestroy(){
         super.onDestroy();
         bluetoothConnection.cancel();
+    }
+
+
+    public void sendTaunt(View v){
+        String tauntMess = editMessage.getText().toString();
+
+        GameMessage taunt = new GameMessage(TAUNT, tauntMess);
+        try {
+            bluetoothConnection.write(convertGameMessageToByte(taunt));
+            Log.e("WarShip: OutConnBoard:", "GameTaunt Sent");
+        } catch (IOException e) {
+            Log.e("WarShip: OutConnTaunt:", e.toString());
+        }
     }
 
 
@@ -470,11 +492,12 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
     @Override
     public void sendMyBoardToOpp(GameBoard board){
         myBoard = board;
+        myBoardReady = true;
         updateStatus();
         GameMessage gameMess;
         fragmentTransaction = fragManager.beginTransaction().remove(myGameBoardFrag);
         fragmentTransaction.commit();
-        gameMess = new GameMessage(GAMEBOARD, myBoard,  editMessage.getText().toString());
+        gameMess = new GameMessage(GAMEBOARD, myBoard.getBoardArray(),  "");
         try {
             bluetoothConnection.write(convertGameMessageToByte(gameMess));
             Log.e("WarShip: OutConnBoard:", "GameBoard Sent");

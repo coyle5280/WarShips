@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 import GameBoardObjects.GameBoard;
 
+import GameBoardObjects.GameBoardSquare;
 import GamePieceObjects.GamePieceObject;
 
 import project.mobile.warships.R;
@@ -179,14 +180,14 @@ public class GameBoardFragment extends Fragment {
 
     }
 
-    public void setOppGameBoard(GameBoard gameBoard){
+    public void setOppGameBoard(GameBoardSquare[][] gameBoard){
         arrayOppShipsActive.add(new GamePieceObject(5, "AircraftCarrier"));
         arrayOppShipsActive.add(new GamePieceObject(4, "BattleShip"));
         arrayOppShipsActive.add(new GamePieceObject(3, "AegisCruiser"));
         arrayOppShipsActive.add(new GamePieceObject(3, "AttackSubmarine"));
         arrayOppShipsActive.add(new GamePieceObject(2, "PtBoat"));
 
-        this.oppGameBoard = gameBoard;
+        oppGameBoard = new GameBoard(gameBoard);
     }
 
 

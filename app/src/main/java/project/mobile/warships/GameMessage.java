@@ -3,25 +3,26 @@ package project.mobile.warships;
 import java.io.Serializable;
 
 import GameBoardObjects.GameBoard;
+import GameBoardObjects.GameBoardSquare;
 
 /**
  * Created by coyle on 10/30/2015.
  */
 public class GameMessage implements Serializable{
 
-    protected String message;
+    protected String message = "";
 
-    protected String shotArrayId;
+    protected String shotArrayId = "";
 
-    protected String messageType;
+    protected String messageType = "";
 
-    protected GameBoard gameBoard;
+    protected GameBoardSquare[][] gameBoard;
 
-    protected int textViewId;
+    protected int textViewId = -1;
 
 
     public GameMessage(String type, String shot, int textId, String setMessage){
-
+        //gameMove
         messageType = type;
         message = setMessage;
         shotArrayId = shot;
@@ -29,10 +30,16 @@ public class GameMessage implements Serializable{
 
     }
 
-    public GameMessage(String type, GameBoard myGameBoard, String setMessage){
-
+    public GameMessage(String type, GameBoardSquare[][] myGameBoard, String setMessage){
+//        GameBoard
         messageType = type;
         gameBoard = myGameBoard;
+        message = setMessage;
+    }
+
+    public GameMessage(String type, String setMessage){
+        //Taunt
+        messageType = type;
         message = setMessage;
     }
 
@@ -40,7 +47,7 @@ public class GameMessage implements Serializable{
         return messageType;
     }
 
-    public GameBoard getGameBoard() {
+    public GameBoardSquare[][] getGameBoard() {
         return gameBoard;
     }
 
@@ -61,7 +68,7 @@ public class GameMessage implements Serializable{
     }
 
     public String toString(){
-        return "Game Message: " + message;
+        return "Game Message " + message;
 
     }
 }

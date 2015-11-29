@@ -2,29 +2,14 @@ package GameBoardObjects;
 
 import android.util.Log;
 
+import java.io.Serializable;
+
 /**
  * Created by coyle on 10/26/2015.
  */
-public class GameBoard {
-
-
-    private int sizeX;
-    private int sizeY;
-
+public class GameBoard implements Serializable {
 
     private GameBoardSquare gameBoardArray[][];
-
-
-    public GameBoard(int playerSizeX, int playerSizeY) {
-
-        sizeX = playerSizeX;
-        sizeY = playerSizeY;
-
-        gameBoardArray = new GameBoardSquare[sizeX][sizeY];
-
-
-    }
-
 
     public GameBoard() {
         gameBoardArray = new GameBoardSquare[8][8];
@@ -33,6 +18,10 @@ public class GameBoard {
                 gameBoardArray[row][col] = new GameBoardSquare();
             }
         }
+    }
+
+    public GameBoard(GameBoardSquare[][] opponent){
+        this.gameBoardArray = opponent;
     }
 
 
@@ -78,6 +67,10 @@ public class GameBoard {
             gameBoardArray[xShot][yShot].setShotAt();
             return "Empty";
         }
+    }
+
+    public GameBoardSquare[][] getBoardArray(){
+        return this.gameBoardArray;
     }
 
 

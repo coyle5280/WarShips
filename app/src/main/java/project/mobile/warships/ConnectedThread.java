@@ -16,6 +16,7 @@ public class ConnectedThread extends Thread {
     private final InputStream mmInStream;
     private final OutputStream mmOutStream;
     private Handler mHandler;
+    private int outCount = 0;
 
     public ConnectedThread(BluetoothSocket socket, Handler handler) {
         mmSocket = socket;
@@ -63,13 +64,15 @@ public class ConnectedThread extends Thread {
     /* Call this from the main activity to send data to the remote device */
     public void write(byte[] bytes) {
         try {
+            outCount++;
             Log.e("WarGame:ConnThread.wri", "writeCalled");
-            Log.e("WarGame:ConnThread:", "bytes: " + bytes);
+            Log.e("WarGame:ConnThread:", "bytes: " + bytes + "count Out: " + outCount);
             mmOutStream.write(bytes);
         } catch (IOException e) {
-            Log.e("WarGame:ConnThread:Wri", e.toString());
+            Log.e("WarGame:ConnThread:WriE", e.toString());
         }
     }
+
 
     /* Call this from the main activity to shutdown the connection */
     public void cancel() {
