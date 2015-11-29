@@ -472,8 +472,9 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         myBoard = board;
         updateStatus();
         GameMessage gameMess;
-        fragmentTransaction.remove(myGameBoardFrag);
-        gameMess = new GameMessage(GAMEMOVE, myShotArrayString, myShotTextViewId, "");
+        fragmentTransaction = fragManager.beginTransaction().remove(myGameBoardFrag);
+        fragmentTransaction.commit();
+        gameMess = new GameMessage(GAMEBOARD, myBoard,  editMessage.getText().toString());
         try {
             bluetoothConnection.write(convertGameMessageToByte(gameMess));
             Log.e("WarShip: OutConnBoard:", "GameBoard Sent");
