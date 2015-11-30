@@ -5,7 +5,8 @@ import android.util.Log;
 import java.io.Serializable;
 
 /**
- * Created by coyle on 10/26/2015.
+ * @author Josh Coyle
+ * @author Robert Slavik
  */
 public class GameBoard implements Serializable {
 

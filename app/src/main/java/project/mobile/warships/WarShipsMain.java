@@ -10,7 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 /**
- * Created by coyle on 10/23/2015.
+ * @author Robert Slavik
+ * @author Josh Coyle
  */
 public class WarShipsMain extends Activity {
 

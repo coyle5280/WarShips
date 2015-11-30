@@ -1,7 +1,7 @@
 package GamePieceObjects;
 
 /**
- * Created by coyle on 10/26/2015.
+ * Created by Josh Coyle & Robert Slavik
  */
 public class GamePieceObject {
 

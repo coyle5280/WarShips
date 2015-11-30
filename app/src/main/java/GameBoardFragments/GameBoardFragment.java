@@ -24,7 +24,10 @@ import GamePieceObjects.GamePieceObject;
 
 import project.mobile.warships.R;
 
-
+/**
+ * @author Josh Coyle
+ * @author Robert Slavik
+ */
 public class GameBoardFragment extends Fragment {
 
     private int STATUS;

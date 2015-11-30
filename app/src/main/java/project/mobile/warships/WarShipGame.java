@@ -36,6 +36,10 @@ import GameBoardObjects.GameBoard;
 import GameStatsFragments.GameStats;
 import GameStatsFragments.PlayerStats;
 
+/**
+ * @author Robert Slavik
+ * @author Josh Coyle
+ */
 public class WarShipGame extends Activity  implements SensorEventListener, GameBoardFragment.sendInfoToActivity{
 
     protected GameBoard myBoard;

@@ -9,7 +9,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * Created by coyle on 10/28/2015.
+ * @author Josh Coyle
+ * @author Robert Slavik
  */
 public class ConnectedThread extends Thread {
     private final BluetoothSocket mmSocket;

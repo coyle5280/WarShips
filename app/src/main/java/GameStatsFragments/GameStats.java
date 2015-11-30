@@ -15,7 +15,10 @@ import org.w3c.dom.Text;
 
 import project.mobile.warships.R;
 
-
+/**
+ * @author Robert Slavik
+ * @author Josh Coyle
+ */
 public class GameStats extends Fragment {
 
     int numberOfShots = 0;

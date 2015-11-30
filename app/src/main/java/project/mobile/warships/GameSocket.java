@@ -2,7 +2,10 @@ package project.mobile.warships;
 
 import android.bluetooth.BluetoothSocket;
 
-
+/**
+ * @author Robert Slavik
+ * @author Josh Coyle
+ */
 public class GameSocket {
     private static GameSocket ourInstance = null;
     private static BluetoothSocket socket = null;

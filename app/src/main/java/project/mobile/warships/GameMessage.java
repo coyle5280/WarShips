@@ -6,7 +6,8 @@ import GameBoardObjects.GameBoard;
 import GameBoardObjects.GameBoardSquare;
 
 /**
- * Created by coyle on 10/30/2015.
+ * @author Josh Coyle
+ * @author Robert Slavik
  */
 public class GameMessage implements Serializable{
 

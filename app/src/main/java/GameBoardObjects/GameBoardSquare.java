@@ -3,8 +3,10 @@ package GameBoardObjects;
 import java.io.Serializable;
 
 /**
- * Created by coyle on 10/28/2015.
+ * @author Josh Coyle
+ * @author Robert Slavik
  */
+
 public class GameBoardSquare implements Serializable{
     private boolean shotAt = false;
     private boolean occupied = false;

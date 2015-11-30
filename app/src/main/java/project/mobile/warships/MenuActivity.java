@@ -36,6 +36,8 @@ import static android.bluetooth.BluetoothDevice.*;
 
 /**
  *
+ * @author Josh Coyle
+ * @author Robert Slavik
  */
 public class MenuActivity extends Activity implements SettingsFragment.settingsListener{
 
