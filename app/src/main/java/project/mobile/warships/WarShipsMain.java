@@ -20,7 +20,7 @@ public class WarShipsMain extends Activity {
     protected EditText userNameInput;
 
     /**
-     * Part of Application Lifecycle
+     *
      * @param savedInstanceState
      */
     @Override
@@ -40,18 +40,12 @@ public class WarShipsMain extends Activity {
     private void setupItems() {
         userNameInput = (EditText) findViewById(R.id.UserName);
         startMenuActivity = (Button) findViewById(R.id.startMenuActivity);
-
         startMenuActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startTheMenuActivity();
             }
         });
-
-        //sharedPreferences = getSharedPreferences("User", 0);
-
-
-
     }
 
     public void startTheMenuActivityShort(){

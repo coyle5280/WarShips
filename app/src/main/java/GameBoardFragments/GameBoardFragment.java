@@ -180,12 +180,13 @@ public class GameBoardFragment extends Fragment {
 
     }
 
-    public void setOppGameBoard(GameBoardSquare[][] gameBoard){
+    public void setOppGameBoard(String[][] gameBoard){
         arrayOppShipsActive.add(new GamePieceObject(5, "AircraftCarrier"));
         arrayOppShipsActive.add(new GamePieceObject(4, "BattleShip"));
         arrayOppShipsActive.add(new GamePieceObject(3, "AegisCruiser"));
         arrayOppShipsActive.add(new GamePieceObject(3, "AttackSubmarine"));
         arrayOppShipsActive.add(new GamePieceObject(2, "PtBoat"));
+
 
         oppGameBoard = new GameBoard(gameBoard);
     }
@@ -193,6 +194,7 @@ public class GameBoardFragment extends Fragment {
 
     public void setMyShot(String location, int textViewId){
         try{
+            Log.e("WarShip: SetMyShot", "Location:" + location.toString());
             TextView attackedTextView = (TextView) getView().findViewById(textViewId);
             switch(oppGameBoard.getShotResult(location)){
                 case "BattleShip":

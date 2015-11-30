@@ -15,8 +15,8 @@ import android.widget.TextView;
 
 
 /**
- * The settings menu fragment used by the color blender application,
- * has options to change settings in the color blender
+ * The settings menu fragment used by the WarShips application,
+ * has options to change settings in the WarShips
  * @author Josh Coyle
  * @author Robert Slavik
  */

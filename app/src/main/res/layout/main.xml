@@ -37,7 +37,7 @@
     <Button
         android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:text="@string/newGame"
+        android:text="Create User"
         android:id="@+id/startMenuActivity"
         style="@android:style/Widget.Holo.Light.Button"
         android:layout_below="@+id/UserName"

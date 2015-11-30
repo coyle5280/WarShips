@@ -10,8 +10,10 @@ import java.io.Serializable;
 public class GameBoard implements Serializable {
 
     private GameBoardSquare gameBoardArray[][];
+    private String gameBoardArrayString[][];
 
     public GameBoard() {
+        gameBoardArrayString = new String[8][8];
         gameBoardArray = new GameBoardSquare[8][8];
         for(int row = 0; row < 8; row++){
             for(int col = 0; col < 8; col++){
@@ -24,6 +26,9 @@ public class GameBoard implements Serializable {
         this.gameBoardArray = opponent;
     }
 
+    public GameBoard(String[][] opponent){
+        this.gameBoardArrayString = opponent;
+    }
 
     public void setOccupied(String ship, String location) {
         int xShot = convertCharToInt(location.charAt(0));
@@ -32,9 +37,8 @@ public class GameBoard implements Serializable {
             Log.e("WarShip", "setOccupied: xShot: " + xShot + " yShot: " + yShot);
         }
         Log.e("WarShip", "setOccupied: xShot: " + xShot + " yShot: " + yShot);
-        GameBoardSquare current = gameBoardArray[xShot][yShot];
-        Log.e("WarShip", "setOccupied: " + current);
-        current.setTypeOccupied(ship);
+        gameBoardArray[xShot][yShot].setTypeOccupied(ship);
+        gameBoardArrayString[xShot][yShot] = ship;
     }
 
 //    public String setMyShot(String location){
@@ -53,6 +57,21 @@ public class GameBoard implements Serializable {
 //    }
 
 
+//    public String getShotResult(String location) {
+//        int xShot = convertCharToInt(location.charAt(0));
+//        int yShot = convertCharToInt(location.charAt(1));
+//        if (xShot == -1 || yShot == -1) {
+//            Log.e("WarShip", "getShotResult: xShot: " + xShot + "yShot: " + yShot);
+//            return "ERROR";
+//        }
+//        if (gameBoardArray[xShot][yShot].getOccupied()) {
+//            gameBoardArray[xShot][yShot].setShotAt();
+//            return gameBoardArray[xShot][yShot].getTypeOccupied();
+//        } else {
+//            gameBoardArray[xShot][yShot].setShotAt();
+//            return "Empty";
+//        }
+//    }
     public String getShotResult(String location) {
         int xShot = convertCharToInt(location.charAt(0));
         int yShot = convertCharToInt(location.charAt(1));
@@ -60,14 +79,15 @@ public class GameBoard implements Serializable {
             Log.e("WarShip", "getShotResult: xShot: " + xShot + "yShot: " + yShot);
             return "ERROR";
         }
-        if (gameBoardArray[xShot][yShot].getOccupied()) {
-            gameBoardArray[xShot][yShot].setShotAt();
-            return gameBoardArray[xShot][yShot].getTypeOccupied();
-        } else {
-            gameBoardArray[xShot][yShot].setShotAt();
+        if (gameBoardArrayString[xShot][yShot] == null || gameBoardArrayString[xShot][yShot] == "" ) {
             return "Empty";
+        } else {
+            return gameBoardArrayString[xShot][yShot];
         }
     }
+
+
+    public String[][] getGameBoardArrayString(){return this.gameBoardArrayString;}
 
     public GameBoardSquare[][] getBoardArray(){
         return this.gameBoardArray;

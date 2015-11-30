@@ -17,6 +17,7 @@ public class GameMessage implements Serializable{
     protected String messageType = "";
 
     protected GameBoardSquare[][] gameBoard;
+    protected String [][] gameBoardString;
 
     protected int textViewId = -1;
 
@@ -36,6 +37,12 @@ public class GameMessage implements Serializable{
         gameBoard = myGameBoard;
         message = setMessage;
     }
+    public GameMessage(String type, String[][] myGameBoard, String setMessage){
+//        GameBoard
+        messageType = type;
+        gameBoardString = myGameBoard;
+        message = setMessage;
+    }
 
     public GameMessage(String type, String setMessage){
         //Taunt
@@ -50,6 +57,8 @@ public class GameMessage implements Serializable{
     public GameBoardSquare[][] getGameBoard() {
         return gameBoard;
     }
+
+    public String [][] getGameBoardString(){return gameBoardString;}
 
     public String getMessage() {
         return message;

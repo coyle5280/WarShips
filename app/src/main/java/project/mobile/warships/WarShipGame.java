@@ -232,7 +232,8 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
 
         switch(newMessage.getMessageType()){
             case GAMEBOARD:
-                oppGameBoardFrag.setOppGameBoard(newMessage.getGameBoard());
+                //oppGameBoardFrag.setOppGameBoard(newMessage.getGameBoard());
+                Log.e("WarShip", "gameStringArray:" + incomingMessage.gameBoardString.toString());
                 setOppMessage(newMessage.getMessage());
                 oppBoardReady = true;
                 updateStatus();
@@ -265,6 +266,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
             if(isHost){
                 statusView.setText("Opp Turn");
                 STATUS = OPP_TURN;
+                myOppBoardButton.setEnabled(true);
 
             }else{
                 statusView.setText("My Turn");
@@ -313,6 +315,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
                 fragmentTransaction = fragManager.beginTransaction()
                                     .add(R.id.mainFrame, myGameBoardFrag);
                 fragmentTransaction.commit();
+
             }
         });
 
@@ -349,7 +352,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         });
 
         if(isHost){
-            sendTurn.setVisibility(View.INVISIBLE);
+            sendTurn.setEnabled(false);;
         }
         fragmentTransaction = fragManager.beginTransaction()
                 .add(R.id.statsFrame, gameStats);
@@ -361,9 +364,6 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
     private GameMessage setupGameMessage() {
         GameMessage gameMess;
         gameMess = new GameMessage(GAMEMOVE, myShotArrayString, myShotTextViewId, "");
-
-
-
         String userMessage = editMessage.getText().toString();
 
         if (userMessage.equals("")) {
@@ -497,7 +497,7 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
         GameMessage gameMess;
         fragmentTransaction = fragManager.beginTransaction().remove(myGameBoardFrag);
         fragmentTransaction.commit();
-        gameMess = new GameMessage(GAMEBOARD, myBoard.getBoardArray(),  "");
+        gameMess = new GameMessage(GAMEBOARD, myBoard.getGameBoardArrayString(),  "");
         try {
             bluetoothConnection.write(convertGameMessageToByte(gameMess));
             Log.e("WarShip: OutConnBoard:", "GameBoard Sent");
@@ -539,6 +539,8 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
                 Log.e("WarShip", "myBoardOnClick: Host Board B MyBoard");
                 setMyShot(currentShotStringId, currentShotIntId);
                 oppGameBoardFrag.setMyShot(currentShotStringId, currentShotIntId);
+                fragmentTransaction = fragManager.beginTransaction().remove(oppGameBoardFrag);
+                fragmentTransaction.commit();
             }
         }else{
             if(getCorrespondingLocation(currentShotStringId.charAt(0)) == 1){
@@ -550,6 +552,8 @@ public class WarShipGame extends Activity  implements SensorEventListener, GameB
                 Log.e("WarShip", "myBoardOnClick: Client Board A MyBoard");
                 setMyShot(currentShotStringId, currentShotIntId);
                 oppGameBoardFrag.setMyShot(currentShotStringId, currentShotIntId);
+                fragmentTransaction = fragManager.beginTransaction().remove(oppGameBoardFrag);
+                fragmentTransaction.commit();
             }
         }
     }

@@ -64,6 +64,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
     private SharedPreferences sharedPreferences;
     private TextView userNameTextView;
     private ListView devicesFoundListView;
+    private TextView status;
 
     Button hostButton;
     Button joinButton;
@@ -109,11 +110,11 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
 
         if(userName != null){
             if(gameCount  < 6){
-                userName = "Welcome Ensign " + userName + " :" + gameCount;
+                userName = "Welcome Ensign: " + userName + "\n Game Count: " + gameCount;
             }else if(gameCount < 11){
-                userName = "Welcome Captain " + userName + " :" + gameCount;
+                userName = "Welcome Captain: " + userName + "\n Game Count: " + gameCount;
             }else{
-                userName = "Welcome Admiral " + userName;
+                userName = "Welcome Admiral: " + userName + "\n Game Count: " + gameCount;
             }
             userNameTextView.setText(userName);
         }else {
@@ -182,7 +183,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
     private void setupItems() {
         actionBar = getActionBar();
         //Bluetooth Adaptor
-
+        status = (TextView) findViewById(R.id.Status);
         hostButton = (Button) findViewById(R.id.hostButton);
         joinButton = (Button) findViewById(R.id.joinButton);
         stopButton = (Button) findViewById(R.id.stopButton);
@@ -196,7 +197,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 joinGame = new ConnectThread(deviceArrayList.get(position));
-                Log.e("WarShip: joinGame", "onItemClick: Devices L:98");
+                Log.e("WarShip: joinGame", "onItemClick: ");
                 joinGame.run();
 
             }
@@ -207,6 +208,8 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
             @Override
             public void onClick(View v) {
                 closeConnections();
+                status.setText("");
+                devicesFoundListView.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -262,7 +265,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
                 String action = intent.getAction();
 
                 if(ACTION_FOUND.equals(action)){
-                    Log.e("WarShip: joinGame", "onReceive ACTION_FOUND: Devices L:143");
+                    Log.e("WarShip: joinGame", "onReceive ACTION_FOUND");
                     BluetoothDevice device = intent.getParcelableExtra(EXTRA_DEVICE);
                     deviceArrayList.add(device);
                     stringDeviceArrayList.add(device.getName() + " " + device.getAddress());
@@ -312,7 +315,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
         Log.e("WarShip: HostGame", "beforeEnable");
         enableDiscovery();
         Log.e("WarShip: HostGame", "afterEnable");
-
+        status.setText("Waiting On Player.....");
 
 
     }
@@ -323,17 +326,15 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
      */
     public void joinGame(View view){
         setupReceiver();
+        devicesFoundListView.setVisibility(View.VISIBLE);
         hostButton.setVisibility(View.INVISIBLE);
-
+        status.setText("Searching For Player.....");
         joinButton.setVisibility(View.INVISIBLE);
         stopButton.setVisibility(View.VISIBLE);
         mIsHost = false;
         Log.e("WarShip: joinGame", "Trying to Find Bluetooth Devices L:202");
-//        setProgressBarIndeterminateVisibility(true);
-//        setTitle(R.string.looking);
         mConnectionState = STATE_LOOKING;
         devicesFoundListView.setVisibility(View.VISIBLE);
-        // Build Intents and Register the BroadcastReceiver
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_FOUND);
         filter.addAction(ACTION_SCAN_MODE_CHANGED);
@@ -344,7 +345,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
         }
 
         mBluetoothAdapter.startDiscovery();
-        registerReceiver(mReceiver, filter); // Don't forget to unregister during onDestroy
+        registerReceiver(mReceiver, filter);
         Log.e("WarShip: joinGame", "Trying to Find Bluetooth Devices ");
      }
 
@@ -371,7 +372,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
     protected void onDestroy() {
         super.onDestroy();
 
-        // Make sure we're not doing discovery anymore
+
         if (mBluetoothAdapter != null) {
             mBluetoothAdapter.cancelDiscovery();
         }
@@ -383,7 +384,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
         }
         // Unregister broadcast listeners
         try {
-            if (mReceiver != null) {// Unregister broadcast listeners
+            if (mReceiver != null) {
                 this.unregisterReceiver(mReceiver);
             }
         }catch (IllegalArgumentException e){
@@ -405,7 +406,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
             joinGame.cancel();
         }
         try {
-            if (mReceiver != null) {// Unregister broadcast listeners
+            if (mReceiver != null) {
                 this.unregisterReceiver(mReceiver);
             }
         }catch (IllegalArgumentException e){
@@ -438,13 +439,7 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
     private class AcceptThread extends Thread {
         private final BluetoothServerSocket mmServerSocket;
         BluetoothSocket socket;
-
-        /*
-        AcceptThread Constructor
-         */
         public AcceptThread() {
-            // Use a temporary object that is later assigned to mmServerSocket,
-            // because mmServerSocket is final
             BluetoothServerSocket tmp = null;
             try {
                 tmp = mBluetoothAdapter.listenUsingRfcommWithServiceRecord(appName, uuid);
@@ -453,9 +448,6 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
             }
             mmServerSocket = tmp;
         }
-        /**
-         *
-         */
         public void run() {
             // Keep listening until exception occurs or a socket is returned
             while (true) {//Could change this while loop to test (mConnectionState == 1) Allow  cancel of loop from outside maybe settings
@@ -496,19 +488,11 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
             }
         }
     }
-    //Called when blueTooth Socket accepted by server passed socket
     /**
      *
      * @param socket
      */
     private void manageConnectedSocket(BluetoothSocket socket) {
-
-//        if(server!=null) {
-//            server.cancel();
-//        }
-//        if(joinGame!=null) {
-//            joinGame.cancel();
-//        }
         try {
             if (mReceiver != null) {// Unregister broadcast listeners
                 this.unregisterReceiver(mReceiver);
@@ -520,7 +504,6 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
             mBluetoothAdapter.cancelDiscovery();
         }
 
-        GameSocket theSocket = GameSocket.getInstance();
         GameSocket.setGameSocket(socket);
 
 
@@ -559,18 +542,12 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
          */
         public ConnectThread(BluetoothDevice device) {
             mConnectionState = STATE_CONNECTING;
-            // Use a temporary object that is later assigned to mmSocket,
-            // because mmSocket is final
             BluetoothSocket tmp = null;
             mmDevice = device;
-
-            // Get a BluetoothSocket to connect with the given BluetoothDevice
             try {
-                // uuid is the app's UUID string, also used by the server code
                 tmp = device.createRfcommSocketToServiceRecord(uuid);
             } catch (IOException e) {
                Log.e("ConnectThread", e.toString());
-//                  setProgressBarIndeterminateVisibility(false);
                 CharSequence mess = ">>>>>>ERROR CONNECTING TO HOST<<<<<<<";
                 int duration = Toast.LENGTH_LONG;
                 Toast toast = Toast.makeText(getApplicationContext(),mess, duration);
@@ -583,28 +560,20 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
          *
          */
         public void run() {
-            // Cancel discovery because it will slow down the connection
             mBluetoothAdapter.cancelDiscovery();
 
             try {
-                // Connect the device through the socket. This will block
-                // until it succeeds or throws an exception
                 mmSocket.connect();
             } catch (IOException connectException) {
-                // Unable to connect; close the socket and get out
                 try {
-//                    setProgressBarIndeterminateVisibility(false);
                     mmSocket.close();
                 } catch (IOException closeException) {
                     Log.e("WarShip:ConnectCLOSE", closeException.toString());
                 }
                 return;
             }
-
-            // Do work to manage the connection (in a separate thread)
             manageConnectedSocket(mmSocket);
         }
-
         /** Will cancel an in-progress connection, and close the socket */
         public void cancel() {
             try {
@@ -614,8 +583,4 @@ public class MenuActivity extends Activity implements SettingsFragment.settingsL
              }
         }
     }
-
-
-
-
-}//End MenuActivity Class
+}
